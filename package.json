@@ -1,0 +1,45 @@
+{
+  "name": "armstrong-react-docs",
+  "version": "1.5.1",
+  "description": "Documentation for Armstrong React.",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "typings install",
+    "build": "webpack --config config/webpack.config.prod.js",
+    "build-prod": "webpack --config webpack.config.prod.js",
+    "start": "parallelshell -v \"npm run watch\" \"npm run serve\" ",
+    "watch": "webpack -w --config config/webpack.config.dev.js",
+    "serve": "browser-sync start -s www -f www -c config/browsersync.config.js"
+  },
+  "author": "Rocketmakers",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "browser-sync": "^2.13.0",
+    "classnames": "^2.2.5",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "node-sass": "^3.8.0",
+    "parallelshell": "^2.0.0",
+    "postcss-loader": "^0.9.1",
+    "postcss-scss": "^0.1.8",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1",
+    "underscore": "^1.8.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "armstrong-react": "^0.4.88",
+    "moment": "^2.14.1",
+    "fastclick": "^1.0.6",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.5.1"
+  }
+}
