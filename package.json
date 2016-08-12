@@ -8,8 +8,8 @@
     "build": "webpack --config config/webpack.config.prod.js",
     "build-prod": "webpack --config webpack.config.prod.js",
     "start": "parallelshell -v \"npm run watch\" \"npm run serve\" ",
-    "watch": "webpack -w --config config/webpack.config.dev.js",
-    "serve": "browser-sync start -s www -f www -c config/browsersync.config.js"
+    "watch": "webpack -w --config webpack.config.dev.js",
+    "serve": "browser-sync start -s ./ -f ./"
   },
   "author": "Rocketmakers",
   "license": "MIT",
