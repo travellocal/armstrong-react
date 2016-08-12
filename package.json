@@ -25,6 +25,7 @@
     "parallelshell": "^2.0.0",
     "postcss-loader": "^0.9.1",
     "postcss-scss": "^0.1.8",
+    "pre-push": "^0.1.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.2",
@@ -41,5 +42,8 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.5.1"
-  }
+  },
+  "pre-push": [
+    "npm run build-prod"
+  ]
 }
