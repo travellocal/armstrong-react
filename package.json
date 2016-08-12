@@ -44,6 +44,6 @@
     "react-router": "^2.5.1"
   },
   "pre-push": [
-    "npm run build-prod"
+    "build-prod"
   ]
 }
