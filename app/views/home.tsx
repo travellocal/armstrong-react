@@ -17,7 +17,7 @@ export class Home extends React.Component<{}, {}> {
           <Col>
             <div>
               <article>
-              <h1 className="headline">A minimal <a target="_blank" href="https://facebook.github.io/react/">React</a> and <a target="_blank" href="http://sass-lang.com/">SASS</a> framework for rapid UI design and development.</h1>
+              <h1 className="headline">TEST: A minimal <a target="_blank" href="https://facebook.github.io/react/">React</a> and <a target="_blank" href="http://sass-lang.com/">SASS</a> framework for rapid UI design and development.</h1>
               <h2 className="subheading">Armstrong contains a library of essential components and a flexible system of variables designed to cope with the nature and pace of real-world projects.</h2>
 
               <h3>What's included?</h3>
