@@ -28,8 +28,8 @@ export class Button extends React.Component<IButtonProps, {}>{
       this.props.className,
       {
         "rounded": this.props.rounded,
-        "icon-button-left": this.props.leftIcon !== undefined,
-        "icon-button-right": this.props.rightIcon !== undefined
+        "icon-button-left": !!this.props.leftIcon,
+        "icon-button-right": !!this.props.rightIcon
       }
     );
     return (
