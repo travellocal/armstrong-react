@@ -21,7 +21,7 @@ describe("<Button />", () => {
       expect(wrapper.find("button").hasClass("icon-button-left")).to.be.true;
     });
 
-    it("should get contain an icon class", () => {
+    it("should contain an icon element", () => {
       const wrapper = shallow(<Button leftIcon={Button.Icomoon.ampersand} />);
 
       expect(wrapper.find("Icon")).to.have.length(1);
@@ -35,7 +35,7 @@ describe("<Button />", () => {
       expect(wrapper.find("button").hasClass("icon-button-right")).to.be.true;
     });
 
-    it("should get contain an icon class", () => {
+    it("should contain an icon element", () => {
       const wrapper = shallow(<Button rightIcon={Button.Icomoon.bullhorn} />);
 
       expect(wrapper.find("Icon")).to.have.length(1);
