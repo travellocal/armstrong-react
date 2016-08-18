@@ -1,18 +1,42 @@
+// 1. OVERRIDES TO ARMSTRONG VARIABLES MUST BE LOADED FIRST
+@import "./shared/variables";
+
+// 2. THEN ANY NEW VARIABLES YOU CREATE
+@import "./shared/as-variables";
+
+// 3. FONTS SHOULD BE LOADED SECOND
 @import "fonts";
 @import "addons/icomoon";
 
+// 4. ARMSTRONG LIBRARY IMPORTS
 @import "~armstrong-react/dist/imports";
 @import "~armstrong-react/dist/style";
+@import "~armstrong-react/dist/form";
+@import "~armstrong-react/dist/responsive";
+@import "~armstrong-react/dist/navigation";
 
-@import "addons/responsive";
+// 5. ANY CUSTOM STYLING LAST
 @import "addons/tableStyling";
 @import "addons/typography";
 @import "addons/tooltip";
 @import "addons/formGrid";
 @import "addons/formValidation";
 
-@import "./shared/_as-variables";
-@import "./shared/_variables";
+// @import "fonts";
+// @import "addons/icomoon";
+
+// @import "~armstrong-react/dist/imports";
+// @import "~armstrong-react/dist/style";
+
+// @import "addons/responsive";
+// @import "addons/tableStyling";
+// @import "addons/typography";
+// @import "addons/tooltip";
+// @import "addons/formGrid";
+// @import "addons/formValidation";
+
+// @import "./shared/_as-variables";
+// @import "./shared/_variables";
 
 /************************************************************************************************
   GLOBAL THEME STYLES
@@ -29,8 +53,8 @@ html, body, main, #app-content {
 hr {
     border: 0;
     border-top: 1px solid $gray-light;
-    @extend %m-top-large;
-    @extend %m-bottom-large;
+    margin-top: $spacing-large;
+    margin-bottom: $spacing-large;
 }
 
 /************************************************************************************************
@@ -137,25 +161,25 @@ ul.components {
 .helper-grid {
     word-break: break-all !important;
     background-color: rgba($gray-medium, 0.5);
-    @extend %p-small;
-    @extend %f-size-xsmall;
-    @extend %m-bottom-medium;
+    padding: $spacing-small;
+    font-size: $font-size-xsmall;
+    margin-bottom: $spacing-medium;
 
     > .row {
         background-color: rgba(white, 0.5);
-        @extend %p-top-small;
-        @extend %p-left-small;
-        @extend %p-right-small;
+        padding-top: $spacing-small;
+        padding-left: $spacing-small;
+        padding-right: $spacing-small;
 
         &:last-of-type {
-            @extend %p-bottom-small;
+            padding-bottom: $spacing-small;
         }
 
         & > .col {
             background-color: rgba(white, 0.5);
-            @extend %p-xsmall;
-            @extend %m-right-xsmall;
-
+            padding: $spacing-xsmall;
+            margin-right: $spacing-xsmall;
+            
             &:last-of-type {
                 margin-right: 0;
             }
@@ -165,7 +189,7 @@ ul.components {
 
 .sidebar {
     background-color: $gray-very-light;
-    @extend %p-medium;
+    padding: $spacing-medium;
     nav {
         font-size: $font-size-xsmall;
         a {
@@ -274,8 +298,8 @@ article h1:first-of-type {
     padding: $spacing-small;
     font-size: $font-size-xsmall;
     color: white;
-    @extend %m-top-medium;
-    @extend %m-bottom-medium;
+    margin-top: $spacing-medium;
+    margin-bottom: $spacing-medium;
 }
 
 .burger-menu-button {

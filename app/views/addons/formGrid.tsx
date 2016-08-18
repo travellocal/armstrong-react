@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, TextInput, SelectInput, DatePickerInput, Icon, Button } from 'armstrong-react';
+import { Grid, Row, Col, TextInput, SelectInput, CalendarInput, Icon, Button } from 'armstrong-react';
 
 export class FormGrid extends React.Component<{}, {}> {
 
@@ -57,13 +57,13 @@ export class FormGrid extends React.Component<{}, {}> {
                 </Col>
               </Row>
               <Row>
-                <Col spans="3">
+                <Col>
                   <label>Email address</label>
                   <TextInput placeholder="e.g. yourname@example.com" />
                 </Col>
                 <Col>
                   <label>Date of birth</label>
-                  <DatePickerInput icon={DatePickerInput.Icomoon.calendar2} />
+                  <CalendarInput icon={CalendarInput.Icomoon.calendar2} />
                 </Col>
               </Row>
             </Grid>
@@ -80,13 +80,13 @@ export class FormGrid extends React.Component<{}, {}> {
     </Col>
   </Row>
   <Row>
-    <Col spans="3">
+    <Col>
       <label>Email address</label>
       <TextInput placeholder="e.g. yourname@example.com" />
     </Col>
     <Col>
       <label>Date of birth</label>
-      <DatePickerInput icon={DatePickerInput.Icomoon.calendar2} />
+      <CalendarInput icon={CalendarInput.Icomoon.calendar2} />
     </Col>
   </Row>
 </Grid>`}
@@ -108,7 +108,7 @@ export class FormGrid extends React.Component<{}, {}> {
                 </Col>
               </Row>
               <Row>
-                <Col spans="2">
+                <Col>
                   <label>Long card number</label>
                   <TextInput />
                 </Col>
@@ -140,7 +140,7 @@ export class FormGrid extends React.Component<{}, {}> {
     </Col>
   </Row>
   <Row>
-    <Col spans="2">
+    <Col>
       <label>Long card number</label>
       <TextInput />
     </Col>
@@ -162,7 +162,7 @@ export class FormGrid extends React.Component<{}, {}> {
 </article>
           </Col>
 
-<Col className="secondary-nav" fixed={200}>
+<Col className="secondary-nav" width={200}>
           
           <ul>
           <li><a href="#installation">Installation</a></li>

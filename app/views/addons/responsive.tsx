@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Button } from 'armstrong-react';
+import { Grid, Row, Col, Button } from 'armstrong-react';
 
 export class Responsive extends React.Component<{}, {}> {
 
@@ -92,8 +92,8 @@ export class Responsive extends React.Component<{}, {}> {
                   </tr>
                   <tr>
                     <td>rs-SIZE-unfix</td>
-                    <td><code>{`<Col fixed={true} className="rs-small-unfix" />`}</code></td>
-                    <td>Will override the fixed property on a column at a certain breakpoint.</td>
+                    <td><code>{`<Col width="auto" className="rs-small-unfix" />`}</code></td>
+                    <td>Will override the width="auto" property on a column at a certain breakpoint.</td>
                     <td>Only works on <code>Col</code> elements</td>
                   </tr>
                   <tr>
@@ -137,18 +137,18 @@ export class Responsive extends React.Component<{}, {}> {
             
             <Grid className="helper-grid">
                 <Row className="rs-xlarge-spaced rs-xlarge-4col rs-large-3col rs-medium-2col rs-small-1col">
-                  <Col centerContent="both">Column 1</Col>
-                  <Col centerContent="both">Column 2</Col>
-                  <Col centerContent="both">Column 3</Col>
-                  <Col centerContent="both">Column 4</Col>
-                  <Col centerContent="both">Column 5</Col>
-                  <Col centerContent="both">Column 6</Col>
-                  <Col centerContent="both">Column 7</Col>
-                  <Col centerContent="both">Column 8</Col>
-                  <Col centerContent="both">Column 9</Col>
-                  <Col centerContent="both">Column 10</Col>
-                  <Col centerContent="both">Column 11</Col>
-                  <Col centerContent="both">Column 12</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 1</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 2</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 3</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 4</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 5</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 6</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 7</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 8</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 9</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 10</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 11</Col>
+                  <Col horizontalAlignment="center" verticalAlignment="center">Column 12</Col>
                 </Row>
               </Grid>
 
@@ -177,16 +177,16 @@ export class Responsive extends React.Component<{}, {}> {
 
               <Grid className="rs-small-1col rs-small-spaced">
                 <Row>
-                  <Col centerContent={{vertical: "center"}} className="p-right-small">
+                  <Col verticalAlignment="center" className="p-right-small">
                     <div>
                     <h1 className="f-size-medium m-bottom-none m-top-none">Page Title</h1>
                     <h2 className="f-size-small m-top-xxsmall m-bottom-none">Subtitle here</h2>
                     </div>
                   </Col>
-                  <Col centerContent={{vertical: "center", horizontal:"right"}} fixed={true} className="rs-small-unfix">
+                  <Col verticalAlignment="center" horizontalAlignment="right" width="auto" className="rs-small-unfix">
                     <div className="rs-small-full-width">
-                    <Button className="f-size-xsmall bg-positive rs-small-full-width" text="Create" />
-                    <Button className="f-size-xsmall bg-negative rs-small-full-width" text="Delete" />
+                    <Button className="f-size-xsmall bg-positive rs-small-full-width">Create</Button>
+                    <Button className="f-size-xsmall bg-negative rs-small-full-width">Delete</Button>
                     </div>
                   </Col>
                 </Row>
@@ -196,16 +196,16 @@ export class Responsive extends React.Component<{}, {}> {
               <pre>
                 {`<Grid className="rs-small-1col rs-small-spaced">
   <Row>
-    <Col centerContent={{vertical: "center"}}>
+    <Col verticalAlignment="center">
       <div>
         <h1>Page Title</h1>
         <h2>Subtitle here</h2>
       </div>
     </Col>
-    <Col fixed={true} centerContent={{vertical: "center", horizontal:"right"}} className="rs-small-unfix">
+    <Col verticalAlignment="center" horizontalAlignment="right" width="auto" className="rs-small-unfix">
       <div className="rs-small-full-width">
-        <Button className="bg-positive rs-small-full-width" text="Create" />
-        <Button className="bg-negative rs-small-full-width" text="Delete" />
+        <Button className="bg-positive rs-small-full-width">Create</Button>
+        <Button className="bg-negative rs-small-full-width">Delete</Button>
       </div>
     </Col>
   </Row>
@@ -213,7 +213,7 @@ export class Responsive extends React.Component<{}, {}> {
               </pre>
 </article>
           </Col>
-          <Col className="secondary-nav" fixed={200}>
+          <Col className="secondary-nav" width={200}>
           
           <ul>
           <li><a href="#installation">Installation</a></li>

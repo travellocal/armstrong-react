@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow } from 'armstrong-react';
+import { Grid, Row, Col } from 'armstrong-react';
 
 export class BurgerMenuView extends React.Component<{}, {}> {
 

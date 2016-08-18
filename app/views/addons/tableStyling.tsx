@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Button } from 'armstrong-react';
+import { Grid, Row, Col, Button } from 'armstrong-react';
 
 export class TableStyling extends React.Component<{}, {}> {
 
@@ -55,25 +55,25 @@ export class TableStyling extends React.Component<{}, {}> {
                <td>Desk</td>
                <td>124587125</td>
                <td>100.00</td>
-               <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+               <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
               </tr>
               <tr>
                <td>Computer</td>
                <td>58902525</td>
                <td>1500.00</td>
-               <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+               <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
               </tr>
               <tr>
                <td>Chair</td>
                <td>5098205</td>
                <td>500.00</td>
-               <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+               <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
               </tr>
              </tbody>
              <tfoot>
               <tr>
-               <td colSpan="2">Total</td>
-               <td colSpan="2">2100.00</td>
+               <td colSpan={2}>Total</td>
+               <td colSpan={2}>2100.00</td>
               </tr>
              </tfoot>
             </table>
@@ -93,25 +93,25 @@ export class TableStyling extends React.Component<{}, {}> {
       <td>Desk</td>
       <td>124587125</td>
       <td>100.00</td>
-      <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+      <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
     </tr>
     <tr>
       <td>Computer</td>
       <td>58902525</td>
       <td>1500.00</td>
-      <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+      <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
     </tr>
     <tr>
       <td>Chair</td>
       <td>5098205</td>
       <td>500.00</td>
-      <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+      <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colSpan="2">Total</td>
-      <td colSpan="2">2100.00</td>
+      <td colSpan={2}>Total</td>
+      <td colSpan={2}>2100.00</td>
     </tr>
   </tfoot>
 </table>
@@ -137,25 +137,25 @@ export class TableStyling extends React.Component<{}, {}> {
                <td>Desk</td>
                <td>124587125</td>
                <td>100.00</td>
-               <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+               <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
               </tr>
               <tr>
                <td>Computer</td>
                <td>58902525</td>
                <td>1500.00</td>
-               <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+               <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
               </tr>
               <tr>
                <td>Chair</td>
                <td>5098205</td>
                <td>500.00</td>
-               <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+               <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
               </tr>
              </tbody>
              <tfoot>
               <tr>
-               <td colSpan="2">Total</td>
-               <td colSpan="2">2100.00</td>
+               <td colSpan={2}>Total</td>
+               <td colSpan={2}>2100.00</td>
               </tr>
              </tfoot>
             </table>
@@ -175,25 +175,25 @@ export class TableStyling extends React.Component<{}, {}> {
       <td>Desk</td>
       <td>124587125</td>
       <td>100.00</td>
-      <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+      <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
     </tr>
     <tr>
       <td>Computer</td>
       <td>58902525</td>
       <td>1500.00</td>
-      <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+      <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
     </tr>
     <tr>
       <td>Chair</td>
       <td>5098205</td>
       <td>500.00</td>
-      <td><Button className="bg-info rs-xlarge-full-width" text="Refresh" /></td>
+      <td><Button className="bg-info rs-xlarge-full-width">Refresh</Button></td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colSpan="2">Total</td>
-      <td colSpan="2">2100.00</td>
+      <td colSpan={2}>Total</td>
+      <td colSpan={2}>2100.00</td>
     </tr>
   </tfoot>
 </table>
@@ -202,7 +202,7 @@ export class TableStyling extends React.Component<{}, {}> {
 </article>
           </Col>
 
-<Col className="secondary-nav" fixed={200}>
+<Col className="secondary-nav" width={200}>
           
           <ul>
           <li><a href="#installation">Installation</a></li>

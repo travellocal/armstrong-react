@@ -1,7 +1,7 @@
 // IMPORTS
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Grid, Row, Col, SingleColumnRow } from 'armstrong-react';
+import { Grid, Row, Col } from 'armstrong-react';
 
 export class Installation extends React.Component<{}, {}> {
 
@@ -66,7 +66,7 @@ export class MyComponent extends React.Component<{}, {}> {
     return (
       <main>
         <h1>Below is a button!</h1>
-        <Button className="bg-positive" text="Armstrong lives!" onClick={ this.buttonClicked } />
+        <Button className="bg-positive" onClick={ this.buttonClicked }>Armstrong lives!</Button>
       </main>
     );
   }
@@ -88,7 +88,7 @@ export class MyComponent extends React.Component<{}, {}> {
           </Col>
 
 
-<Col className="secondary-nav" fixed={200}>
+<Col className="secondary-nav" width={200}>
           <ul>
           <li><a href="#gettingStarted">Getting started</a></li>
           <li><a href="#importingTheSCSS">Importing the SCSS</a></li>

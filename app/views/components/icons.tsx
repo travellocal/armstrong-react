@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Icon, Button, TextInput } from 'armstrong-react';
+import { Grid, Row, Col, Icon, Button, TextInput } from 'armstrong-react';
 
 export class Icons extends React.Component<{}, {}> {
 
@@ -90,9 +90,9 @@ export class Icons extends React.Component<{}, {}> {
 
               <h3>Icon in a button</h3>
 
-              <Button className="bg-info" leftIcon={Button.Icomoon.floppyDisk} text="Save" />
+              <Button className="bg-info" leftIcon={Button.Icomoon.floppyDisk}>Save</Button>
             
-              <pre>{`<Button className="bg-negative" leftIcon={Button.Icomoon.floppyDisk} text="Save" />`}
+              <pre>{`<Button className="bg-negative" leftIcon={Button.Icomoon.floppyDisk}>Save</Button>`}
               </pre>
 
               <h3>Icon in a form element</h3>
@@ -108,7 +108,7 @@ export class Icons extends React.Component<{}, {}> {
             </article>
           </Col>
 
-<Col className="secondary-nav" fixed={200}>
+<Col className="secondary-nav" width={200}>
           
           <ul>
           <li><a href="#installation">Installation</a></li>
