@@ -58,6 +58,7 @@ export interface IAutoCompleteInputState {
   offsetIndex?: number;
   showOnTop?: boolean;
   topOffset?: number;
+  remoteQueryError?: string;
 }
 
 export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, IAutoCompleteInputState> {
@@ -90,6 +91,8 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
       this.setState({ remoteSearching: true })
       this.props.remoteQuery(query).then((filteredOptions) => {
         this.setState({ filteredOptions, remoteSearching: false })
+      }).catch((error)=>{
+        this.setState({ remoteQueryError: JSON.stringify(error), remoteSearching: false })
       })
     }, immediate ? 0 : this.props.remoteThrottle)
 
@@ -344,7 +347,7 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
               </div>
             }
           </Col>
-          {this.props.hasGoButton && !this.props.multiSelect && <Col width="auto"><Button className="bg-positive" onClick={() => this.buttonClick() }>{this.props.goButtonContent || "Go"}</Button></Col> }
+          {this.props.hasGoButton && !this.props.multiSelect && <Col width="auto"><Button text={this.props.goButtonContent || "Go"} className="bg-positive" onClick={() => this.buttonClick() }/></Col> }
         </Row>
       </Grid>)
   }

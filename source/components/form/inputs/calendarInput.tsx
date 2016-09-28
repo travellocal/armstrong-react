@@ -121,11 +121,9 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
     const d = date.clone();
     const dateWithinRange = this.fallsWithinRange(d);
     const isSelected = d.format(isoFormat) === this.props.date;
-    const isToday = d.clone().startOf('day').isSame(moment().startOf('day'));
     return <CalendarDay
       key={`Calendar_day_${date.format('DDMMYYYY')}`}
       selected={isSelected}
-      isToday={isToday}
       withinRange={dateWithinRange}
       notInCurrentMonth={notInCurrentMonth}
       dayClicked={dayClicked}
@@ -310,7 +308,6 @@ interface ICalendarDayProps extends React.Props<CalendarDay> {
   notInCurrentMonth?: boolean;
   selected?: boolean;
   withinRange?: boolean;
-  isToday?: boolean;
 }
 
 class CalendarDay extends React.Component<ICalendarDayProps, {}> {
@@ -319,7 +316,6 @@ class CalendarDay extends React.Component<ICalendarDayProps, {}> {
       {
         "not-in-month": this.props.notInCurrentMonth,
         "selected-day": this.props.selected,
-        "is-today": this.props.isToday,
         "day-disabled": !this.props.withinRange
       }
     );

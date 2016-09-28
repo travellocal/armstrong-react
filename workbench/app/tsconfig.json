@@ -14,10 +14,6 @@
     "noLib": false,
     "preserveConstEnums": false,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "../www",
-    "moduleResolution": "node"
-  },
-  "exclude": [
-    "../armstrong/node_modules/**"
-  ]
+    "outDir": "../www"
+  }
 }
