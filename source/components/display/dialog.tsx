@@ -46,7 +46,7 @@ export class Dialog extends React.Component<IDialogProps, {}>{
     this.dialogContentElement = document.getElementById("dialog-content");
     this.appNode = document.getElementById(this.props.bodyId || "host");
     if (this.props.isOpen) {
-      this.renderToPortal(this.renderDialog(this.props.children as any[]))
+      this.renderToPortal(this.renderDialog(this.props))
     }
   }
 
@@ -56,7 +56,7 @@ export class Dialog extends React.Component<IDialogProps, {}>{
       this.props.onOpen();
     }
     if (open) {
-      this.renderToPortal(this.renderDialog(newProps.children as any[]))
+      this.renderToPortal(this.renderDialog(newProps))
     }
     if (!open && this.props.isOpen) {
       if (this.props.onClose) {
@@ -106,27 +106,28 @@ export class Dialog extends React.Component<IDialogProps, {}>{
     delete this.portalNode;
     return unmounted;
   }
-  renderDialog(children) {
-    var style = { width: this.props.width || "500px", height: this.props.height || "auto" }
+
+  renderDialog(props : IDialogProps) {
+    var style = { width: props.width || "500px", height: props.height || "auto" }
     return (
-      <div className={`dialog${this.props.className ? ` ${this.props.className}` : ''}`} style={style} id={this.dialogId}>
-        {!this.props.title &&
-          <div className="dialog-close-button" onClick={() => this.props.onXClicked ? this.props.onXClicked() : this.closeClicked() }>
+      <div className={`dialog${props.className ? ` ${props.className}` : ''}`} style={style} id={this.dialogId}>
+        {!props.title &&
+          <div className="dialog-close-button" onClick={() => props.onXClicked ? props.onXClicked() : this.closeClicked() }>
             <Icon icon={Icon.Icomoon.cross}/>
           </div>
         }
-        {this.props.title &&
+        {props.title &&
           <div className="dialog-header">
-            {this.props.title}
-            <div className="dialog-close-button" onClick={() => this.props.onXClicked ? this.props.onXClicked() : this.closeClicked() }>
+            {props.title}
+            <div className="dialog-close-button" onClick={() => props.onXClicked ? props.onXClicked() : this.closeClicked() }>
               <Icon icon={Icon.Icomoon.cross}/>
             </div>
           </div>
         }
         <div className="dialog-content" id="dialog-content">
-          {children}
+          {props.children}
         </div>
-        {this.props.footerContent && <div className="dialog-footer">{this.props.footerContent}</div> }
+        {props.footerContent && <div className="dialog-footer">{props.footerContent}</div> }
       </div>
     )
   }
