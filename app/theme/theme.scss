@@ -46,7 +46,7 @@
   If you're about to add global styles to this file, make sure it's really what you want to do!
 ************************************************************************************************/
 
-html, body, main, #app-content {
+html, body, main, #host {
     height: 100%;
 }
 
@@ -62,7 +62,7 @@ hr {
 ************************************************************************************************/
 
 .main-content {
-    max-width: 800px;
+    max-width: 1200px;
     padding: $spacing-medium $spacing-large;
     position: relative;
 }
@@ -179,7 +179,7 @@ ul.components {
             background-color: rgba(white, 0.5);
             padding: $spacing-xsmall;
             margin-right: $spacing-xsmall;
-            
+
             &:last-of-type {
                 margin-right: 0;
             }

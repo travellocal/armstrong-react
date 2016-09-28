@@ -83,7 +83,6 @@ class App extends React.Component<any, {}> {
               </nav>
             </Col>
             <Col className="main-content">
-
               <Grid>
                 <Row className="m-bottom-xlarge">
                   <Col className="rs-xlarge-hide rs-medium-show" verticalAlignment="center" width="auto">
@@ -119,13 +118,10 @@ class App extends React.Component<any, {}> {
                 </Row>
                 <Row className="p-top-xsmall">
                   <Col>
-
                     { this.props.children }
-
                     <footer>
                       &copy; {new Date().getFullYear() } <a target="_blank" href="http://www.rocketmakers.com">Rocketmakers</a>
                     </footer>
-
                   </Col>
                 </Row>
               </Grid>
@@ -173,4 +169,4 @@ ReactDOM.render((
 
     </Route>
   </Router>
-), document.getElementById('app-content'));
+), document.getElementById('host'));
