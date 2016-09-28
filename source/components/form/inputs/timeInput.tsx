@@ -15,8 +15,8 @@ export interface ITimeInputProps extends React.Props<TimeInput> {
 }
 
 export interface ITimerInputState {
-  hours?: number;
-  minutes?: number;
+  hours?: number | null;
+  minutes?: number | null;
 }
 
 export class TimeInput extends React.Component<ITimeInputProps, ITimerInputState> {

@@ -97,50 +97,50 @@ export interface INumericOptions{
 }
 
 /** A Numeric Value converter written to handle Text Input */
-export class NumericValueConverter implements IInputValueConverter<number> {
-  constructor(private options?: INumericOptions){
-  }
+// export class NumericValueConverter implements IInputValueConverter<number> {
+//   constructor(private options?: INumericOptions){
+//   }
 
-  convert(data: number){
-    return _.isUndefined(data) || _.isNull(data) ? null : data.toFixed(this.options && this.options.decimals);
-  }
+//   convert(data: number){
+//     return _.isUndefined(data) || _.isNull(data) ? null : data.toFixed(this.options && this.options.decimals);
+//   }
 
-  convertBack(value: string){
-    try{
-      if (!value.length) {
-        return null;
-      }
+//   convertBack(value: string){
+//     try{
+//       if (!value.length) {
+//         return null;
+//       }
 
-      if (value.length === 1 && value === "-") {
-        return 0;
-      }
+//       if (value.length === 1 && value === "-") {
+//         return 0;
+//       }
 
-      if (value.length === 2 && value === "-.") {
-        return 0;
-      }
+//       if (value.length === 2 && value === "-.") {
+//         return 0;
+//       }
 
-      const decimals = this.options && this.options.decimals;
-      let v = decimals ? parseFloat(value) : parseInt(value);
-      if (isNaN(v)) {
-        return;
-      }
+//       const decimals = this.options && this.options.decimals;
+//       let v = decimals ? parseFloat(value) : parseInt(value);
+//       if (isNaN(v)) {
+//         return;
+//       }
 
-      if (this.options){
-        if (!_.isUndefined(this.options.max)){
-          v = Math.min(v, this.options.max)
-        }
-        if (!_.isUndefined(this.options.min)){
-          v = Math.max(v, this.options.min)
-        }
-      }
+//       if (this.options){
+//         if (!_.isUndefined(this.options.max)){
+//           v = Math.min(v, this.options.max!)
+//         }
+//         if (!_.isUndefined(this.options.min)){
+//           v = Math.max(v, this.options.min!)
+//         }
+//       }
 
-      if (decimals) {
-        return parseFloat(v.toFixed(decimals));
-      }
-      return v;
-    }catch(e){
-    }
-  }
+//       if (decimals) {
+//         return parseFloat(v.toFixed(decimals));
+//       }
+//       return v;
+//     }catch(e){
+//     }
+//   }
 
-  static instance = new NumericValueConverter();
-}
+//   static instance = new NumericValueConverter();
+// }

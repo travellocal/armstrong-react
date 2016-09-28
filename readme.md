@@ -50,6 +50,10 @@ The default bottom margin has been removed to make it more flexible. Just pad yo
 
 Dropdownselect has been renamed to AutoCompleteInput to better reflect what it actually does
 
+#### Form - Inputs
+
+leftOverlayText and rightOverlayText are now leftOverlayContent and rightOverlayContent. They also accept either a string or an element
+
 ## Introduction
 
 A library of components for React/SCSS interface development.

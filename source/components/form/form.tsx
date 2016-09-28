@@ -68,7 +68,7 @@ export class Form extends React.Component<IFormProps,{}>{
   private preventDefault = (e) => { e.preventDefault(); return false }
 
   render() {
-    const ch = this.processChildren(this.props.children);
+    const ch = this.processChildren(this.props.children!);
     const hasParentForm = !!Form.getFormContext(this.context)
     const className = classnames("form", hasParentForm && "form-nested", this.props.className)
     return hasParentForm ? React.DOM.div({ className: className}, ch) : React.DOM.form({className: className, onSubmit: this.preventDefault}, ch)
@@ -85,7 +85,6 @@ export class Form extends React.Component<IFormProps,{}>{
 
       let props: React.DOMAttributes = _.extend({}, element.props);
       let children = element.props.children;
-
       const fbi = props as IFormBinderInjector<any>;
       const formBinder = fbi[dataBinderAttribute];
       if (formBinder) {
@@ -99,7 +98,7 @@ export class Form extends React.Component<IFormProps,{}>{
         children = this.processChildren(children);
       }
 
-      return React.cloneElement<any, any>(element, props, children);
+      return React.cloneElement<any, any>(element, props, children!);
     })
   }
 

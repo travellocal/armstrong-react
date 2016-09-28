@@ -7,8 +7,8 @@ import { LayoutHelpers, MarginClass, PaddingClass, BgColorClass, FgColorClass, V
 export interface IGrid extends React.HTMLProps<Grid> {
   /** (boolean) Wether to render borders around grid parts */
   debugMode?: boolean;
-  /** (boolean) ADVANCED: Turns of automatic fix of safari6 compat wrapper */
-  disableFlexOverride?: boolean;
+  /** (boolean) ADVANCED: Turns on safari6 compat wrapper */
+  oldSafariFix?: boolean;
   /** (string) CSS classname property */
   className?: string | MarginClass | PaddingClass | BgColorClass | FgColorClass;
   /** (boolean) Render the first row to simulate a table header */
@@ -30,7 +30,7 @@ export class Grid extends React.Component<IGrid, {}> {
         "table-grid": this.props.table
       }
     );
-    if (this.props.fillContainer && !this.props.disableFlexOverride) {
+    if (this.props.fillContainer && this.props.oldSafariFix) {
       return (<div className="flex-override"><div {...attrs} className={classes} /></div>);
     }
     else {
@@ -38,7 +38,7 @@ export class Grid extends React.Component<IGrid, {}> {
     }
   }
   componentDidMount() {
-    if (this.props.fillContainer && !this.props.disableFlexOverride) {
+    if (this.props.fillContainer && this.props.oldSafariFix) {
       (ReactDOM.findDOMNode(this).parentElement as HTMLElement).style.position = "relative";
     }
   }
@@ -69,7 +69,6 @@ export class Row extends React.Component<IRow, any> {
     var attrs = _.omit(this.props, "className", "height");
     var classes = classNames(this.props.className, "row", this.needsFixed() ? "no-flex" : "");
     var styles = this.props.style;
-    var colStyles;
     if (this.props.height) {
       if (typeof this.props.height === "number") {
         styles = _.extend({ height: `${this.props.height}px` }, styles);
@@ -90,13 +89,7 @@ export class Row extends React.Component<IRow, any> {
       }
     }
 
-    return <div {...attrs} className={classes} style={styles}>
-      {
-        React.Children.map(this.props.children, (c: any) => {
-          return c ? React.cloneElement((c as React.ReactElement<any>), { style: colStyles ? _.extend(colStyles, c.props.style) : c.props.style }) : null
-        })
-      }
-    </div>
+    return <div {...attrs} className={classes} style={styles}/>
   }
 }
 

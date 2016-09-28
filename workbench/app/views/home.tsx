@@ -19,7 +19,7 @@ import { AutoCompleteInput } from './../../../source/components/form/inputs/auto
 import { DateInput, DateInputFormBinder } from './../../../source/components/form/inputs/dateInput';
 import { TimeInput, TimeInputFormBinder } from './../../../source/components/form/inputs/TimeInput';
 import { Form } from './../../../source/components/form/form';
-import apiClient from './../api/apiClient.ts';
+import apiClient from './../api/apiClient';
 
 export class Home extends React.Component<{}, { dialogOpen: boolean }> {
   constructor() {

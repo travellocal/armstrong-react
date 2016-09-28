@@ -22,10 +22,10 @@ export interface IDateInputProps extends React.Props<DateInput> {
 }
 
 export interface IDateInputState {
-  day?: number;
-  month?: number;
-  year?: number;
-  date?: string;
+  day?: number | null;
+  month?: number | null;
+  year?: number | null;
+  date?: string | null;
 }
 
 export class DateInput extends React.Component<IDateInputProps, IDateInputState> {
@@ -35,7 +35,10 @@ export class DateInput extends React.Component<IDateInputProps, IDateInputState>
     this.state = { day: null, month: null, year: null, date: null };
   }
   getDaysArrayByMonth(): string[] {
-    return DateHelpers.getDaysArrayByMonth(this.state.date, this.state.month)
+    if (this.state.date && this.state.month){
+      return DateHelpers.getDaysArrayByMonth(this.state.date, this.state.month)
+    }
+    return [];
   }
   dayChanged(day: string) {
     this.setState({ day: parseInt(day) }, () => {
@@ -74,12 +77,16 @@ export class DateInput extends React.Component<IDateInputProps, IDateInputState>
     let d = this.createDate();
     this.setState({ date: d }, () => {
       if (this.props.onChange && d) {
-        this.props.onChange(this.state.date);
+        this.props.onChange(this.state.date!);
       }
     })
   }
   createDate(): string {
-    return DateHelpers.toDateFormat(this.state);
+    let s = this.state;
+    if (s.day && s.month && s.year){
+      return DateHelpers.toDateFormat(s.day, s.month, s.year);
+    }
+    return "";
   }
   render() {
     let dayOptions = [<option key={`${this.cId}_day_blank`} value="" disabled={true}>Day</option>];
@@ -92,9 +99,9 @@ export class DateInput extends React.Component<IDateInputProps, IDateInputState>
     <option key={`${this.cId}_month_${i}`} value={v.value}>{v.label}</option>))
 
     let yearOptions = [<option key={`${this.cId}_year_blank`}  value="" disabled={true}>Year</option>];
-    yearOptions.push(...DateHelpers.getYearValues(this.props.futureDates, this.props.yearsFromNow).map(year =>
+    yearOptions.push(...DateHelpers.getYearValues(!!this.props.futureDates, this.props.yearsFromNow).map(year =>
     <option key={`${this.cId}_year_${year}`} value={year.toString() }>{year}</option>))
-    return <Form className={classNames("date-input", this.props.disabled? "input-disabled" : null)} dataBinder={Form.jsonDataBinder(this.props.date)} onDataChanged={(d) => this.props.onChange(d)}>
+    return <Form className={classNames("date-input", this.props.disabled? "input-disabled" : null)} dataBinder={Form.jsonDataBinder(this.props.date)} onDataChanged={(d) => this.props.onChange ? this.props.onChange(d) : null}>
    <Grid>
       <Row>
         <Col>

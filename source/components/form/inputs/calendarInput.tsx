@@ -49,7 +49,7 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
 
   constructor(props: ICalendarInputProps) {
     super(props);
-    this.format = this.props.nativeInput ? isoFormat : props.format;
+    this.format = this.props.nativeInput ? isoFormat : props.format!;
     const initialDate = props.date ? moment(props.date, isoFormat, true) : null;
     let inputValue = "";
     let selectedMonthStart = moment().startOf('month');
@@ -93,8 +93,8 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
   }
 
   getDaysInMonth() {
-    const days = [];
-    const a = this.state.selectedMonthStart.clone().startOf('month').startOf('day');
+    const days: JSX.Element[] = [];
+    const a = this.state.selectedMonthStart!.clone().startOf('month').startOf('day');
     const b = a.clone().endOf('month');
     let firstDay = false;
 
@@ -131,7 +131,7 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
   }
 
   changeMonth(increment: number) {
-    this.setState({ selectedMonthStart: this.state.selectedMonthStart.clone().add(increment, 'months') }, () => {
+    this.setState({ selectedMonthStart: this.state.selectedMonthStart!.clone().add(increment, 'months') }, () => {
       this.shouldShowOnTop();
     });
   }
@@ -215,7 +215,7 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
 
   shouldShowOnTop(): boolean {
     if (this.props.nativeInput || !this.inputElement) {
-      return;
+      return false;
     }
     const height = this.bodyElement.clientHeight + 50;
     const visibleBottom = (window.innerHeight + window.scrollY);
@@ -231,13 +231,13 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
   }
 
   propsDateAsMoment(): moment.Moment {
-    return moment(this.props.date, isoFormat, true);
+    return moment(this.props.date!, isoFormat, true);
   }
 
   render() {
     const weekdays = _.range(0, 7).map(n => <div className="date-picker-week-day" key={`day_name_${n}`}>{moment().startOf('week').add(n, 'days').format('dd') }</div>)
     const days = this.getDaysInMonth();
-    const currentDisplayDate = this.state.selectedMonthStart.format("MMMM - YYYY");
+    const currentDisplayDate = this.state.selectedMonthStart!.format("MMMM - YYYY");
     const classes = classNames(
       "date-picker-body",
       {
@@ -280,7 +280,7 @@ export class CalendarInput extends React.Component<ICalendarInputProps, ICalenda
             onFocus={e => this.onInputFocus() }/>
         }
         {!this.props.alwaysShowCalendar && this.props.date && !this.props.disableClear &&
-          <div className="clear-date-button" onClick={()=> this.props.onDateChanged(null)}><Icon icon={Icon.Icomoon.cross}/></div>
+          <div className="clear-date-button" onClick={()=> this.props.onDateChanged ? this.props.onDateChanged("") : null}><Icon icon={Icon.Icomoon.cross}/></div>
         }
         <div ref={b => this.bodyElement = b} className={classes} style={{ top: `${this.state.calendarOffset}px` }}>
           <div className="date-picker-body-wrapper">

@@ -8,7 +8,6 @@ import {
   IValueConverter,
   IInputValueConverter,
   CheckboxValueConverter,
-  NumericValueConverter,
   INumericOptions,
   NumericIdEntityValueConverter,
   NumericIdValueConverter,
@@ -224,22 +223,22 @@ export class FormBinder {
   }
 
   /** numeric text */
-  static textNumeric(dataName: string, options?: INumericOptions){
-    const converter = options ? new NumericValueConverter(options) : NumericValueConverter.instance;
-    let adaptorInjector = this.defaultInputFormBinder(dataName,  "text", converter)
-    if (options) {
-      adaptorInjector["min"] = options.min
-      adaptorInjector["max"] = options.max
-    }
+  // static textNumeric(dataName: string, options?: INumericOptions){
+  //   const converter = options ? new NumericValueConverter(options) : NumericValueConverter.instance;
+  //   let adaptorInjector = this.defaultInputFormBinder(dataName,  "text", converter)
+  //   if (options) {
+  //     adaptorInjector["min"] = options.min
+  //     adaptorInjector["max"] = options.max
+  //   }
 
-    adaptorInjector[dataBinderAttribute].extender = (props: React.HTMLAttributes, ea, nc) => {
-      props.onKeyPress = e => KeyboardHelper.numericKeyPress(e, options);
-      props.onBlur = e => {
-        e.currentTarget["value"] = converter.convert(ea.getValue(dataName));
-      };
-    };
-    return adaptorInjector;
-  }
+  //   adaptorInjector[dataBinderAttribute].extender = (props: React.HTMLAttributes, ea, nc) => {
+  //     props.onKeyPress = e => KeyboardHelper.numericKeyPress(e, options);
+  //     props.onBlur = e => {
+  //       e.currentTarget["value"] = converter.convert(ea.getValue(dataName));
+  //     };
+  //   };
+  //   return adaptorInjector;
+  // }
 
   /** generic select */
   static selectInject<TDataPropValue>(dataName: string, valueConverter?: IInputValueConverter<TDataPropValue>){
@@ -252,9 +251,9 @@ export class FormBinder {
   }
 
   /** select number */
-  static selectNumeric(dataName: string){
-    return FormBinder.selectInject(dataName, NumericValueConverter.instance);
-  }
+  // static selectNumeric(dataName: string){
+  //   return FormBinder.selectInject(dataName, NumericValueConverter.instance);
+  // }
 
   /** select string id */
   static selectId(dataName: string, convertBack: IOneWayValueConverter<string, IdEntity>);
@@ -299,9 +298,9 @@ export class FormBinder {
   }
 
   /** input 'radio' numeric value */
-  static radioNumeric(dataName: string, value: number){
-    return FormBinder.radioInject(dataName, value.toString(), NumericValueConverter.instance);
-  }
+  // static radioNumeric(dataName: string, value: number){
+  //   return FormBinder.radioInject(dataName, value.toString(), NumericValueConverter.instance);
+  // }
 
   /** input 'radio' item id string value */
   static radioId(dataName: string, value: IdEntity){

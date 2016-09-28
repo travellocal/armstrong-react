@@ -3,7 +3,7 @@
   "version": false,
   "main": "dist/index.d.ts",
   "globalDependencies": {
-    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "classnames": "github:Rocketmakers/DefinitelyTyped/classnames/classnames.d.ts#907c83fe76c9f3a6a7142b5e8396015fda97fb2c",
     "es6-promise": "registry:dt/es6-promise#0.0.0+20160614011821",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
     "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",

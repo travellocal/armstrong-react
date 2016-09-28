@@ -48,7 +48,11 @@ export class BurgerMenu extends React.Component<IBurgerMenuProps, {}>{
   }
 
   componentDidMount() {
-    this.appNode = document.getElementById(this.props.bodyId || "app-content");
+    let appNode = document.getElementById(this.props.bodyId || "host");
+    if(!appNode){
+      throw new Error(`Cannot find document node of ${this.props.bodyId || "host"}`)
+    }
+    this.appNode = appNode;
     this.renderToPortal(this.renderNav(this.props.children as any[]))
   }
 
@@ -77,7 +81,7 @@ export class BurgerMenu extends React.Component<IBurgerMenuProps, {}>{
   unmountPortalNode() {
     const unmounted = ReactDOM.unmountComponentAtNode(this.portalNode);
     if (unmounted) {
-      document.getElementById(this.props.bodyId || "app-content").removeChild(this.portalNode);
+      this.appNode.removeChild(this.portalNode);
     }
     delete this.portalNode;
     return unmounted;

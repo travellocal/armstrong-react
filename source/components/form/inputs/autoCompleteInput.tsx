@@ -52,7 +52,7 @@ export interface IAutoCompleteInputState {
   filteredOptions?: IAutoCompleteOption[];
   query?: string;
   open?: boolean;
-  selectedValue?: IAutoCompleteOption | IAutoCompleteOption[];
+  selectedValue?: IAutoCompleteOption | IAutoCompleteOption[] | null;
   selectedIndex?: number;
   remoteSearching?: boolean;
   offsetIndex?: number;
@@ -72,10 +72,10 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
   constructor(props: IAutoCompleteInputProps) {
     super(props);
     this.state = {
-      filteredOptions: [],
+      filteredOptions: Array<IAutoCompleteOption>(),
       query: "",
       open: false,
-      selectedValue: props.multiSelect ? [] : null,
+      selectedValue: props.multiSelect ? Array<IAutoCompleteOption>() : null,
       selectedIndex: 0,
       remoteSearching: false,
       offsetIndex: 0,
@@ -89,7 +89,7 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
     }
     this.timer = window.setTimeout(() => {
       this.setState({ remoteSearching: true })
-      this.props.remoteQuery(query).then((filteredOptions) => {
+      this.props.remoteQuery!(query).then((filteredOptions) => {
         this.setState({ filteredOptions, remoteSearching: false })
       }).catch((error)=>{
         this.setState({ remoteQueryError: JSON.stringify(error), remoteSearching: false })
@@ -106,7 +106,7 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
       if (query.length < this.props.minimumLength) {
         this.setState({ filteredOptions: this.props.options, query }, () => this.constrainIndex());
       } else {
-        this.setState({ filteredOptions: _.reject(this.props.options, o => o.name.toLowerCase().indexOf(q) === -1), query }, () => this.constrainIndex());;
+        this.setState({ filteredOptions: _.reject(this.props.options!, o => o.name.toLowerCase().indexOf(q) === -1), query }, () => this.constrainIndex());;
       }
     }
 
@@ -192,10 +192,10 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
     if (e.keyCode === 27) {
       this.setState({ open: false, query: "", filteredOptions: this.props.options || [] });
     }
-    if (e.keyCode === 40 && this.state.filteredOptions.length !== 0) {
+    if (e.keyCode === 40 && this.state.filteredOptions!.length !== 0) {
       // DOWN ARROW
       var offsetIndex = Math.min((this.props.visibleItems || 3) - 1, this.state.offsetIndex + 1);
-      var selectedIndex = Math.min(this.state.selectedIndex + 1, this.state.filteredOptions.length - 1);
+      var selectedIndex = Math.min(this.state.selectedIndex + 1, this.state.filteredOptions!.length - 1);
       var listElement = ReactDOM.findDOMNode(this).querySelector(".autocomplete-select-list");
       this.setState({ offsetIndex });
 
@@ -203,12 +203,12 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
         listElement.scrollTop = (selectedIndex - 2) * this.itemHeight;
       }
 
-      var selectedItem = this.state.filteredOptions[selectedIndex]
+      var selectedItem = this.state.filteredOptions![selectedIndex]
       this.setState({ selectedIndex, query: selectedItem.name })
       e.preventDefault();
       return false;
     }
-    if (e.keyCode === 38 && this.state.filteredOptions.length !== 0) {
+    if (e.keyCode === 38 && this.state.filteredOptions!.length !== 0) {
       // UP ARROW
       var offsetIndex = Math.max(this.state.offsetIndex - 1, 0);
       var selectedIndex = Math.max(this.state.selectedIndex - 1, 0);
@@ -219,14 +219,14 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
         listElement.scrollTop = (selectedIndex) * this.itemHeight;
       }
 
-      var selectedItem = this.state.filteredOptions[selectedIndex]
+      var selectedItem = this.state.filteredOptions![selectedIndex]
       this.setState({ selectedIndex, query: selectedItem.name })
       e.preventDefault();
       return false;
     }
-    if (e.keyCode === 13 && this.state.filteredOptions.length !== 0) {
+    if (e.keyCode === 13 && this.state.filteredOptions!.length !== 0) {
       // ENTER
-      var selectedValue = this.state.filteredOptions[this.state.selectedIndex];
+      var selectedValue = this.state.filteredOptions![this.state.selectedIndex || 0];
       this.handleSelection(selectedValue);
       e.preventDefault();
       return false;
@@ -234,8 +234,8 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
     this.filter((e.target as any).value)
   }
   constrainIndex() {
-    if (this.state.selectedIndex > this.state.filteredOptions.length - 1) {
-      this.setState({ selectedIndex: Math.max(this.state.filteredOptions.length - 1, 0) })
+    if (this.state.selectedIndex > this.state.filteredOptions!.length - 1) {
+      this.setState({ selectedIndex: Math.max(this.state.filteredOptions!.length - 1, 0) })
     }
   }
 
@@ -278,8 +278,8 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
   }
 
   buttonClick() {
-    if (this.state.filteredOptions.length !== 0) {
-      var selectedValue = this.state.filteredOptions[this.state.selectedIndex];
+    if (this.state.filteredOptions!.length !== 0) {
+      var selectedValue = this.state.filteredOptions![this.state.selectedIndex || 0];
       if (selectedValue) {
         this.handleSelection(selectedValue);
       }
@@ -342,7 +342,7 @@ export class AutoCompleteInput extends React.Component<IAutoCompleteInputProps, 
                   {this.state.filteredOptions && this.state.filteredOptions.map((o, i) =>
                     <div data-index={i} key={`dd-item-${i}`} className={`dd-list-item${i === this.state.selectedIndex ? ' selected' : ''}${(this.props.multiSelect && _.some((this.state.selectedValue as IAutoCompleteOption[]), ddo => ddo.id === o.id)) ? ' in-selected-list' : ''}`}
                       onClick={() => this.handleSelection(o) }>{o.name}</div>) }
-                  {this.state.filteredOptions.length === 0 && this.state.query && <div className="dd-list-item-no-select">{this.props.noResultsMessage || "No results..."}</div>}
+                  {this.state.filteredOptions!.length === 0 && this.state.query && <div className="dd-list-item-no-select">{this.props.noResultsMessage || "No results..."}</div>}
                 </div>
               </div>
             }

@@ -9,6 +9,7 @@ import { Image } from './../../source/components/display/image';
 // VIEWS
 import { Home } from "./views/home";
 import { CalendarTest } from "./views/calendarTest";
+import { Responsive } from "./views/responsive";
 
 import { setLocale } from "../../source/config/config";
 
@@ -47,4 +48,4 @@ class App extends React.Component<any, { nav: boolean }> {
 
 setLocale("en-GB");
 
-ReactDOM.render(<App><Home /></App>, document.getElementById('host'));
+ReactDOM.render(<App><Responsive /></App>, document.getElementById('host'));

@@ -1,6 +1,7 @@
 node_modules/
 dist/
 lib/
+.vscode
 *.log
 IcoMoon-Ultimate.ttf
 typings

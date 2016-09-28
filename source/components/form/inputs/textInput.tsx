@@ -8,8 +8,8 @@ import { Icons } from "./../../../utilities/icons";
 export interface ITextInputProps extends React.HTMLProps<TextInput> {
   multiLine?: boolean;
   readonly?: boolean;
-  rightOverlayText?: string | React.ReactElement<any>;
-  leftOverlayText?: string | React.ReactElement<any>;
+  leftOverlayContent?: string | React.ReactElement<any>;
+  rightOverlayContent?: string | React.ReactElement<any>;
   type?: string;
   leftIcon?: string;
   rightIcon?: string;
@@ -23,8 +23,8 @@ export class TextInput extends React.Component<ITextInputProps, {}> {
       this.props.className,
       {
         "text-input-disabled": this.props.disabled,
-        "has-text-overlay-right": this.props.rightOverlayText !== undefined,
-        "has-text-overlay-left": this.props.leftOverlayText !== undefined,
+        "has-text-overlay-right": this.props.leftOverlayContent !== undefined,
+        "has-text-overlay-left": this.props.rightOverlayContent !== undefined,
         "text-input-icon-left": this.props.leftIcon !== undefined,
         "text-input-icon-right": this.props.rightIcon !== undefined
       }
@@ -33,10 +33,10 @@ export class TextInput extends React.Component<ITextInputProps, {}> {
     return (
         <div className={classes}>
             { this.props.leftIcon && <Icon className="left-icon" icon={this.props.leftIcon}/>}
-            { this.props.leftOverlayText && <div className="input-overlay-text-left">{this.props.leftOverlayText}</div> }
+            { this.props.leftOverlayContent && <div className="input-overlay-text-left">{this.props.leftOverlayContent}</div> }
             { !this.props.multiLine && <input type={this.props.type || "text"} readOnly={this.props.readonly} {...ps} placeholder={this.props.placeholder} required={this.props.required} />}
             { this.props.multiLine && <textarea readOnly={this.props.readonly} {...ps} placeholder={this.props.placeholder}  />}
-            { this.props.rightOverlayText && <div className="input-overlay-text-right">{this.props.rightOverlayText}</div> }
+            { this.props.rightOverlayContent && <div className="input-overlay-text-right">{this.props.rightOverlayContent}</div> }
             { this.props.rightIcon && <Icon className="right-icon" icon={this.props.rightIcon}/>}
         </div>
     );

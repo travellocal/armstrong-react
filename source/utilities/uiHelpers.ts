@@ -15,8 +15,8 @@ export type FgColorClass = "fg-positive" | "fg-negative" | "fg-warning" | "fg-in
 
 
 export class LayoutHelpers {
-  static GetAlignmentClasses(vertical: VerticalAlignment, horizontal: HorizontalAlignment): string {
-    let classes = [];
+  static GetAlignmentClasses(vertical?: VerticalAlignment, horizontal?: HorizontalAlignment): string {
+    let classes : string[] = [];
     if (vertical){
       classes.push(`align-con-v-${vertical}`)
     }

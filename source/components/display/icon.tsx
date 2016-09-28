@@ -17,7 +17,7 @@ export class Icon extends React.Component<IIconProps, {}>{
   render(){
     var attrs = _.omit(this.props, "icon", "className");
     return (
-      <i { ...attrs } className={classNames(this.props.className, "icon", this.props.icon)}/>
+      <i { ...attrs } className={classNames(this.props.className!, "icon", this.props.icon)}/>
     );
   }
 }

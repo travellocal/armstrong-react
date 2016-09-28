@@ -1,5 +1,6 @@
 workbench/
 source/
+.vscode
 sass_concat.js
 typings
 .node-version
