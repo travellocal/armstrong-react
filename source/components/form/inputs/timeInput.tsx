@@ -71,7 +71,7 @@ export class TimeInput extends React.Component<ITimeInputProps, ITimerInputState
   render() {
     var hours = _.range(0, 24, 1);
     var minutes = _.range(0, 60, 1);
-    return <Grid>
+    return <Grid className="time-input">
       <Row>
         <Col>
           <select disabled={this.props.disabled} onChange={(e) => this.hourChanged((e.target as HTMLOptionElement).value) } value={this.state.hours ? this.state.hours.toString() : ""}>

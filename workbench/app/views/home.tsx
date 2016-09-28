@@ -22,9 +22,6 @@ import { Form } from './../../../source/components/form/form';
 import apiClient from './../api/apiClient.ts';
 
 export class Home extends React.Component<{}, { dialogOpen: boolean }> {
-  /**
-   *
-   */
   constructor() {
     super();
     this.state = { dialogOpen: false }
@@ -37,7 +34,7 @@ export class Home extends React.Component<{}, { dialogOpen: boolean }> {
     return (
         <Grid debugMode={false} fillContainer={false}>
           <Row>
-            <Col><TextInput placeholder="rustle my jimmies"/></Col>
+            <Col><SelectInput options={[{ id: 1, name: "test 1" },{ id: 2, name: "test 2" },{ id: 3, name: "test 3" }]}/></Col>
             <Col><Button disabled={true} className="shadow bg-positive" onClick={() => this.setState({ dialogOpen: true }) } ref={b => this.button = b}>Hello world!</Button></Col>
           </Row>
           <Row>

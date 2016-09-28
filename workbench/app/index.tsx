@@ -31,7 +31,7 @@ class App extends React.Component<any, { nav: boolean }> {
     const view = this.props.children;
     return (
       <main>
-        <Grid debugMode={true} fillContainer={true}>
+        <Grid fillContainer={true}>
           <Row>
             <Col className="bg-gray-dark"/>
             <Col width={1100} className="p-large">
