@@ -9,6 +9,7 @@ export interface IBurgerMenuProps {
   closeOnNavigate?: boolean;
   burgerButtonHidden?: boolean;
   onMenuToggle?: (sender: BurgerMenu) => any;
+  mode?: "push" | "slide";
 }
 
 export class BurgerMenu extends React.Component<IBurgerMenuProps, {}>{
@@ -30,15 +31,29 @@ export class BurgerMenu extends React.Component<IBurgerMenuProps, {}>{
       this.closeMenu();
     }
   }
-  closeMenu() {
-    this.appNode.classList.remove("menu-open");
+  public closeMenu() {
+    let mode = this.props.mode || "push";
+    if (mode === "push"){
+      this.appNode.classList.remove("menu-open");
+      this.appNode.classList.remove("menu-push");
+    }else{
+      this.appNode.classList.remove("menu-open");
+      this.appNode.classList.remove("menu-slide");
+    }
     this.isOpen = false;
     if(this.props.onMenuToggle) {
       this.props.onMenuToggle(this);
     }
   }
-  openMenu() {
-    this.appNode.classList.add("menu-open");
+  public openMenu() {
+    let mode = this.props.mode || "push";
+    if (mode === "push"){
+      this.appNode.classList.add("menu-open");
+      this.appNode.classList.add("menu-push");
+    }else{
+      this.appNode.classList.add("menu-open");
+      this.appNode.classList.add("menu-slide");
+    }
     this.isOpen = true;
     if(this.props.onMenuToggle) {
       this.props.onMenuToggle(this);
@@ -91,7 +106,7 @@ export class BurgerMenu extends React.Component<IBurgerMenuProps, {}>{
     delete this.portalNode;
     return unmounted;
   }
-  closeNav(e, handler) {
+  private closeNav(e, handler) {
     // There is a probably a nicer way to do this, but CBA right now
     if (this.props.closeOnNavigate) {
       handler()
@@ -100,10 +115,15 @@ export class BurgerMenu extends React.Component<IBurgerMenuProps, {}>{
 
   renderNav(children: any[]) {
     return (
+      <div>
+      {this.props.mode === "slide" &&
+      <div className="burger-blocker" onClick={()=> this.closeMenu()}/>
+      }
       <ul className="burger-menu-list" role="menu" aria-activedescendant aria-expanded={ this.isOpen } aria-hidden={ !this.isOpen }>{React.Children.map(children, (c, index) => {
         return <li onClick={(e) => this.closeNav(e, () => this.closeMenu()) } key={`nav_item_${index}`}>{c}</li>
       }) }
-      </ul>);
+      </ul>
+      </div>);
   }
 
   render() {
