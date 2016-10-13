@@ -62,26 +62,26 @@
 	var fastclick = __webpack_require__(173);
 	var react_router_1 = __webpack_require__(174);
 	var home_1 = __webpack_require__(237);
-	var browserSupport_1 = __webpack_require__(368);
-	var installation_1 = __webpack_require__(369);
-	var howToUpdate_1 = __webpack_require__(370);
-	var variablesAndClasses_1 = __webpack_require__(371);
-	var gridSystem_1 = __webpack_require__(372);
-	var formElements_1 = __webpack_require__(373);
-	var buttons_1 = __webpack_require__(374);
-	var icons_1 = __webpack_require__(375);
-	var images_1 = __webpack_require__(376);
-	var dialog_1 = __webpack_require__(377);
-	var burgerMenu_1 = __webpack_require__(378);
-	var addons_1 = __webpack_require__(379);
-	var responsive_1 = __webpack_require__(380);
-	var formGrid_1 = __webpack_require__(381);
-	var formValidation_1 = __webpack_require__(382);
-	var typography_1 = __webpack_require__(383);
-	var tableStyling_1 = __webpack_require__(384);
-	var tooltip_1 = __webpack_require__(385);
+	var browserSupport_1 = __webpack_require__(371);
+	var installation_1 = __webpack_require__(372);
+	var howToUpdate_1 = __webpack_require__(373);
+	var variablesAndClasses_1 = __webpack_require__(374);
+	var gridSystem_1 = __webpack_require__(375);
+	var formElements_1 = __webpack_require__(376);
+	var buttons_1 = __webpack_require__(377);
+	var icons_1 = __webpack_require__(378);
+	var images_1 = __webpack_require__(379);
+	var dialog_1 = __webpack_require__(380);
+	var burgerMenu_1 = __webpack_require__(381);
+	var addons_1 = __webpack_require__(382);
+	var responsive_1 = __webpack_require__(383);
+	var formGrid_1 = __webpack_require__(384);
+	var formValidation_1 = __webpack_require__(385);
+	var typography_1 = __webpack_require__(386);
+	var tableStyling_1 = __webpack_require__(387);
+	var tooltip_1 = __webpack_require__(388);
 	var armstrong_react_1 = __webpack_require__(238);
-	__webpack_require__(386);
+	__webpack_require__(389);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
@@ -28141,35 +28141,35 @@
 	exports.SelectInput = selectInput_1.SelectInput;
 	var dateInput_1 = __webpack_require__(248);
 	exports.DateInput = dateInput_1.DateInput;
-	var timeInput_1 = __webpack_require__(361);
+	var timeInput_1 = __webpack_require__(364);
 	exports.TimeInput = timeInput_1.TimeInput;
-	var calendarInput_1 = __webpack_require__(362);
+	var calendarInput_1 = __webpack_require__(365);
 	exports.CalendarInput = calendarInput_1.CalendarInput;
-	var textInput_1 = __webpack_require__(363);
+	var textInput_1 = __webpack_require__(366);
 	exports.TextInput = textInput_1.TextInput;
-	var autoCompleteInput_1 = __webpack_require__(364);
+	var autoCompleteInput_1 = __webpack_require__(367);
 	exports.AutoCompleteInput = autoCompleteInput_1.AutoCompleteInput;
-	var form_1 = __webpack_require__(253);
+	var form_1 = __webpack_require__(254);
 	exports.Form = form_1.Form;
 	// interaction
-	var button_1 = __webpack_require__(365);
+	var button_1 = __webpack_require__(368);
 	exports.Button = button_1.Button;
 	// layout
-	var grid_1 = __webpack_require__(251);
+	var grid_1 = __webpack_require__(252);
 	exports.Grid = grid_1.Grid;
 	exports.Row = grid_1.Row;
 	exports.Col = grid_1.Col;
 	// ui helpers
-	var uiHelpers_1 = __webpack_require__(252);
+	var uiHelpers_1 = __webpack_require__(253);
 	exports.LayoutHelpers = uiHelpers_1.LayoutHelpers;
 	// icons
 	var icons_1 = __webpack_require__(242);
 	exports.Icons = icons_1.Icons;
 	// navigation
-	var burgerMenu_1 = __webpack_require__(366);
+	var burgerMenu_1 = __webpack_require__(369);
 	exports.BurgerMenu = burgerMenu_1.BurgerMenu;
 	exports.BurgerMenuItem = burgerMenu_1.BurgerMenuItem;
-	var ArmstrongConfig = __webpack_require__(367);
+	var ArmstrongConfig = __webpack_require__(370);
 	exports.ArmstrongConfig = ArmstrongConfig;
 
 
@@ -31539,13 +31539,9 @@
 	    };
 	    Dialog.prototype.componentDidMount = function () {
 	        this.dialogContentElement = document.getElementById("dialog-content");
-	        var appNode = document.getElementById(this.props.bodyId || "host");
-	        if (!appNode) {
-	            throw new Error("Cannot find document node of " + (this.props.bodyId || "host"));
-	        }
-	        this.appNode = appNode;
+	        this.appNode = document.getElementById(this.props.bodyId || "host");
 	        if (this.props.isOpen) {
-	            this.renderToPortal(this.renderDialog(this.props));
+	            this.renderToPortal(this.renderDialog(this.props.children));
 	        }
 	    };
 	    Dialog.prototype.componentWillReceiveProps = function (newProps) {
@@ -31554,7 +31550,7 @@
 	            this.props.onOpen();
 	        }
 	        if (open) {
-	            this.renderToPortal(this.renderDialog(newProps));
+	            this.renderToPortal(this.renderDialog(newProps.children));
 	        }
 	        if (!open && this.props.isOpen) {
 	            if (this.props.onClose) {
@@ -31593,27 +31589,27 @@
 	        }
 	        var unmounted = ReactDOM.unmountComponentAtNode(this.portalNode);
 	        if (unmounted) {
-	            this.appNode.removeChild(this.portalNode);
+	            document.getElementById(this.props.bodyId || "host").removeChild(this.portalNode);
 	        }
 	        delete this.portalNode;
 	        return unmounted;
 	    };
-	    Dialog.prototype.renderDialog = function (props) {
+	    Dialog.prototype.renderDialog = function (children) {
 	        var _this = this;
-	        var style = { width: props.width || "500px", height: props.height || "auto" };
-	        return (React.createElement("div", {className: "dialog" + (props.className ? " " + props.className : ''), style: style, id: this.dialogId}, 
-	            !props.title &&
-	                React.createElement("div", {className: "dialog-close-button", onClick: function () { return props.onXClicked ? props.onXClicked() : _this.closeClicked(); }}, 
+	        var style = { width: this.props.width || "500px", height: this.props.height || "auto" };
+	        return (React.createElement("div", {className: "dialog" + (this.props.className ? " " + this.props.className : ''), style: style, id: this.dialogId}, 
+	            !this.props.title &&
+	                React.createElement("div", {className: "dialog-close-button", onClick: function () { return _this.props.onXClicked ? _this.props.onXClicked() : _this.closeClicked(); }}, 
 	                    React.createElement(icon_1.Icon, {icon: icon_1.Icon.Icomoon.cross})
 	                ), 
-	            props.title &&
+	            this.props.title &&
 	                React.createElement("div", {className: "dialog-header"}, 
-	                    props.title, 
-	                    React.createElement("div", {className: "dialog-close-button", onClick: function () { return props.onXClicked ? props.onXClicked() : _this.closeClicked(); }}, 
+	                    this.props.title, 
+	                    React.createElement("div", {className: "dialog-close-button", onClick: function () { return _this.props.onXClicked ? _this.props.onXClicked() : _this.closeClicked(); }}, 
 	                        React.createElement(icon_1.Icon, {icon: icon_1.Icon.Icomoon.cross})
 	                    )), 
-	            React.createElement("div", {className: "dialog-content", id: "dialog-content"}, props.children), 
-	            props.footerContent && React.createElement("div", {className: "dialog-footer"}, props.footerContent)));
+	            React.createElement("div", {className: "dialog-content", id: "dialog-content"}, children), 
+	            this.props.footerContent && React.createElement("div", {className: "dialog-footer"}, this.props.footerContent)));
 	    };
 	    Dialog.prototype.render = function () {
 	        return (React.createElement("noscript", null));
@@ -31649,11 +31645,11 @@
 	        _super.apply(this, arguments);
 	    }
 	    CheckboxInput.prototype.render = function () {
-	        var id = "radio_" + Math.random();
+	        var id = "checkbox_" + Math.random();
 	        return (React.createElement("div", {className: "checkbox"}, 
-	            React.createElement("input", __assign({id: id}, _.omit(this.props, "label"), {type: "checkbox"})), 
+	            React.createElement("input", __assign({id: id}, _.omit(this.props, "labelContent"), {type: "checkbox"})), 
 	            React.createElement("label", {htmlFor: id}), 
-	            React.createElement("label", {className: "checkbox-label", htmlFor: id}, this.props.label)));
+	            React.createElement("label", {className: "checkbox-label", htmlFor: id}, this.props.labelContent)));
 	    };
 	    return CheckboxInput;
 	}(React.Component));
@@ -31745,8 +31741,8 @@
 	var React = __webpack_require__(2);
 	var classNames = __webpack_require__(241);
 	var formBinders_1 = __webpack_require__(249);
-	var grid_1 = __webpack_require__(251);
-	var form_1 = __webpack_require__(253);
+	var grid_1 = __webpack_require__(252);
+	var form_1 = __webpack_require__(254);
 	var dateHelpers_1 = __webpack_require__(256);
 	var DateInput = (function (_super) {
 	    __extends(DateInput, _super);
@@ -31756,10 +31752,7 @@
 	        this.state = { day: null, month: null, year: null, date: null };
 	    }
 	    DateInput.prototype.getDaysArrayByMonth = function () {
-	        if (this.state.date && this.state.month) {
-	            return dateHelpers_1.DateHelpers.getDaysArrayByMonth(this.state.date, this.state.month);
-	        }
-	        return [];
+	        return dateHelpers_1.DateHelpers.getDaysArrayByMonth(this.state.date, this.state.month);
 	    };
 	    DateInput.prototype.dayChanged = function (day) {
 	        var _this = this;
@@ -31809,11 +31802,7 @@
 	        });
 	    };
 	    DateInput.prototype.createDate = function () {
-	        var s = this.state;
-	        if (s.day && s.month && s.year) {
-	            return dateHelpers_1.DateHelpers.toDateFormat(s.day, s.month, s.year);
-	        }
-	        return "";
+	        return dateHelpers_1.DateHelpers.toDateFormat(this.state);
 	    };
 	    DateInput.prototype.render = function () {
 	        var _this = this;
@@ -31826,10 +31815,10 @@
 	            return React.createElement("option", {key: _this.cId + "_month_" + i, value: v.value}, v.label);
 	        }));
 	        var yearOptions = [React.createElement("option", {key: this.cId + "_year_blank", value: "", disabled: true}, "Year")];
-	        yearOptions.push.apply(yearOptions, dateHelpers_1.DateHelpers.getYearValues(!!this.props.futureDates, this.props.yearsFromNow).map(function (year) {
+	        yearOptions.push.apply(yearOptions, dateHelpers_1.DateHelpers.getYearValues(this.props.futureDates, this.props.yearsFromNow).map(function (year) {
 	            return React.createElement("option", {key: _this.cId + "_year_" + year, value: year.toString()}, year);
 	        }));
-	        return React.createElement(form_1.Form, {className: classNames("date-input", this.props.disabled ? "input-disabled" : null), dataBinder: form_1.Form.jsonDataBinder(this.props.date), onDataChanged: function (d) { return _this.props.onChange ? _this.props.onChange(d) : null; }}, 
+	        return React.createElement(form_1.Form, {className: classNames("date-input", this.props.disabled ? "input-disabled" : null), dataBinder: form_1.Form.jsonDataBinder(this.props.date), onDataChanged: function (d) { return _this.props.onChange(d); }}, 
 	            React.createElement(grid_1.Grid, null, 
 	                React.createElement(grid_1.Row, null, 
 	                    React.createElement(grid_1.Col, null, 
@@ -31877,7 +31866,8 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var _ = __webpack_require__(240);
-	var formValueConverters_1 = __webpack_require__(250);
+	var formCore_1 = __webpack_require__(250);
+	var formValueConverters_1 = __webpack_require__(251);
 	var EntityItems = (function () {
 	    function EntityItems() {
 	    }
@@ -32094,21 +32084,21 @@
 	        return FormBinder.custom(new InputFormBinder(dataName, "defaultValue", valueConverter, "value"));
 	    };
 	    /** numeric text */
-	    // static textNumeric(dataName: string, options?: INumericOptions){
-	    //   const converter = options ? new NumericValueConverter(options) : NumericValueConverter.instance;
-	    //   let adaptorInjector = this.defaultInputFormBinder(dataName,  "text", converter)
-	    //   if (options) {
-	    //     adaptorInjector["min"] = options.min
-	    //     adaptorInjector["max"] = options.max
-	    //   }
-	    //   adaptorInjector[dataBinderAttribute].extender = (props: React.HTMLAttributes, ea, nc) => {
-	    //     props.onKeyPress = e => KeyboardHelper.numericKeyPress(e, options);
-	    //     props.onBlur = e => {
-	    //       e.currentTarget["value"] = converter.convert(ea.getValue(dataName));
-	    //     };
-	    //   };
-	    //   return adaptorInjector;
-	    // }
+	    FormBinder.textNumeric = function (dataName, options) {
+	        var converter = options ? new formValueConverters_1.NumericValueConverter(options) : formValueConverters_1.NumericValueConverter.instance;
+	        var adaptorInjector = this.defaultInputFormBinder(dataName, "text", converter);
+	        if (options) {
+	            adaptorInjector["min"] = options.min;
+	            adaptorInjector["max"] = options.max;
+	        }
+	        adaptorInjector[formCore_1.dataBinderAttribute].extender = function (props, ea, nc) {
+	            props.onKeyPress = function (e) { return KeyboardHelper.numericKeyPress(e, options); };
+	            props.onBlur = function (e) {
+	                e.currentTarget["value"] = converter.convert(ea.getValue(dataName));
+	            };
+	        };
+	        return adaptorInjector;
+	    };
 	    /** generic select */
 	    FormBinder.selectInject = function (dataName, valueConverter) {
 	        return FormBinder.custom(new InputFormBinder(dataName, "value", valueConverter));
@@ -32116,6 +32106,10 @@
 	    /** select string */
 	    FormBinder.select = function (dataName) {
 	        return FormBinder.selectInject(dataName, formValueConverters_1.DefaultValueConverter.instance);
+	    };
+	    /** select number */
+	    FormBinder.selectNumeric = function (dataName) {
+	        return FormBinder.selectInject(dataName, formValueConverters_1.NumericValueConverter.instance);
 	    };
 	    FormBinder.selectId = function (dataName, items) {
 	        return FormBinder.selectInject(dataName, new formValueConverters_1.IdEntityValueConverter(_.isArray(items) ? EntityItems.itemsId(items) : items));
@@ -32147,9 +32141,9 @@
 	        return FormBinder.radioInject(dataName, value, formValueConverters_1.DefaultValueConverter.instance);
 	    };
 	    /** input 'radio' numeric value */
-	    // static radioNumeric(dataName: string, value: number){
-	    //   return FormBinder.radioInject(dataName, value.toString(), NumericValueConverter.instance);
-	    // }
+	    FormBinder.radioNumeric = function (dataName, value) {
+	        return FormBinder.radioInject(dataName, value.toString(), formValueConverters_1.NumericValueConverter.instance);
+	    };
 	    /** input 'radio' item id string value */
 	    FormBinder.radioId = function (dataName, value) {
 	        return FormBinder.radioInject(dataName, value.id, new formValueConverters_1.IdValueConverter(function (v) { return value.id; }));
@@ -32173,6 +32167,14 @@
 
 /***/ },
 /* 250 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.dataBinderAttribute = "data-form-binder";
+
+
+/***/ },
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32254,49 +32256,53 @@
 	}());
 	exports.DefaultValueConverter = DefaultValueConverter;
 	/** A Numeric Value converter written to handle Text Input */
-	// export class NumericValueConverter implements IInputValueConverter<number> {
-	//   constructor(private options?: INumericOptions){
-	//   }
-	//   convert(data: number){
-	//     return _.isUndefined(data) || _.isNull(data) ? null : data.toFixed(this.options && this.options.decimals);
-	//   }
-	//   convertBack(value: string){
-	//     try{
-	//       if (!value.length) {
-	//         return null;
-	//       }
-	//       if (value.length === 1 && value === "-") {
-	//         return 0;
-	//       }
-	//       if (value.length === 2 && value === "-.") {
-	//         return 0;
-	//       }
-	//       const decimals = this.options && this.options.decimals;
-	//       let v = decimals ? parseFloat(value) : parseInt(value);
-	//       if (isNaN(v)) {
-	//         return;
-	//       }
-	//       if (this.options){
-	//         if (!_.isUndefined(this.options.max)){
-	//           v = Math.min(v, this.options.max!)
-	//         }
-	//         if (!_.isUndefined(this.options.min)){
-	//           v = Math.max(v, this.options.min!)
-	//         }
-	//       }
-	//       if (decimals) {
-	//         return parseFloat(v.toFixed(decimals));
-	//       }
-	//       return v;
-	//     }catch(e){
-	//     }
-	//   }
-	//   static instance = new NumericValueConverter();
-	// }
+	var NumericValueConverter = (function () {
+	    function NumericValueConverter(options) {
+	        this.options = options;
+	    }
+	    NumericValueConverter.prototype.convert = function (data) {
+	        return _.isUndefined(data) || _.isNull(data) ? null : data.toFixed(this.options && this.options.decimals);
+	    };
+	    NumericValueConverter.prototype.convertBack = function (value) {
+	        try {
+	            if (!value.length) {
+	                return null;
+	            }
+	            if (value.length === 1 && value === "-") {
+	                return 0;
+	            }
+	            if (value.length === 2 && value === "-.") {
+	                return 0;
+	            }
+	            var decimals = this.options && this.options.decimals;
+	            var v = decimals ? parseFloat(value) : parseInt(value);
+	            if (isNaN(v)) {
+	                return;
+	            }
+	            if (this.options) {
+	                if (!_.isUndefined(this.options.max)) {
+	                    v = Math.min(v, this.options.max);
+	                }
+	                if (!_.isUndefined(this.options.min)) {
+	                    v = Math.max(v, this.options.min);
+	                }
+	            }
+	            if (decimals) {
+	                return parseFloat(v.toFixed(decimals));
+	            }
+	            return v;
+	        }
+	        catch (e) {
+	        }
+	    };
+	    NumericValueConverter.instance = new NumericValueConverter();
+	    return NumericValueConverter;
+	}());
+	exports.NumericValueConverter = NumericValueConverter;
 
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32317,7 +32323,7 @@
 	var ReactDOM = __webpack_require__(35);
 	var _ = __webpack_require__(240);
 	var classNames = __webpack_require__(241);
-	var uiHelpers_1 = __webpack_require__(252);
+	var uiHelpers_1 = __webpack_require__(253);
 	var Grid = (function (_super) {
 	    __extends(Grid, _super);
 	    function Grid() {
@@ -32331,7 +32337,7 @@
 	            "grid-debug": this.props.debugMode,
 	            "table-grid": this.props.table
 	        });
-	        if (this.props.fillContainer && this.props.oldSafariFix) {
+	        if (this.props.fillContainer && !this.props.disableFlexOverride) {
 	            return (React.createElement("div", {className: "flex-override"}, 
 	                React.createElement("div", __assign({}, attrs, {className: classes}))
 	            ));
@@ -32341,7 +32347,7 @@
 	        }
 	    };
 	    Grid.prototype.componentDidMount = function () {
-	        if (this.props.fillContainer && this.props.oldSafariFix) {
+	        if (this.props.fillContainer && !this.props.disableFlexOverride) {
 	            ReactDOM.findDOMNode(this).parentElement.style.position = "relative";
 	        }
 	    };
@@ -32371,6 +32377,7 @@
 	        var attrs = _.omit(this.props, "className", "height");
 	        var classes = classNames(this.props.className, "row", this.needsFixed() ? "no-flex" : "");
 	        var styles = this.props.style;
+	        var colStyles;
 	        if (this.props.height) {
 	            if (typeof this.props.height === "number") {
 	                styles = _.extend({ height: this.props.height + "px" }, styles);
@@ -32390,7 +32397,9 @@
 	                }
 	            }
 	        }
-	        return React.createElement("div", __assign({}, attrs, {className: classes, style: styles}));
+	        return React.createElement("div", __assign({}, attrs, {className: classes, style: styles}), React.Children.map(this.props.children, function (c) {
+	            return c ? React.cloneElement(c, { style: colStyles ? _.extend(colStyles, c.props.style) : c.props.style }) : null;
+	        }));
 	    };
 	    return Row;
 	}(React.Component));
@@ -32450,7 +32459,7 @@
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32474,7 +32483,7 @@
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32485,7 +32494,7 @@
 	};
 	var React = __webpack_require__(2);
 	var _ = __webpack_require__(240);
-	var formCore_1 = __webpack_require__(254);
+	var formCore_1 = __webpack_require__(250);
 	var formBinders_1 = __webpack_require__(249);
 	var properyPathResolver_1 = __webpack_require__(255);
 	var classnames = __webpack_require__(241);
@@ -32574,14 +32583,6 @@
 	    return Form;
 	}(React.Component));
 	exports.Form = Form;
-
-
-/***/ },
-/* 254 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.dataBinderAttribute = "data-form-binder";
 
 
 /***/ },
@@ -32676,8 +32677,10 @@
 	        if (yearsFromNow === void 0) { yearsFromNow = 110; }
 	        return _.range(0, yearsFromNow).map(function (i) { return futureDates ? moment().add(i, 'years').year() : moment().subtract(i, 'years').year(); });
 	    };
-	    DateHelpers.toDateFormat = function (day, month, year) {
-	        return moment().set("day", day).set("month", month - 1).set("year", year).format("YYYY-MM-DD");
+	    DateHelpers.toDateFormat = function (s) {
+	        if (s.day && s.month && s.year) {
+	            return moment().set("day", s.day).set("month", s.month - 1).set("year", s.year).format("YYYY-MM-DD");
+	        }
 	    };
 	    // Time helpers
 	    DateHelpers.getTimeParts = function (time) {
@@ -32694,7 +32697,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
-	//! version : 2.14.1
+	//! version : 2.15.1
 	//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 	//! license : MIT
 	//! momentjs.com
@@ -32722,7 +32725,9 @@
 	    }
 
 	    function isObject(input) {
-	        return Object.prototype.toString.call(input) === '[object Object]';
+	        // IE8 will treat undefined and null as object if it wasn't for
+	        // input != null
+	        return input != null && Object.prototype.toString.call(input) === '[object Object]';
 	    }
 
 	    function isObjectEmpty(obj) {
@@ -32821,7 +32826,7 @@
 	            var parsedParts = some.call(flags.parsedDateParts, function (i) {
 	                return i != null;
 	            });
-	            m._isValid = !isNaN(m._d.getTime()) &&
+	            var isNowValid = !isNaN(m._d.getTime()) &&
 	                flags.overflow < 0 &&
 	                !flags.empty &&
 	                !flags.invalidMonth &&
@@ -32832,10 +32837,17 @@
 	                (!flags.meridiem || (flags.meridiem && parsedParts));
 
 	            if (m._strict) {
-	                m._isValid = m._isValid &&
+	                isNowValid = isNowValid &&
 	                    flags.charsLeftOver === 0 &&
 	                    flags.unusedTokens.length === 0 &&
 	                    flags.bigHour === undefined;
+	            }
+
+	            if (Object.isFrozen == null || !Object.isFrozen(m)) {
+	                m._isValid = isNowValid;
+	            }
+	            else {
+	                return isNowValid;
 	            }
 	        }
 	        return m._isValid;
@@ -32977,7 +32989,22 @@
 	                utils_hooks__hooks.deprecationHandler(null, msg);
 	            }
 	            if (firstTime) {
-	                warn(msg + '\nArguments: ' + Array.prototype.slice.call(arguments).join(', ') + '\n' + (new Error()).stack);
+	                var args = [];
+	                var arg;
+	                for (var i = 0; i < arguments.length; i++) {
+	                    arg = '';
+	                    if (typeof arguments[i] === 'object') {
+	                        arg += '\n[' + i + '] ';
+	                        for (var key in arguments[0]) {
+	                            arg += key + ': ' + arguments[0][key] + ', ';
+	                        }
+	                        arg = arg.slice(0, -2); // Remove trailing comma and space
+	                    } else {
+	                        arg = arguments[i];
+	                    }
+	                    args.push(arg);
+	                }
+	                warn(msg + '\nArguments: ' + Array.prototype.slice.call(args).join('') + '\n' + (new Error()).stack);
 	                firstTime = false;
 	            }
 	            return fn.apply(this, arguments);
@@ -33504,12 +33531,18 @@
 	    var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
 	    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
 	    function localeMonths (m, format) {
+	        if (!m) {
+	            return this._months;
+	        }
 	        return isArray(this._months) ? this._months[m.month()] :
 	            this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
 	    }
 
 	    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
 	    function localeMonthsShort (m, format) {
+	        if (!m) {
+	            return this._monthsShort;
+	        }
 	        return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
 	            this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
 	    }
@@ -34006,18 +34039,21 @@
 
 	    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
 	    function localeWeekdays (m, format) {
+	        if (!m) {
+	            return this._weekdays;
+	        }
 	        return isArray(this._weekdays) ? this._weekdays[m.day()] :
 	            this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
 	    }
 
 	    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
 	    function localeWeekdaysShort (m) {
-	        return this._weekdaysShort[m.day()];
+	        return (m) ? this._weekdaysShort[m.day()] : this._weekdaysShort;
 	    }
 
 	    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
 	    function localeWeekdaysMin (m) {
-	        return this._weekdaysMin[m.day()];
+	        return (m) ? this._weekdaysMin[m.day()] : this._weekdaysMin;
 	    }
 
 	    function day_of_week__handleStrictParse(weekdayName, format, strict) {
@@ -34712,9 +34748,9 @@
 	    }
 
 	    utils_hooks__hooks.createFromInputFallback = deprecate(
-	        'moment construction falls back to js Date. This is ' +
-	        'discouraged and will be removed in upcoming major ' +
-	        'release. Please refer to ' +
+	        'value provided is not in a recognized ISO format. moment construction falls back to js Date(), ' +
+	        'which is not reliable across all browsers and versions. Non ISO date formats are ' +
+	        'discouraged and will be removed in an upcoming major release. Please refer to ' +
 	        'http://momentjs.com/guides/#/warnings/js-date/ for more info.',
 	        function (config) {
 	            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
@@ -35213,6 +35249,14 @@
 	        return obj instanceof Duration;
 	    }
 
+	    function absRound (number) {
+	        if (number < 0) {
+	            return Math.round(-1 * number) * -1;
+	        } else {
+	            return Math.round(number);
+	        }
+	    }
+
 	    // FORMATTING
 
 	    function offset (token, separator) {
@@ -35363,7 +35407,13 @@
 	        if (this._tzm) {
 	            this.utcOffset(this._tzm);
 	        } else if (typeof this._i === 'string') {
-	            this.utcOffset(offsetFromString(matchOffset, this._i));
+	            var tZone = offsetFromString(matchOffset, this._i);
+
+	            if (tZone === 0) {
+	                this.utcOffset(0, true);
+	            } else {
+	                this.utcOffset(offsetFromString(matchOffset, this._i));
+	            }
 	        }
 	        return this;
 	    }
@@ -35418,7 +35468,7 @@
 	    }
 
 	    // ASP.NET json date format regex
-	    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?\d*)?$/;
+	    var aspNetRegex = /^(\-)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/;
 
 	    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
 	    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
@@ -35450,11 +35500,11 @@
 	            sign = (match[1] === '-') ? -1 : 1;
 	            duration = {
 	                y  : 0,
-	                d  : toInt(match[DATE])        * sign,
-	                h  : toInt(match[HOUR])        * sign,
-	                m  : toInt(match[MINUTE])      * sign,
-	                s  : toInt(match[SECOND])      * sign,
-	                ms : toInt(match[MILLISECOND]) * sign
+	                d  : toInt(match[DATE])                         * sign,
+	                h  : toInt(match[HOUR])                         * sign,
+	                m  : toInt(match[MINUTE])                       * sign,
+	                s  : toInt(match[SECOND])                       * sign,
+	                ms : toInt(absRound(match[MILLISECOND] * 1000)) * sign // the millisecond decimal point is included in the match
 	            };
 	        } else if (!!(match = isoRegex.exec(input))) {
 	            sign = (match[1] === '-') ? -1 : 1;
@@ -35527,14 +35577,6 @@
 	        }
 
 	        return res;
-	    }
-
-	    function absRound (number) {
-	        if (number < 0) {
-	            return Math.round(-1 * number) * -1;
-	        } else {
-	            return Math.round(number);
-	        }
 	    }
 
 	    // TODO: remove 'name' arg after deprecation is removed
@@ -36851,7 +36893,7 @@
 	    // Side effect imports
 
 
-	    utils_hooks__hooks.version = '2.14.1';
+	    utils_hooks__hooks.version = '2.15.1';
 
 	    setHookCallback(local__createLocal);
 
@@ -36914,205 +36956,211 @@
 		"./af": 260,
 		"./af.js": 260,
 		"./ar": 261,
-		"./ar-ma": 262,
-		"./ar-ma.js": 262,
-		"./ar-sa": 263,
-		"./ar-sa.js": 263,
-		"./ar-tn": 264,
-		"./ar-tn.js": 264,
+		"./ar-ly": 262,
+		"./ar-ly.js": 262,
+		"./ar-ma": 263,
+		"./ar-ma.js": 263,
+		"./ar-sa": 264,
+		"./ar-sa.js": 264,
+		"./ar-tn": 265,
+		"./ar-tn.js": 265,
 		"./ar.js": 261,
-		"./az": 265,
-		"./az.js": 265,
-		"./be": 266,
-		"./be.js": 266,
-		"./bg": 267,
-		"./bg.js": 267,
-		"./bn": 268,
-		"./bn.js": 268,
-		"./bo": 269,
-		"./bo.js": 269,
-		"./br": 270,
-		"./br.js": 270,
-		"./bs": 271,
-		"./bs.js": 271,
-		"./ca": 272,
-		"./ca.js": 272,
-		"./cs": 273,
-		"./cs.js": 273,
-		"./cv": 274,
-		"./cv.js": 274,
-		"./cy": 275,
-		"./cy.js": 275,
-		"./da": 276,
-		"./da.js": 276,
-		"./de": 277,
-		"./de-at": 278,
-		"./de-at.js": 278,
-		"./de.js": 277,
-		"./dv": 279,
-		"./dv.js": 279,
-		"./el": 280,
-		"./el.js": 280,
-		"./en-au": 281,
-		"./en-au.js": 281,
-		"./en-ca": 282,
-		"./en-ca.js": 282,
-		"./en-gb": 283,
-		"./en-gb.js": 283,
-		"./en-ie": 284,
-		"./en-ie.js": 284,
-		"./en-nz": 285,
-		"./en-nz.js": 285,
-		"./eo": 286,
-		"./eo.js": 286,
-		"./es": 287,
-		"./es-do": 288,
-		"./es-do.js": 288,
-		"./es.js": 287,
-		"./et": 289,
-		"./et.js": 289,
-		"./eu": 290,
-		"./eu.js": 290,
-		"./fa": 291,
-		"./fa.js": 291,
-		"./fi": 292,
-		"./fi.js": 292,
-		"./fo": 293,
-		"./fo.js": 293,
-		"./fr": 294,
-		"./fr-ca": 295,
-		"./fr-ca.js": 295,
-		"./fr-ch": 296,
-		"./fr-ch.js": 296,
-		"./fr.js": 294,
-		"./fy": 297,
-		"./fy.js": 297,
-		"./gd": 298,
-		"./gd.js": 298,
-		"./gl": 299,
-		"./gl.js": 299,
-		"./he": 300,
-		"./he.js": 300,
-		"./hi": 301,
-		"./hi.js": 301,
-		"./hr": 302,
-		"./hr.js": 302,
-		"./hu": 303,
-		"./hu.js": 303,
-		"./hy-am": 304,
-		"./hy-am.js": 304,
-		"./id": 305,
-		"./id.js": 305,
-		"./is": 306,
-		"./is.js": 306,
-		"./it": 307,
-		"./it.js": 307,
-		"./ja": 308,
-		"./ja.js": 308,
-		"./jv": 309,
-		"./jv.js": 309,
-		"./ka": 310,
-		"./ka.js": 310,
-		"./kk": 311,
-		"./kk.js": 311,
-		"./km": 312,
-		"./km.js": 312,
-		"./ko": 313,
-		"./ko.js": 313,
-		"./ky": 314,
-		"./ky.js": 314,
-		"./lb": 315,
-		"./lb.js": 315,
-		"./lo": 316,
-		"./lo.js": 316,
-		"./lt": 317,
-		"./lt.js": 317,
-		"./lv": 318,
-		"./lv.js": 318,
-		"./me": 319,
-		"./me.js": 319,
-		"./mk": 320,
-		"./mk.js": 320,
-		"./ml": 321,
-		"./ml.js": 321,
-		"./mr": 322,
-		"./mr.js": 322,
-		"./ms": 323,
-		"./ms-my": 324,
-		"./ms-my.js": 324,
-		"./ms.js": 323,
-		"./my": 325,
-		"./my.js": 325,
-		"./nb": 326,
-		"./nb.js": 326,
-		"./ne": 327,
-		"./ne.js": 327,
-		"./nl": 328,
-		"./nl.js": 328,
-		"./nn": 329,
-		"./nn.js": 329,
-		"./pa-in": 330,
-		"./pa-in.js": 330,
-		"./pl": 331,
-		"./pl.js": 331,
-		"./pt": 332,
-		"./pt-br": 333,
-		"./pt-br.js": 333,
-		"./pt.js": 332,
-		"./ro": 334,
-		"./ro.js": 334,
-		"./ru": 335,
-		"./ru.js": 335,
-		"./se": 336,
-		"./se.js": 336,
-		"./si": 337,
-		"./si.js": 337,
-		"./sk": 338,
-		"./sk.js": 338,
-		"./sl": 339,
-		"./sl.js": 339,
-		"./sq": 340,
-		"./sq.js": 340,
-		"./sr": 341,
-		"./sr-cyrl": 342,
-		"./sr-cyrl.js": 342,
-		"./sr.js": 341,
-		"./ss": 343,
-		"./ss.js": 343,
-		"./sv": 344,
-		"./sv.js": 344,
-		"./sw": 345,
-		"./sw.js": 345,
-		"./ta": 346,
-		"./ta.js": 346,
-		"./te": 347,
-		"./te.js": 347,
-		"./th": 348,
-		"./th.js": 348,
-		"./tl-ph": 349,
-		"./tl-ph.js": 349,
-		"./tlh": 350,
-		"./tlh.js": 350,
-		"./tr": 351,
-		"./tr.js": 351,
-		"./tzl": 352,
-		"./tzl.js": 352,
-		"./tzm": 353,
-		"./tzm-latn": 354,
-		"./tzm-latn.js": 354,
-		"./tzm.js": 353,
-		"./uk": 355,
-		"./uk.js": 355,
-		"./uz": 356,
-		"./uz.js": 356,
-		"./vi": 357,
-		"./vi.js": 357,
-		"./x-pseudo": 358,
-		"./x-pseudo.js": 358,
-		"./zh-cn": 359,
-		"./zh-cn.js": 359,
-		"./zh-tw": 360,
-		"./zh-tw.js": 360
+		"./az": 266,
+		"./az.js": 266,
+		"./be": 267,
+		"./be.js": 267,
+		"./bg": 268,
+		"./bg.js": 268,
+		"./bn": 269,
+		"./bn.js": 269,
+		"./bo": 270,
+		"./bo.js": 270,
+		"./br": 271,
+		"./br.js": 271,
+		"./bs": 272,
+		"./bs.js": 272,
+		"./ca": 273,
+		"./ca.js": 273,
+		"./cs": 274,
+		"./cs.js": 274,
+		"./cv": 275,
+		"./cv.js": 275,
+		"./cy": 276,
+		"./cy.js": 276,
+		"./da": 277,
+		"./da.js": 277,
+		"./de": 278,
+		"./de-at": 279,
+		"./de-at.js": 279,
+		"./de.js": 278,
+		"./dv": 280,
+		"./dv.js": 280,
+		"./el": 281,
+		"./el.js": 281,
+		"./en-au": 282,
+		"./en-au.js": 282,
+		"./en-ca": 283,
+		"./en-ca.js": 283,
+		"./en-gb": 284,
+		"./en-gb.js": 284,
+		"./en-ie": 285,
+		"./en-ie.js": 285,
+		"./en-nz": 286,
+		"./en-nz.js": 286,
+		"./eo": 287,
+		"./eo.js": 287,
+		"./es": 288,
+		"./es-do": 289,
+		"./es-do.js": 289,
+		"./es.js": 288,
+		"./et": 290,
+		"./et.js": 290,
+		"./eu": 291,
+		"./eu.js": 291,
+		"./fa": 292,
+		"./fa.js": 292,
+		"./fi": 293,
+		"./fi.js": 293,
+		"./fo": 294,
+		"./fo.js": 294,
+		"./fr": 295,
+		"./fr-ca": 296,
+		"./fr-ca.js": 296,
+		"./fr-ch": 297,
+		"./fr-ch.js": 297,
+		"./fr.js": 295,
+		"./fy": 298,
+		"./fy.js": 298,
+		"./gd": 299,
+		"./gd.js": 299,
+		"./gl": 300,
+		"./gl.js": 300,
+		"./he": 301,
+		"./he.js": 301,
+		"./hi": 302,
+		"./hi.js": 302,
+		"./hr": 303,
+		"./hr.js": 303,
+		"./hu": 304,
+		"./hu.js": 304,
+		"./hy-am": 305,
+		"./hy-am.js": 305,
+		"./id": 306,
+		"./id.js": 306,
+		"./is": 307,
+		"./is.js": 307,
+		"./it": 308,
+		"./it.js": 308,
+		"./ja": 309,
+		"./ja.js": 309,
+		"./jv": 310,
+		"./jv.js": 310,
+		"./ka": 311,
+		"./ka.js": 311,
+		"./kk": 312,
+		"./kk.js": 312,
+		"./km": 313,
+		"./km.js": 313,
+		"./ko": 314,
+		"./ko.js": 314,
+		"./ky": 315,
+		"./ky.js": 315,
+		"./lb": 316,
+		"./lb.js": 316,
+		"./lo": 317,
+		"./lo.js": 317,
+		"./lt": 318,
+		"./lt.js": 318,
+		"./lv": 319,
+		"./lv.js": 319,
+		"./me": 320,
+		"./me.js": 320,
+		"./mi": 321,
+		"./mi.js": 321,
+		"./mk": 322,
+		"./mk.js": 322,
+		"./ml": 323,
+		"./ml.js": 323,
+		"./mr": 324,
+		"./mr.js": 324,
+		"./ms": 325,
+		"./ms-my": 326,
+		"./ms-my.js": 326,
+		"./ms.js": 325,
+		"./my": 327,
+		"./my.js": 327,
+		"./nb": 328,
+		"./nb.js": 328,
+		"./ne": 329,
+		"./ne.js": 329,
+		"./nl": 330,
+		"./nl.js": 330,
+		"./nn": 331,
+		"./nn.js": 331,
+		"./pa-in": 332,
+		"./pa-in.js": 332,
+		"./pl": 333,
+		"./pl.js": 333,
+		"./pt": 334,
+		"./pt-br": 335,
+		"./pt-br.js": 335,
+		"./pt.js": 334,
+		"./ro": 336,
+		"./ro.js": 336,
+		"./ru": 337,
+		"./ru.js": 337,
+		"./se": 338,
+		"./se.js": 338,
+		"./si": 339,
+		"./si.js": 339,
+		"./sk": 340,
+		"./sk.js": 340,
+		"./sl": 341,
+		"./sl.js": 341,
+		"./sq": 342,
+		"./sq.js": 342,
+		"./sr": 343,
+		"./sr-cyrl": 344,
+		"./sr-cyrl.js": 344,
+		"./sr.js": 343,
+		"./ss": 345,
+		"./ss.js": 345,
+		"./sv": 346,
+		"./sv.js": 346,
+		"./sw": 347,
+		"./sw.js": 347,
+		"./ta": 348,
+		"./ta.js": 348,
+		"./te": 349,
+		"./te.js": 349,
+		"./th": 350,
+		"./th.js": 350,
+		"./tl-ph": 351,
+		"./tl-ph.js": 351,
+		"./tlh": 352,
+		"./tlh.js": 352,
+		"./tr": 353,
+		"./tr.js": 353,
+		"./tzl": 354,
+		"./tzl.js": 354,
+		"./tzm": 355,
+		"./tzm-latn": 356,
+		"./tzm-latn.js": 356,
+		"./tzm.js": 355,
+		"./uk": 357,
+		"./uk.js": 357,
+		"./uz": 358,
+		"./uz.js": 358,
+		"./vi": 359,
+		"./vi.js": 359,
+		"./x-pseudo": 360,
+		"./x-pseudo.js": 360,
+		"./zh-cn": 361,
+		"./zh-cn.js": 361,
+		"./zh-hk": 362,
+		"./zh-hk.js": 362,
+		"./zh-tw": 363,
+		"./zh-tw.js": 363
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -37212,8 +37260,8 @@
 	//! moment.js locale configuration
 	//! locale : Arabic [ar]
 	//! author : Abdel Said: https://github.com/abdelsaid
-	//! changes in months, weekdays: Ahmed Elkhatib
-	//! Native plural forms: forabi https://github.com/forabi
+	//! author : Ahmed Elkhatib
+	//! author : forabi https://github.com/forabi
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -37351,6 +37399,132 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
+	//! locale : Arabic (Lybia) [ar-ly]
+	//! author : Ali Hmer: https://github.com/kikoanis
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(257)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '1',
+	        '2': '2',
+	        '3': '3',
+	        '4': '4',
+	        '5': '5',
+	        '6': '6',
+	        '7': '7',
+	        '8': '8',
+	        '9': '9',
+	        '0': '0'
+	    }, pluralForm = function (n) {
+	        return n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5;
+	    }, plurals = {
+	        s : ['أقل من ثانية', 'ثانية واحدة', ['ثانيتان', 'ثانيتين'], '%d ثوان', '%d ثانية', '%d ثانية'],
+	        m : ['أقل من دقيقة', 'دقيقة واحدة', ['دقيقتان', 'دقيقتين'], '%d دقائق', '%d دقيقة', '%d دقيقة'],
+	        h : ['أقل من ساعة', 'ساعة واحدة', ['ساعتان', 'ساعتين'], '%d ساعات', '%d ساعة', '%d ساعة'],
+	        d : ['أقل من يوم', 'يوم واحد', ['يومان', 'يومين'], '%d أيام', '%d يومًا', '%d يوم'],
+	        M : ['أقل من شهر', 'شهر واحد', ['شهران', 'شهرين'], '%d أشهر', '%d شهرا', '%d شهر'],
+	        y : ['أقل من عام', 'عام واحد', ['عامان', 'عامين'], '%d أعوام', '%d عامًا', '%d عام']
+	    }, pluralize = function (u) {
+	        return function (number, withoutSuffix, string, isFuture) {
+	            var f = pluralForm(number),
+	                str = plurals[u][pluralForm(number)];
+	            if (f === 2) {
+	                str = str[withoutSuffix ? 0 : 1];
+	            }
+	            return str.replace(/%d/i, number);
+	        };
+	    }, months = [
+	        'يناير',
+	        'فبراير',
+	        'مارس',
+	        'أبريل',
+	        'مايو',
+	        'يونيو',
+	        'يوليو',
+	        'أغسطس',
+	        'سبتمبر',
+	        'أكتوبر',
+	        'نوفمبر',
+	        'ديسمبر'
+	    ];
+
+	    var ar_ly = moment.defineLocale('ar-ly', {
+	        months : months,
+	        monthsShort : months,
+	        weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+	        weekdaysShort : 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
+	        weekdaysMin : 'ح_ن_ث_ر_خ_ج_س'.split('_'),
+	        weekdaysParseExact : true,
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'HH:mm:ss',
+	            L : 'D/\u200FM/\u200FYYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY HH:mm',
+	            LLLL : 'dddd D MMMM YYYY HH:mm'
+	        },
+	        meridiemParse: /ص|م/,
+	        isPM : function (input) {
+	            return 'م' === input;
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 12) {
+	                return 'ص';
+	            } else {
+	                return 'م';
+	            }
+	        },
+	        calendar : {
+	            sameDay: '[اليوم عند الساعة] LT',
+	            nextDay: '[غدًا عند الساعة] LT',
+	            nextWeek: 'dddd [عند الساعة] LT',
+	            lastDay: '[أمس عند الساعة] LT',
+	            lastWeek: 'dddd [عند الساعة] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'بعد %s',
+	            past : 'منذ %s',
+	            s : pluralize('s'),
+	            m : pluralize('m'),
+	            mm : pluralize('m'),
+	            h : pluralize('h'),
+	            hh : pluralize('h'),
+	            d : pluralize('d'),
+	            dd : pluralize('d'),
+	            M : pluralize('M'),
+	            MM : pluralize('M'),
+	            y : pluralize('y'),
+	            yy : pluralize('y')
+	        },
+	        preparse: function (string) {
+	            return string.replace(/\u200f/g, '').replace(/،/g, ',');
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            }).replace(/,/g, '،');
+	        },
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ar_ly;
+
+	}));
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
 	//! locale : Arabic (Morocco) [ar-ma]
 	//! author : ElFadili Yassine : https://github.com/ElFadiliY
 	//! author : Abdel Said : https://github.com/abdelsaid
@@ -37411,7 +37585,7 @@
 	}));
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37519,11 +37693,12 @@
 	}));
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  :  Arabic (Tunisia) [ar-tn]
+	//! author : Nader Toukabri : https://github.com/naderio
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -37581,7 +37756,7 @@
 	}));
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37690,7 +37865,7 @@
 	}));
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37828,7 +38003,7 @@
 	}));
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37922,7 +38097,7 @@
 	}));
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37962,11 +38137,11 @@
 	    };
 
 	    var bn = moment.defineLocale('bn', {
-	        months : 'জানুয়ারী_ফেবুয়ারী_মার্চ_এপ্রিল_মে_জুন_জুলাই_অগাস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর'.split('_'),
-	        monthsShort : 'জানু_ফেব_মার্চ_এপর_মে_জুন_জুল_অগ_সেপ্ট_অক্টো_নভ_ডিসেম্'.split('_'),
-	        weekdays : 'রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পত্তিবার_শুক্রবার_শনিবার'.split('_'),
-	        weekdaysShort : 'রবি_সোম_মঙ্গল_বুধ_বৃহস্পত্তি_শুক্র_শনি'.split('_'),
-	        weekdaysMin : 'রব_সম_মঙ্গ_বু_ব্রিহ_শু_শনি'.split('_'),
+	        months : 'জানুয়ারী_ফেব্রুয়ারি_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর'.split('_'),
+	        monthsShort : 'জানু_ফেব_মার্চ_এপ্র_মে_জুন_জুল_আগ_সেপ্ট_অক্টো_নভে_ডিসে'.split('_'),
+	        weekdays : 'রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পতিবার_শুক্রবার_শনিবার'.split('_'),
+	        weekdaysShort : 'রবি_সোম_মঙ্গল_বুধ_বৃহস্পতি_শুক্র_শনি'.split('_'),
+	        weekdaysMin : 'রবি_সোম_মঙ্গ_বুধ_বৃহঃ_শুক্র_শনি'.split('_'),
 	        longDateFormat : {
 	            LT : 'A h:mm সময়',
 	            LTS : 'A h:mm:ss সময়',
@@ -38045,7 +38220,7 @@
 	}));
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38168,7 +38343,7 @@
 	}));
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38280,7 +38455,7 @@
 	}));
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38359,7 +38534,7 @@
 	        longDateFormat : {
 	            LT : 'H:mm',
 	            LTS : 'H:mm:ss',
-	            L : 'DD. MM. YYYY',
+	            L : 'DD.MM.YYYY',
 	            LL : 'D. MMMM YYYY',
 	            LLL : 'D. MMMM YYYY H:mm',
 	            LLLL : 'dddd, D. MMMM YYYY H:mm'
@@ -38427,7 +38602,7 @@
 	}));
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38512,7 +38687,7 @@
 	}));
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38688,7 +38863,7 @@
 	}));
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38755,12 +38930,13 @@
 	}));
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Welsh [cy]
-	//! author : Robert Allen
+	//! author : Robert Allen : https://github.com/robgallen
+	//! author : https://github.com/ryangreaves
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -38839,7 +39015,7 @@
 	}));
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38903,7 +39079,7 @@
 	}));
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38985,7 +39161,7 @@
 	}));
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39068,7 +39244,7 @@
 	}));
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39171,7 +39347,7 @@
 	}));
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39273,11 +39449,12 @@
 	}));
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (Australia) [en-au]
+	//! author : Jared Morse : https://github.com/jarcoal
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -39343,7 +39520,7 @@
 	}));
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39410,7 +39587,7 @@
 	}));
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39481,7 +39658,7 @@
 	}));
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39552,11 +39729,12 @@
 	}));
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (New Zealand) [en-nz]
+	//! author : Luke McGregor : https://github.com/lukemcgregor
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -39622,7 +39800,7 @@
 	}));
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39699,7 +39877,7 @@
 	}));
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39784,7 +39962,7 @@
 	}));
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39868,7 +40046,7 @@
 	}));
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39952,7 +40130,7 @@
 	}));
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40022,7 +40200,7 @@
 	}));
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40132,7 +40310,7 @@
 	}));
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40243,7 +40421,7 @@
 	}));
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40307,7 +40485,7 @@
 	}));
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40375,7 +40553,7 @@
 	}));
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40439,7 +40617,7 @@
 	}));
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40507,7 +40685,7 @@
 	}));
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40584,7 +40762,7 @@
 	}));
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40664,7 +40842,7 @@
 	}));
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40679,20 +40857,20 @@
 
 
 	    var gl = moment.defineLocale('gl', {
-	        months : 'Xaneiro_Febreiro_Marzo_Abril_Maio_Xuño_Xullo_Agosto_Setembro_Outubro_Novembro_Decembro'.split('_'),
-	        monthsShort : 'Xan._Feb._Mar._Abr._Mai._Xuñ._Xul._Ago._Set._Out._Nov._Dec.'.split('_'),
+	        months : 'xaneiro_febreiro_marzo_abril_maio_xuño_xullo_agosto_setembro_outubro_novembro_decembro'.split('_'),
+	        monthsShort : 'xan._feb._mar._abr._mai._xuñ._xul._ago._set._out._nov._dec.'.split('_'),
 	        monthsParseExact: true,
-	        weekdays : 'Domingo_Luns_Martes_Mércores_Xoves_Venres_Sábado'.split('_'),
-	        weekdaysShort : 'Dom._Lun._Mar._Mér._Xov._Ven._Sáb.'.split('_'),
-	        weekdaysMin : 'Do_Lu_Ma_Mé_Xo_Ve_Sá'.split('_'),
+	        weekdays : 'domingo_luns_martes_mércores_xoves_venres_sábado'.split('_'),
+	        weekdaysShort : 'dom._lun._mar._mér._xov._ven._sáb.'.split('_'),
+	        weekdaysMin : 'do_lu_ma_mé_xo_ve_sá'.split('_'),
 	        weekdaysParseExact : true,
 	        longDateFormat : {
 	            LT : 'H:mm',
 	            LTS : 'H:mm:ss',
 	            L : 'DD/MM/YYYY',
-	            LL : 'D MMMM YYYY',
-	            LLL : 'D MMMM YYYY H:mm',
-	            LLLL : 'dddd D MMMM YYYY H:mm'
+	            LL : 'D [de] MMMM [de] YYYY',
+	            LLL : 'D [de] MMMM [de] YYYY H:mm',
+	            LLLL : 'dddd, D [de] MMMM [de] YYYY H:mm'
 	        },
 	        calendar : {
 	            sameDay : function () {
@@ -40714,8 +40892,8 @@
 	        },
 	        relativeTime : {
 	            future : function (str) {
-	                if (str === 'uns segundos') {
-	                    return 'nuns segundos';
+	                if (str.indexOf('un') === 0) {
+	                    return 'n' + str;
 	                }
 	                return 'en ' + str;
 	            },
@@ -40736,7 +40914,7 @@
 	        ordinal : '%dº',
 	        week : {
 	            dow : 1, // Monday is the first day of the week.
-	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
 	        }
 	    });
 
@@ -40745,7 +40923,7 @@
 	}));
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40848,7 +41026,7 @@
 	}));
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40976,7 +41154,7 @@
 	}));
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41057,7 +41235,7 @@
 	        longDateFormat : {
 	            LT : 'H:mm',
 	            LTS : 'H:mm:ss',
-	            L : 'DD. MM. YYYY',
+	            L : 'DD.MM.YYYY',
 	            LL : 'D. MMMM YYYY',
 	            LLL : 'D. MMMM YYYY H:mm',
 	            LLLL : 'dddd, D. MMMM YYYY H:mm'
@@ -41125,7 +41303,7 @@
 	}));
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41238,7 +41416,7 @@
 	}));
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41337,7 +41515,7 @@
 	}));
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41424,7 +41602,7 @@
 	}));
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41555,7 +41733,7 @@
 	}));
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41629,7 +41807,7 @@
 	}));
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41709,7 +41887,7 @@
 	}));
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41796,7 +41974,7 @@
 	}));
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41889,7 +42067,7 @@
 	}));
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41980,7 +42158,7 @@
 	}));
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42042,16 +42220,13 @@
 	}));
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Korean [ko]
-	//!
-	//! authors
-	//!
-	//! - Kyungwook, Park : https://github.com/kyungw00k
-	//! - Jeeeyul Lee <jeeeyul@gmail.com>
+	//! author : Kyungwook, Park : https://github.com/kyungw00k
+	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -42114,7 +42289,7 @@
 	}));
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42206,12 +42381,13 @@
 	}));
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Luxembourgish [lb]
-	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
+	//! author : mweimerskirch : https://github.com/mweimerskirch
+	//! author : David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -42346,7 +42522,7 @@
 	}));
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42420,7 +42596,7 @@
 	}));
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42541,7 +42717,7 @@
 	}));
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42642,7 +42818,7 @@
 	}));
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42690,7 +42866,7 @@
 	        longDateFormat: {
 	            LT: 'H:mm',
 	            LTS : 'H:mm:ss',
-	            L: 'DD. MM. YYYY',
+	            L: 'DD.MM.YYYY',
 	            LL: 'D. MMMM YYYY',
 	            LLL: 'D. MMMM YYYY H:mm',
 	            LLLL: 'dddd, D. MMMM YYYY H:mm'
@@ -42757,7 +42933,75 @@
 	}));
 
 /***/ },
-/* 320 */
+/* 321 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Maori [mi]
+	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(257)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var mi = moment.defineLocale('mi', {
+	        months: 'Kohi-tāte_Hui-tanguru_Poutū-te-rangi_Paenga-whāwhā_Haratua_Pipiri_Hōngoingoi_Here-turi-kōkā_Mahuru_Whiringa-ā-nuku_Whiringa-ā-rangi_Hakihea'.split('_'),
+	        monthsShort: 'Kohi_Hui_Pou_Pae_Hara_Pipi_Hōngoi_Here_Mahu_Whi-nu_Whi-ra_Haki'.split('_'),
+	        monthsRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,
+	        monthsStrictRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,
+	        monthsShortRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,
+	        monthsShortStrictRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,2}/i,
+	        weekdays: 'Rātapu_Mane_Tūrei_Wenerei_Tāite_Paraire_Hātarei'.split('_'),
+	        weekdaysShort: 'Ta_Ma_Tū_We_Tāi_Pa_Hā'.split('_'),
+	        weekdaysMin: 'Ta_Ma_Tū_We_Tāi_Pa_Hā'.split('_'),
+	        longDateFormat: {
+	            LT: 'HH:mm',
+	            LTS: 'HH:mm:ss',
+	            L: 'DD/MM/YYYY',
+	            LL: 'D MMMM YYYY',
+	            LLL: 'D MMMM YYYY [i] HH:mm',
+	            LLLL: 'dddd, D MMMM YYYY [i] HH:mm'
+	        },
+	        calendar: {
+	            sameDay: '[i teie mahana, i] LT',
+	            nextDay: '[apopo i] LT',
+	            nextWeek: 'dddd [i] LT',
+	            lastDay: '[inanahi i] LT',
+	            lastWeek: 'dddd [whakamutunga i] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime: {
+	            future: 'i roto i %s',
+	            past: '%s i mua',
+	            s: 'te hēkona ruarua',
+	            m: 'he meneti',
+	            mm: '%d meneti',
+	            h: 'te haora',
+	            hh: '%d haora',
+	            d: 'he ra',
+	            dd: '%d ra',
+	            M: 'he marama',
+	            MM: '%d marama',
+	            y: 'he tau',
+	            yy: '%d tau'
+	        },
+	        ordinalParse: /\d{1,2}º/,
+	        ordinal: '%dº',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return mi;
+
+	}));
+
+/***/ },
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42851,7 +43095,7 @@
 	}));
 
 /***/ },
-/* 321 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42936,7 +43180,7 @@
 	}));
 
 /***/ },
-/* 322 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43099,7 +43343,7 @@
 	}));
 
 /***/ },
-/* 323 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43185,7 +43429,7 @@
 	}));
 
 /***/ },
-/* 324 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43272,12 +43516,14 @@
 	}));
 
 /***/ },
-/* 325 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Burmese [my]
 	//! author : Squar team, mysquar.com
+	//! author : David Rossellat : https://github.com/gholadr
+	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -43369,7 +43615,7 @@
 	}));
 
 /***/ },
-/* 326 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43436,7 +43682,7 @@
 	}));
 
 /***/ },
-/* 327 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43563,12 +43809,13 @@
 	}));
 
 /***/ },
-/* 328 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Dutch [nl]
-	//! author : Joris Röling : https://github.com/jjupiter
+	//! author : Joris Röling : https://github.com/jorisroling
+	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -43580,6 +43827,9 @@
 	    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
 	        monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_');
 
+	    var monthsParse = [/^jan/i, /^feb/i, /^maart|mrt.?$/i, /^apr/i, /^mei$/i, /^jun[i.]?$/i, /^jul[i.]?$/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i];
+	    var monthsRegex = /^(januari|februari|maart|april|mei|april|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
+
 	    var nl = moment.defineLocale('nl', {
 	        months : 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split('_'),
 	        monthsShort : function (m, format) {
@@ -43589,7 +43839,16 @@
 	                return monthsShortWithDots[m.month()];
 	            }
 	        },
-	        monthsParseExact : true,
+
+	        monthsRegex: monthsRegex,
+	        monthsShortRegex: monthsRegex,
+	        monthsStrictRegex: /^(januari|februari|maart|mei|ju[nl]i|april|augustus|september|oktober|november|december)/i,
+	        monthsShortStrictRegex: /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
+
+	        monthsParse : monthsParse,
+	        longMonthsParse : monthsParse,
+	        shortMonthsParse : monthsParse,
+
 	        weekdays : 'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split('_'),
 	        weekdaysShort : 'zo._ma._di._wo._do._vr._za.'.split('_'),
 	        weekdaysMin : 'Zo_Ma_Di_Wo_Do_Vr_Za'.split('_'),
@@ -43640,7 +43899,7 @@
 	}));
 
 /***/ },
-/* 329 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43704,7 +43963,7 @@
 	}));
 
 /***/ },
-/* 330 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43832,7 +44091,7 @@
 	}));
 
 /***/ },
-/* 331 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43941,7 +44200,7 @@
 	}));
 
 /***/ },
-/* 332 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44010,7 +44269,7 @@
 	}));
 
 /***/ },
-/* 333 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44075,7 +44334,7 @@
 	}));
 
 /***/ },
-/* 334 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44154,7 +44413,7 @@
 	}));
 
 /***/ },
-/* 335 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44341,7 +44600,7 @@
 	}));
 
 /***/ },
-/* 336 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44406,7 +44665,7 @@
 	}));
 
 /***/ },
-/* 337 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44481,7 +44740,7 @@
 	}));
 
 /***/ },
-/* 338 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44635,7 +44894,7 @@
 	}));
 
 /***/ },
-/* 339 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44731,7 +44990,7 @@
 	        longDateFormat : {
 	            LT : 'H:mm',
 	            LTS : 'H:mm:ss',
-	            L : 'DD. MM. YYYY',
+	            L : 'DD.MM.YYYY',
 	            LL : 'D. MMMM YYYY',
 	            LLL : 'D. MMMM YYYY H:mm',
 	            LLLL : 'dddd, D. MMMM YYYY H:mm'
@@ -44801,14 +45060,14 @@
 	}));
 
 /***/ },
-/* 340 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Albanian [sq]
 	//! author : Flakërim Ismani : https://github.com/flakerimi
-	//! author: Menelion Elensúle: https://github.com/Oire (tests)
-	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
+	//! author : Menelion Elensúle : https://github.com/Oire
+	//! author : Oerd Cukalla : https://github.com/oerd
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -44875,7 +45134,7 @@
 	}));
 
 /***/ },
-/* 341 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44923,7 +45182,7 @@
 	        longDateFormat: {
 	            LT: 'H:mm',
 	            LTS : 'H:mm:ss',
-	            L: 'DD. MM. YYYY',
+	            L: 'DD.MM.YYYY',
 	            LL: 'D. MMMM YYYY',
 	            LLL: 'D. MMMM YYYY H:mm',
 	            LLLL: 'dddd, D. MMMM YYYY H:mm'
@@ -44989,7 +45248,7 @@
 	}));
 
 /***/ },
-/* 342 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45037,7 +45296,7 @@
 	        longDateFormat: {
 	            LT: 'H:mm',
 	            LTS : 'H:mm:ss',
-	            L: 'DD. MM. YYYY',
+	            L: 'DD.MM.YYYY',
 	            LL: 'D. MMMM YYYY',
 	            LLL: 'D. MMMM YYYY H:mm',
 	            LLLL: 'dddd, D. MMMM YYYY H:mm'
@@ -45103,11 +45362,11 @@
 	}));
 
 /***/ },
-/* 343 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
-	//! locale : Swazi [ss]
+	//! locale : siSwati [ss]
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
@@ -45196,7 +45455,7 @@
 	}));
 
 /***/ },
-/* 344 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45269,7 +45528,7 @@
 	}));
 
 /***/ },
-/* 345 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45332,7 +45591,7 @@
 	}));
 
 /***/ },
-/* 346 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45465,7 +45724,7 @@
 	}));
 
 /***/ },
-/* 347 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45558,7 +45817,7 @@
 	}));
 
 /***/ },
-/* 348 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45581,12 +45840,12 @@
 	        weekdaysMin : 'อา._จ._อ._พ._พฤ._ศ._ส.'.split('_'),
 	        weekdaysParseExact : true,
 	        longDateFormat : {
-	            LT : 'H นาฬิกา m นาที',
-	            LTS : 'H นาฬิกา m นาที s วินาที',
+	            LT : 'H:mm',
+	            LTS : 'H:mm:ss',
 	            L : 'YYYY/MM/DD',
 	            LL : 'D MMMM YYYY',
-	            LLL : 'D MMMM YYYY เวลา H นาฬิกา m นาที',
-	            LLLL : 'วันddddที่ D MMMM YYYY เวลา H นาฬิกา m นาที'
+	            LLL : 'D MMMM YYYY เวลา H:mm',
+	            LLLL : 'วันddddที่ D MMMM YYYY เวลา H:mm'
 	        },
 	        meridiemParse: /ก่อนเที่ยง|หลังเที่ยง/,
 	        isPM: function (input) {
@@ -45629,12 +45888,12 @@
 	}));
 
 /***/ },
-/* 349 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Tagalog (Philippines) [tl-ph]
-	//! author : Dan Hagman
+	//! author : Dan Hagman : https://github.com/hagmandan
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
@@ -45695,7 +45954,7 @@
 	}));
 
 /***/ },
-/* 350 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45819,7 +46078,7 @@
 	}));
 
 /***/ },
-/* 351 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45913,19 +46172,19 @@
 	}));
 
 /***/ },
-/* 352 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Talossan [tzl]
-	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
+	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
+	//! author : Iustì Canun
 
 	;(function (global, factory) {
 	    true ? factory(__webpack_require__(257)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
-
 
 
 	    // After the year there should be a slash and the amount of years since December 26, 1979 in Roman numerals.
@@ -46008,7 +46267,7 @@
 	}));
 
 /***/ },
-/* 353 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46070,7 +46329,7 @@
 	}));
 
 /***/ },
-/* 354 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46132,7 +46391,7 @@
 	}));
 
 /***/ },
-/* 355 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46282,7 +46541,7 @@
 	}));
 
 /***/ },
-/* 356 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46344,7 +46603,7 @@
 	}));
 
 /***/ },
-/* 357 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46427,7 +46686,7 @@
 	}));
 
 /***/ },
-/* 358 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46499,7 +46758,7 @@
 	}));
 
 /***/ },
-/* 359 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46630,7 +46889,116 @@
 	}));
 
 /***/ },
-/* 360 */
+/* 362 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Chinese (Hong Kong) [zh-hk]
+	//! author : Ben : https://github.com/ben-lin
+	//! author : Chris Lam : https://github.com/hehachris
+	//! author : Konstantin : https://github.com/skfd
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(257)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var zh_hk = moment.defineLocale('zh-hk', {
+	        months : '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+	        monthsShort : '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+	        weekdays : '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+	        weekdaysShort : '週日_週一_週二_週三_週四_週五_週六'.split('_'),
+	        weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
+	        longDateFormat : {
+	            LT : 'Ah點mm分',
+	            LTS : 'Ah點m分s秒',
+	            L : 'YYYY年MMMD日',
+	            LL : 'YYYY年MMMD日',
+	            LLL : 'YYYY年MMMD日Ah點mm分',
+	            LLLL : 'YYYY年MMMD日ddddAh點mm分',
+	            l : 'YYYY年MMMD日',
+	            ll : 'YYYY年MMMD日',
+	            lll : 'YYYY年MMMD日Ah點mm分',
+	            llll : 'YYYY年MMMD日ddddAh點mm分'
+	        },
+	        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === '凌晨' || meridiem === '早上' || meridiem === '上午') {
+	                return hour;
+	            } else if (meridiem === '中午') {
+	                return hour >= 11 ? hour : hour + 12;
+	            } else if (meridiem === '下午' || meridiem === '晚上') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            var hm = hour * 100 + minute;
+	            if (hm < 600) {
+	                return '凌晨';
+	            } else if (hm < 900) {
+	                return '早上';
+	            } else if (hm < 1130) {
+	                return '上午';
+	            } else if (hm < 1230) {
+	                return '中午';
+	            } else if (hm < 1800) {
+	                return '下午';
+	            } else {
+	                return '晚上';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[今天]LT',
+	            nextDay : '[明天]LT',
+	            nextWeek : '[下]ddddLT',
+	            lastDay : '[昨天]LT',
+	            lastWeek : '[上]ddddLT',
+	            sameElse : 'L'
+	        },
+	        ordinalParse: /\d{1,2}(日|月|週)/,
+	        ordinal : function (number, period) {
+	            switch (period) {
+	                case 'd' :
+	                case 'D' :
+	                case 'DDD' :
+	                    return number + '日';
+	                case 'M' :
+	                    return number + '月';
+	                case 'w' :
+	                case 'W' :
+	                    return number + '週';
+	                default :
+	                    return number;
+	            }
+	        },
+	        relativeTime : {
+	            future : '%s內',
+	            past : '%s前',
+	            s : '幾秒',
+	            m : '1 分鐘',
+	            mm : '%d 分鐘',
+	            h : '1 小時',
+	            hh : '%d 小時',
+	            d : '1 天',
+	            dd : '%d 天',
+	            M : '1 個月',
+	            MM : '%d 個月',
+	            y : '1 年',
+	            yy : '%d 年'
+	        }
+	    });
+
+	    return zh_hk;
+
+	}));
+
+/***/ },
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46738,7 +47106,7 @@
 	}));
 
 /***/ },
-/* 361 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46751,7 +47119,7 @@
 	var _ = __webpack_require__(240);
 	var formBinders_1 = __webpack_require__(249);
 	var dateHelpers_1 = __webpack_require__(256);
-	var grid_1 = __webpack_require__(251);
+	var grid_1 = __webpack_require__(252);
 	var TimeInput = (function (_super) {
 	    __extends(TimeInput, _super);
 	    function TimeInput() {
@@ -46809,7 +47177,7 @@
 	        var _this = this;
 	        var hours = _.range(0, 24, 1);
 	        var minutes = _.range(0, 60, 1);
-	        return React.createElement(grid_1.Grid, {className: "time-input"}, 
+	        return React.createElement(grid_1.Grid, null, 
 	            React.createElement(grid_1.Row, null, 
 	                React.createElement(grid_1.Col, null, 
 	                    React.createElement("select", {disabled: this.props.disabled, onChange: function (e) { return _this.hourChanged(e.target.value); }, value: this.state.hours ? this.state.hours.toString() : ""}, 
@@ -46846,7 +47214,7 @@
 
 
 /***/ },
-/* 362 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46861,7 +47229,7 @@
 	var moment = __webpack_require__(257);
 	var classNames = __webpack_require__(241);
 	var formBinders_1 = __webpack_require__(249);
-	var grid_1 = __webpack_require__(251);
+	var grid_1 = __webpack_require__(252);
 	var icons_1 = __webpack_require__(242);
 	var icon_1 = __webpack_require__(239);
 	var isoFormat = "YYYY-MM-DD";
@@ -46935,7 +47303,8 @@
 	        var d = date.clone();
 	        var dateWithinRange = this.fallsWithinRange(d);
 	        var isSelected = d.format(isoFormat) === this.props.date;
-	        return React.createElement(CalendarDay, {key: "Calendar_day_" + date.format('DDMMYYYY'), selected: isSelected, withinRange: dateWithinRange, notInCurrentMonth: notInCurrentMonth, dayClicked: dayClicked, date: d});
+	        var isToday = d.clone().startOf('day').isSame(moment().startOf('day'));
+	        return React.createElement(CalendarDay, {key: "Calendar_day_" + date.format('DDMMYYYY'), selected: isSelected, isToday: isToday, withinRange: dateWithinRange, notInCurrentMonth: notInCurrentMonth, dayClicked: dayClicked, date: d});
 	    };
 	    CalendarInput.prototype.changeMonth = function (increment) {
 	        var _this = this;
@@ -47016,7 +47385,7 @@
 	    };
 	    CalendarInput.prototype.shouldShowOnTop = function () {
 	        if (this.props.nativeInput || !this.inputElement) {
-	            return false;
+	            return;
 	        }
 	        var height = this.bodyElement.clientHeight + 50;
 	        var visibleBottom = (window.innerHeight + window.scrollY);
@@ -47058,7 +47427,7 @@
 	            !this.props.alwaysShowCalendar &&
 	                React.createElement("input", {className: "cal-input", ref: function (i) { return _this.inputElement = i; }, disabled: this.props.disabled, type: "text", value: this.state.inputValue, onKeyDown: function (e) { return _this.handleEvent(e); }, onFocus: function (e) { return _this.onInputFocus(); }}), 
 	            !this.props.alwaysShowCalendar && this.props.date && !this.props.disableClear &&
-	                React.createElement("div", {className: "clear-date-button", onClick: function () { return _this.props.onDateChanged ? _this.props.onDateChanged("") : null; }}, 
+	                React.createElement("div", {className: "clear-date-button", onClick: function () { return _this.props.onDateChanged(null); }}, 
 	                    React.createElement(icon_1.Icon, {icon: icon_1.Icon.Icomoon.cross})
 	                ), 
 	            React.createElement("div", {ref: function (b) { return _this.bodyElement = b; }, className: classes, style: { top: this.state.calendarOffset + "px" }}, 
@@ -47092,6 +47461,7 @@
 	        var classes = classNames({
 	            "not-in-month": this.props.notInCurrentMonth,
 	            "selected-day": this.props.selected,
+	            "is-today": this.props.isToday,
 	            "day-disabled": !this.props.withinRange
 	        });
 	        return React.createElement("div", {className: classes, onClick: function () { return _this.props.dayClicked(_this.props.date); }}, this.props.date.format('DD'));
@@ -47116,7 +47486,7 @@
 
 
 /***/ },
-/* 363 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47146,18 +47516,18 @@
 	    TextInput.prototype.render = function () {
 	        var classes = classNames("text-input", this.props.className, {
 	            "text-input-disabled": this.props.disabled,
-	            "has-text-overlay-right": this.props.leftOverlayContent !== undefined,
-	            "has-text-overlay-left": this.props.rightOverlayContent !== undefined,
+	            "has-text-overlay-right": this.props.rightOverlayText !== undefined,
+	            "has-text-overlay-left": this.props.leftOverlayText !== undefined,
 	            "text-input-icon-left": this.props.leftIcon !== undefined,
 	            "text-input-icon-right": this.props.rightIcon !== undefined
 	        });
 	        var ps = _.omit(this.props, "className", "readonly", "rightOverlayText", "leftOverlayText", "type", "leftIcon", "rightIcon", "multiLine");
 	        return (React.createElement("div", {className: classes}, 
 	            this.props.leftIcon && React.createElement(icon_1.Icon, {className: "left-icon", icon: this.props.leftIcon}), 
-	            this.props.leftOverlayContent && React.createElement("div", {className: "input-overlay-text-left"}, this.props.leftOverlayContent), 
+	            this.props.leftOverlayText && React.createElement("div", {className: "input-overlay-text-left"}, this.props.leftOverlayText), 
 	            !this.props.multiLine && React.createElement("input", __assign({type: this.props.type || "text", readOnly: this.props.readonly}, ps, {placeholder: this.props.placeholder, required: this.props.required})), 
 	            this.props.multiLine && React.createElement("textarea", __assign({readOnly: this.props.readonly}, ps, {placeholder: this.props.placeholder})), 
-	            this.props.rightOverlayContent && React.createElement("div", {className: "input-overlay-text-right"}, this.props.rightOverlayContent), 
+	            this.props.rightOverlayText && React.createElement("div", {className: "input-overlay-text-right"}, this.props.rightOverlayText), 
 	            this.props.rightIcon && React.createElement(icon_1.Icon, {className: "right-icon", icon: this.props.rightIcon})));
 	    };
 	    TextInput.Icomoon = icons_1.Icons.Icomoon;
@@ -47167,7 +47537,7 @@
 
 
 /***/ },
-/* 364 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47181,8 +47551,8 @@
 	var _ = __webpack_require__(240);
 	var classNames = __webpack_require__(241);
 	var icon_1 = __webpack_require__(239);
-	var grid_1 = __webpack_require__(251);
-	var button_1 = __webpack_require__(365);
+	var grid_1 = __webpack_require__(252);
+	var button_1 = __webpack_require__(368);
 	var AutoCompleteInput = (function (_super) {
 	    __extends(AutoCompleteInput, _super);
 	    function AutoCompleteInput(props) {
@@ -47190,10 +47560,10 @@
 	        // drive this through css ideally. Currently fixed height plus border (50 + 2px)
 	        this.itemHeight = 52;
 	        this.state = {
-	            filteredOptions: Array(),
+	            filteredOptions: [],
 	            query: "",
 	            open: false,
-	            selectedValue: props.multiSelect ? Array() : null,
+	            selectedValue: props.multiSelect ? [] : null,
 	            selectedIndex: 0,
 	            remoteSearching: false,
 	            offsetIndex: 0,
@@ -47210,8 +47580,6 @@
 	            _this.setState({ remoteSearching: true });
 	            _this.props.remoteQuery(query).then(function (filteredOptions) {
 	                _this.setState({ filteredOptions: filteredOptions, remoteSearching: false });
-	            }).catch(function (error) {
-	                _this.setState({ remoteQueryError: JSON.stringify(error), remoteSearching: false });
 	            });
 	        }, immediate ? 0 : this.props.remoteThrottle);
 	    };
@@ -47343,7 +47711,7 @@
 	        }
 	        if (e.keyCode === 13 && this.state.filteredOptions.length !== 0) {
 	            // ENTER
-	            var selectedValue = this.state.filteredOptions[this.state.selectedIndex || 0];
+	            var selectedValue = this.state.filteredOptions[this.state.selectedIndex];
 	            this.handleSelection(selectedValue);
 	            e.preventDefault();
 	            return false;
@@ -47394,7 +47762,7 @@
 	    };
 	    AutoCompleteInput.prototype.buttonClick = function () {
 	        if (this.state.filteredOptions.length !== 0) {
-	            var selectedValue = this.state.filteredOptions[this.state.selectedIndex || 0];
+	            var selectedValue = this.state.filteredOptions[this.state.selectedIndex];
 	            if (selectedValue) {
 	                this.handleSelection(selectedValue);
 	            }
@@ -47441,7 +47809,7 @@
 	                                }), 
 	                                this.state.filteredOptions.length === 0 && this.state.query && React.createElement("div", {className: "dd-list-item-no-select"}, this.props.noResultsMessage || "No results...")))), 
 	                this.props.hasGoButton && !this.props.multiSelect && React.createElement(grid_1.Col, {width: "auto"}, 
-	                    React.createElement(button_1.Button, {text: this.props.goButtonContent || "Go", className: "bg-positive", onClick: function () { return _this.buttonClick(); }})
+	                    React.createElement(button_1.Button, {className: "bg-positive", onClick: function () { return _this.buttonClick(); }}, this.props.goButtonContent || "Go")
 	                ))
 	        ));
 	    };
@@ -47455,7 +47823,7 @@
 
 
 /***/ },
-/* 365 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47483,13 +47851,14 @@
 	        _super.apply(this, arguments);
 	    }
 	    Button.prototype.render = function () {
+	        var _this = this;
 	        var attrs = _.omit(this.props, "onClick", "leftIcon", "rightIcon", "className", "rounded");
 	        var classes = classNames("btn", this.props.className, {
 	            "rounded": this.props.rounded,
 	            "icon-button-left": this.props.leftIcon !== undefined,
 	            "icon-button-right": this.props.rightIcon !== undefined
 	        });
-	        return (React.createElement("button", __assign({type: this.props.type || 'button', onClick: this.props.onClick}, attrs, {className: classes}), 
+	        return (React.createElement("button", __assign({type: this.props.type || 'button', onClick: function (e) { return _this.props.onClick ? _this.props.onClick(e) : null; }}, attrs, {className: classes}), 
 	            this.props.leftIcon && React.createElement(icon_1.Icon, {className: "left-icon", icon: this.props.leftIcon}), 
 	            this.props.children, 
 	            this.props.rightIcon && React.createElement(icon_1.Icon, {className: "right-icon", icon: this.props.rightIcon})));
@@ -47501,7 +47870,7 @@
 
 
 /***/ },
-/* 366 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47529,12 +47898,34 @@
 	        }
 	    };
 	    BurgerMenu.prototype.closeMenu = function () {
-	        this.appNode.classList.remove("menu-open");
+	        var mode = this.props.mode || "push";
+	        if (mode === "push") {
+	            this.appNode.classList.remove("menu-open");
+	            this.appNode.classList.remove("menu-push");
+	        }
+	        else {
+	            this.appNode.classList.remove("menu-open");
+	            this.appNode.classList.remove("menu-slide");
+	        }
 	        this.isOpen = false;
+	        if (this.props.onMenuToggle) {
+	            this.props.onMenuToggle(this);
+	        }
 	    };
 	    BurgerMenu.prototype.openMenu = function () {
-	        this.appNode.classList.add("menu-open");
+	        var mode = this.props.mode || "push";
+	        if (mode === "push") {
+	            this.appNode.classList.add("menu-open");
+	            this.appNode.classList.add("menu-push");
+	        }
+	        else {
+	            this.appNode.classList.add("menu-open");
+	            this.appNode.classList.add("menu-slide");
+	        }
 	        this.isOpen = true;
+	        if (this.props.onMenuToggle) {
+	            this.props.onMenuToggle(this);
+	        }
 	    };
 	    BurgerMenu.prototype.componentWillUnmount = function () {
 	        this.unmountPortalNode();
@@ -47584,9 +47975,12 @@
 	    };
 	    BurgerMenu.prototype.renderNav = function (children) {
 	        var _this = this;
-	        return (React.createElement("ul", {className: "burger-menu-list", role: "menu", "aria-activedescendant": true, "aria-expanded": this.isOpen, "aria-hidden": !this.isOpen}, React.Children.map(children, function (c, index) {
-	            return React.createElement("li", {onClick: function (e) { return _this.closeNav(e, function () { return _this.closeMenu(); }); }, key: "nav_item_" + index}, c);
-	        })));
+	        return (React.createElement("div", null, 
+	            this.props.mode === "slide" &&
+	                React.createElement("div", {className: "burger-blocker", onClick: function () { return _this.closeMenu(); }}), 
+	            React.createElement("ul", {className: "burger-menu-list", role: "menu", "aria-activedescendant": true, "aria-expanded": this.isOpen, "aria-hidden": !this.isOpen}, React.Children.map(children, function (c, index) {
+	                return React.createElement("li", {onClick: function (e) { return _this.closeNav(e, function () { return _this.closeMenu(); }); }, key: "nav_item_" + index}, c);
+	            }))));
 	    };
 	    BurgerMenu.prototype.render = function () {
 	        var _this = this;
@@ -47623,7 +48017,7 @@
 
 
 /***/ },
-/* 367 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47640,7 +48034,7 @@
 
 
 /***/ },
-/* 368 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47715,7 +48109,7 @@
 
 
 /***/ },
-/* 369 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47805,7 +48199,7 @@
 
 
 /***/ },
-/* 370 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47863,7 +48257,7 @@
 
 
 /***/ },
-/* 371 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48294,7 +48688,7 @@
 
 
 /***/ },
-/* 372 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48526,7 +48920,7 @@
 
 
 /***/ },
-/* 373 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48584,8 +48978,8 @@
 	                                    React.createElement(armstrong_react_1.RadioInput, {name: "test1", labelContent: "Quick"})), 
 	                                React.createElement(armstrong_react_1.Col, null, 
 	                                    React.createElement("label", null, "CheckboxInput"), 
-	                                    React.createElement(armstrong_react_1.CheckboxInput, {label: "Get"}), 
-	                                    React.createElement(armstrong_react_1.CheckboxInput, {label: "Ripped"})))
+	                                    React.createElement(armstrong_react_1.CheckboxInput, {labelContent: "Get"}), 
+	                                    React.createElement(armstrong_react_1.CheckboxInput, {labelContent: "Ripped"})))
 	                        ), 
 	                        React.createElement("hr", null), 
 	                        React.createElement("h2", {id: "AutoCompleteInput"}, "AutoCompleteInput"), 
@@ -48873,8 +49267,8 @@
 	                                    React.createElement("td", null, "TODO"))
 	                            )), 
 	                        React.createElement("h3", null, "Example: Simple checkbox"), 
-	                        React.createElement(armstrong_react_1.CheckboxInput, {label: "Select this item"}), 
-	                        React.createElement("pre", {className: "m-top-small"}, "<CheckboxInput label=\"Select this item\" />"))
+	                        React.createElement(armstrong_react_1.CheckboxInput, {labelContent: "Select this item"}), 
+	                        React.createElement("pre", {className: "m-top-small"}, "<CheckboxInput labelContent=\"Select this item\" />"))
 	                ), 
 	                React.createElement(armstrong_react_1.Col, {className: "secondary-nav", width: 200}, 
 	                    React.createElement("ul", null, 
@@ -48911,7 +49305,7 @@
 
 
 /***/ },
-/* 374 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48981,7 +49375,7 @@
 
 
 /***/ },
-/* 375 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49086,7 +49480,7 @@
 
 
 /***/ },
-/* 376 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49168,7 +49562,7 @@
 
 
 /***/ },
-/* 377 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49248,7 +49642,7 @@
 
 
 /***/ },
-/* 378 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49282,7 +49676,7 @@
 
 
 /***/ },
-/* 379 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49376,7 +49770,7 @@
 
 
 /***/ },
-/* 380 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49599,7 +49993,7 @@
 
 
 /***/ },
-/* 381 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49724,7 +50118,7 @@
 
 
 /***/ },
-/* 382 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49893,7 +50287,7 @@
 
 
 /***/ },
-/* 383 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50071,7 +50465,7 @@
 
 
 /***/ },
-/* 384 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50236,7 +50630,7 @@
 
 
 /***/ },
-/* 385 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50345,7 +50739,7 @@
 
 
 /***/ },
-/* 386 */
+/* 389 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

@@ -47,26 +47,26 @@ export class FormElements extends React.Component<{}, {}> {
                   </Col>
                   <Col>
                     <label>SelectInput</label>
-                    <SelectInput placeholder="Select one or more items"  options={[{ id: 1, name: "Option 1" }, { id: 2, name: "Option 2" }, { id: 3, name: "Option 3" }]} />
+                    <SelectInput placeholder="Select one or more items" options={[{ id: 1, name: "Option 1" }, { id: 2, name: "Option 2" }, { id: 3, name: "Option 3" }]} />
                   </Col>
                   <Col>
                     <label>TimeInput</label>
-                    <TimeInput time="08:30"/>
+                    <TimeInput time="08:30" />
                   </Col>
                   <Col>
                     <label>DateInput</label>
-                    <DateInput date="2016-05-05"/>
+                    <DateInput date="2016-05-05" />
                   </Col>
                   <Col>
-                  <label>RadioInput</label>
+                    <label>RadioInput</label>
                     <RadioInput name="test1" labelContent="Get" />
                     <RadioInput name="test1" labelContent="Ripped" />
                     <RadioInput name="test1" labelContent="Quick" />
                   </Col>
                   <Col>
-                  <label>CheckboxInput</label>
-                    <CheckboxInput label="Get" />
-                    <CheckboxInput label="Ripped" />
+                    <label>CheckboxInput</label>
+                    <CheckboxInput labelContent="Get" />
+                    <CheckboxInput labelContent="Ripped" />
                   </Col>
                 </Row>
               </Grid>
@@ -500,10 +500,10 @@ export class FormElements extends React.Component<{}, {}> {
 
               <h3>Example: Simple checkbox</h3>
 
-              <CheckboxInput label="Select this item" />
+              <CheckboxInput labelContent="Select this item" />
 
               <pre className="m-top-small">
-                {`<CheckboxInput label="Select this item" />`}
+                {`<CheckboxInput labelContent="Select this item" />`}
               </pre>
 
             </article>
