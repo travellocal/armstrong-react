@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow } from 'armstrong-react';
+import { Grid, Row, Col } from 'armstrong-react';
 
 export class Typography extends React.Component<{}, {}> {
 
@@ -38,56 +38,56 @@ export class Typography extends React.Component<{}, {}> {
 
             <Grid className="typography-examples">
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>h1</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><h1>Heading 1</h1></Col>
+               <Col verticalAlignment="bottom" width={150}><code>h1</code></Col>
+               <Col verticalAlignment="bottom"><h1>Heading 1</h1></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>h2</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><h2>Heading 2</h2></Col>
+               <Col verticalAlignment="bottom" width={150}><code>h2</code></Col>
+               <Col verticalAlignment="bottom"><h2>Heading 2</h2></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>h3</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><h3>Heading 3</h3></Col>
+               <Col verticalAlignment="bottom" width={150}><code>h3</code></Col>
+               <Col verticalAlignment="bottom"><h3>Heading 3</h3></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>h4</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><h4>Heading 4</h4></Col>
+               <Col verticalAlignment="bottom" width={150}><code>h4</code></Col>
+               <Col verticalAlignment="bottom"><h4>Heading 4</h4></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>h5</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><h5>Heading 5</h5></Col>
+               <Col verticalAlignment="bottom" width={150}><code>h5</code></Col>
+               <Col verticalAlignment="bottom"><h5>Heading 5</h5></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>h6</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><h6>Heading 6</h6></Col>
+               <Col verticalAlignment="bottom" width={150}><code>h6</code></Col>
+               <Col verticalAlignment="bottom"><h6>Heading 6</h6></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code>p</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequuntur perferendis consectetur minus dolores molestiae repellat consequatur provident, dolore quaerat quia nesciunt nihil optio quod esse nemo vero explicabo soluta.</p></Col>
+               <Col verticalAlignment="bottom" width={150}><code>p</code></Col>
+               <Col verticalAlignment="bottom"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequuntur perferendis consectetur minus dolores molestiae repellat consequatur provident, dolore quaerat quia nesciunt nihil optio quod esse nemo vero explicabo soluta.</p></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">b</code> <code>strong</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><p><b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequuntur perferendis consectetur minus dolores molestiae repellat consequatur provident, dolore quaerat quia nesciunt nihil optio quod esse nemo vero explicabo soluta.</b></p></Col>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">b</code> <code>strong</code></Col>
+               <Col verticalAlignment="bottom"><p><b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequuntur perferendis consectetur minus dolores molestiae repellat consequatur provident, dolore quaerat quia nesciunt nihil optio quod esse nemo vero explicabo soluta.</b></p></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">a</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>.</p></Col>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">a</code></Col>
+               <Col verticalAlignment="bottom"><p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>.</p></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">code</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><code>Lorem ipsum dolor sit amet.</code></Col>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">code</code></Col>
+               <Col verticalAlignment="bottom"><code>Lorem ipsum dolor sit amet.</code></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">pre</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><pre>Lorem ipsum dolor sit amet.</pre></Col>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">pre</code></Col>
+               <Col verticalAlignment="bottom"><pre>Lorem ipsum dolor sit amet.</pre></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">blockquote</code></Col>
-               <Col centerContent={{vertical: "bottom"}}><blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda repellendus, odio, sequi enim commodi reiciendis ducimus, qui eligendi similique ex obcaecati corporis aliquid eius odit.</blockquote></Col>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">blockquote</code></Col>
+               <Col verticalAlignment="bottom"><blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda repellendus, odio, sequi enim commodi reiciendis ducimus, qui eligendi similique ex obcaecati corporis aliquid eius odit.</blockquote></Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">ul</code> <code>li</code></Col>
-               <Col centerContent={{vertical: "bottom"}}>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">ul</code> <code>li</code></Col>
+               <Col verticalAlignment="bottom">
                <ul>
                <li>Lorem ipsum dolor sit amet</li>
                <li>Consectetur adipisicing elit. Ab veniam id blanditiis placeat</li>
@@ -96,8 +96,8 @@ export class Typography extends React.Component<{}, {}> {
                </Col>
              </Row>
              <Row>
-               <Col centerContent={{vertical: "bottom"}} fixed={150}><code className="m-right-small">ol</code> <code>li</code></Col>
-               <Col centerContent={{vertical: "bottom"}}>
+               <Col verticalAlignment="bottom" width={150}><code className="m-right-small">ol</code> <code>li</code></Col>
+               <Col verticalAlignment="bottom">
                <ol>
                <li>Lorem ipsum dolor sit amet</li>
                <li>Consectetur adipisicing elit. Ab veniam id blanditiis placeat</li>
@@ -109,7 +109,7 @@ export class Typography extends React.Component<{}, {}> {
 </article>
           </Col>
 
-<Col className="secondary-nav" fixed={200}>
+<Col className="secondary-nav" width={200}>
           
           <ul>
           <li><a href="#installation">Installation</a></li>

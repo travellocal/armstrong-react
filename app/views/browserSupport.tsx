@@ -1,7 +1,7 @@
 // IMPORTS
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Grid, Row, Col, SingleColumnRow } from 'armstrong-react';
+import { Grid, Row, Col } from 'armstrong-react';
 
 export class BrowserSupport extends React.Component<{}, {}> {
 
@@ -53,7 +53,7 @@ export class BrowserSupport extends React.Component<{}, {}> {
           </Col>
 
 
-          <Col className="secondary-nav" fixed={200}>
+          <Col className="secondary-nav" width={200}>
             <ul>
               <li><a href="#macOSX">Mac OSX</a></li>
               <li><a href="#windows">Windows</a></li>

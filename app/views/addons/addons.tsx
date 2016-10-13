@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, TextInput, SelectInput, DatePickerInput, Icon, Button } from 'armstrong-react';
+import { Grid, Row, Col, TextInput, SelectInput, CalendarInput, Icon, Button } from 'armstrong-react';
 
 export class AddOns extends React.Component<any, {}> {
 

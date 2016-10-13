@@ -5,15 +5,16 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "typings install",
-    "build": "webpack --config config/webpack.config.prod.js",
+    "build": "webpack --config webpack.config.dev.js",
     "build-prod": "webpack --config webpack.config.prod.js",
     "start": "parallelshell -v \"npm run watch\" \"npm run serve\" ",
     "watch": "webpack -w --config webpack.config.dev.js",
-    "serve": "browser-sync start -s ./ -f ./"
+    "serve": "browser-sync start -s ./ -f ./app.js"
   },
   "author": "Rocketmakers",
   "license": "MIT",
   "devDependencies": {
+    "armstrong-react": "^1.0.0-alpha.31",
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.13.0",
     "classnames": "^2.2.5",
@@ -36,12 +37,13 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "armstrong-react": "^0.4.88",
-    "moment": "^2.14.1",
+    "armstrong-react": "^1.0.0-alpha.31",
     "fastclick": "^1.0.6",
+    "moment": "^2.14.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-router": "^2.5.1"
+    "react-router": "^2.5.1",
+    "typescript": "^2.0.3"
   },
   "pre-push": [
     "build-prod"

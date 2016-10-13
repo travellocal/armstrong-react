@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Dialog, Button } from 'armstrong-react';
+import { Grid, Row, Col, Button, Dialog } from 'armstrong-react';
 
 interface IDialogViewState {
   dialogOpen?: boolean;
@@ -88,18 +88,18 @@ constructor() {
  <hr />
 
             <h1>Examples</h1>
-            
+
             <h2>Simple dialog</h2>
-            
-              <Button onClick={() => this.setState({ dialogOpen: true }) } className="bg-info" text="Click to open sick dialog" />
-              
+
+              <Button onClick={() => this.setState({ dialogOpen: true }) } className="bg-info">Click to open sick dialog</Button>
+
 
               <pre>
                 {`
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Dialog, Button } from 'armstrong-react';
+import { Grid, Row, Col, Dialog, Button } from 'armstrong-react';
 
 interface IYourClassState {
   dialogOpen?: boolean;
@@ -117,8 +117,8 @@ constructor() {
   public render() {
     return (
       <div>
-        <Button onClick={() => this.setState({ dialogOpen: true }) } className="bg-info" text="Click to open sick dialog" />
-        <Dialog title="Sick dialog" bodyId="app-content" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) }>
+        <Button onClick={() => this.setState({ dialogOpen: true }) } className="bg-info">Click to open sick dialog</Button>
+        <Dialog title="Sick dialog" bodyId="host" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) }>
           Wow.
         </Dialog>
       </div>
@@ -126,7 +126,7 @@ constructor() {
   }
 }
 
-      
+
 `}
               </pre>
 
@@ -136,7 +136,7 @@ constructor() {
       </Grid >
 
 
-<Dialog title="Sick dialog" bodyId="app-content" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) }>
+<Dialog title="Sick dialog" bodyId="host" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) }>
           Wow.
         </Dialog>
 

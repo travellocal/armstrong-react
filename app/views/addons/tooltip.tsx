@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Button, Icon, TextInput } from 'armstrong-react';
+import { Grid, Row, Col, Button, Icon, TextInput } from 'armstrong-react';
 
 export class Tooltip extends React.Component<{}, {}> {
 
@@ -91,7 +91,7 @@ export class Tooltip extends React.Component<{}, {}> {
                <label>Name</label>
                <TextInput />
                </Col>
-               <Col spans="2">
+               <Col>
                <label>Email address <span data-tooltip="So we can check you're a human!" data-tooltip-pos="up"><Icon icon={Icon.Icomoon.question4} /></span></label>
                <TextInput />
                </Col>
@@ -104,7 +104,7 @@ export class Tooltip extends React.Component<{}, {}> {
             <label>Name</label>
             <TextInput />
         </Col>
-        <Col spans="2">
+        <Col>
             <label>Email address <span data-tooltip="So we can check you're a human!" data-tooltip-pos="up"><Icon icon={Icon.Icomoon.question4} /></span></label>
             <TextInput />
         </Col>
@@ -118,7 +118,7 @@ export class Tooltip extends React.Component<{}, {}> {
 
           </Col>
 
-<Col className="secondary-nav" fixed={200}>
+<Col className="secondary-nav" width={200}>
           
           <ul>
           <li><a href="#installation">Installation</a></li>

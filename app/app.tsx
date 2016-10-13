@@ -31,7 +31,7 @@ import { Typography } from "./views/addons/typography";
 import { TableStyling } from "./views/addons/tableStyling";
 import { Tooltip } from "./views/addons/tooltip";
 
-import { Grid, Row, Col, SingleColumnRow, Image, BurgerMenu, BurgerMenuItem, Icon } from 'armstrong-react';
+import { Grid, Row, Col, Image, BurgerMenu, BurgerMenuItem, Icon } from 'armstrong-react';
 
 // STYLES
 import "./theme/theme.scss";
@@ -56,7 +56,7 @@ class App extends React.Component<any, {}> {
 
         <Grid fillContainer={true}>
           <Row>
-            <Col className="sidebar rs-medium-hide" fixed={225}>
+            <Col className="sidebar rs-medium-hide" width={225}>
               <nav>
                 <Link activeClassName="active" onlyActiveOnIndex={true} to="/">Home</Link>
 
@@ -83,10 +83,9 @@ class App extends React.Component<any, {}> {
               </nav>
             </Col>
             <Col className="main-content">
-
               <Grid>
                 <Row className="m-bottom-xlarge">
-                  <Col className="rs-xlarge-hide rs-medium-show" centerContent={{ vertical: "center" }} fixed={true}>
+                  <Col className="rs-xlarge-hide rs-medium-show" verticalAlignment="center" width="auto">
                     <BurgerMenu buttonIcon={BurgerMenu.Icomoon.menu7} closeOnNavigate={true}>
                       <BurgerMenuItem title="Home" onClick={() => this.navigateTo("/") }/>
                       <h3>Get started</h3>
@@ -112,20 +111,19 @@ class App extends React.Component<any, {}> {
                       </div>
                     </BurgerMenu>
                   </Col>
-                  <Col className="rs-xlarge-show rs-medium-hide" centerContent={{ vertical: "center" }}>
+                  <Col className="rs-xlarge-show rs-medium-hide" verticalAlignment="center">
                     <h1 className="header-title">Armstrong</h1>
                     <h2 className="header-description">A React/SASS framework for rapid UI</h2>
                   </Col>
                 </Row>
-                <SingleColumnRow className="p-top-xsmall">
-
-                  { this.props.children }
-
-                  <footer>
-                  &copy; {new Date().getFullYear()} <a target="_blank" href="http://www.rocketmakers.com">Rocketmakers</a>
-                  </footer>
-
-                </SingleColumnRow>
+                <Row className="p-top-xsmall">
+                  <Col>
+                    { this.props.children }
+                    <footer>
+                      &copy; {new Date().getFullYear() } <a target="_blank" href="http://www.rocketmakers.com">Rocketmakers</a>
+                    </footer>
+                  </Col>
+                </Row>
               </Grid>
 
             </Col>
@@ -171,4 +169,4 @@ ReactDOM.render((
 
     </Route>
   </Router>
-), document.getElementById('app-content'));
+), document.getElementById('host'));

@@ -10,19 +10,6 @@
   TYPOGRAPHY STYLING
 ********************************************/
 
-/********************************************
-  STANDARD IMPORTS
-********************************************/
-
-//Armstrong core
-@import "~armstrong-react/dist/imports";
-//Custom overrides of Armstrongs variables
-@import "./../shared/_variables.scss";
-
-/********************************************
-  TYPOGRAPHY STYLING
-********************************************/
-
 body {
     font-size: $font-size-small;
     font-weight: 300;
@@ -75,7 +62,6 @@ ul, ol {
     padding: 0;
     li {
         margin-bottom: 0.5em;
-        @extend %m-bottom-small;
         padding-left: $spacing-xsmall;
     }
 }
@@ -87,8 +73,8 @@ code, pre {
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
-    @extend %p-small;
-    @extend %f-size-xsmall;
+    padding: $spacing-small;
+    font-size: $font-size-xsmall;
 }
 
 pre, blockquote {

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Image } from 'armstrong-react';
+import { Grid, Row, Col, Image } from 'armstrong-react';
 
 export class Images extends React.Component<{}, {}> {
 
@@ -79,7 +79,7 @@ export class Images extends React.Component<{}, {}> {
 
             <h2>Simple image placeholder</h2>
 
-            <Image height="100" width="100" alt="my image" />
+            <Image height={100} width={100} alt="my image" />
 
             <pre>
               {`<Image height="100" width="100" alt="my image" />`}
@@ -89,7 +89,7 @@ export class Images extends React.Component<{}, {}> {
 
             <h2>Random user photo avatar</h2>
 
-            <Image rounded={true} sampleUser={true} height="75" width="75" alt="avatar" />
+            <Image rounded={true} sampleUser={true} height={75} width={75} alt="avatar" />
 
             <pre>
               {`<Image rounded={true} sampleUser={true} height="75" width="75" alt="avatar" />`}
@@ -99,7 +99,7 @@ export class Images extends React.Component<{}, {}> {
 
             <h2>Same user photo every time</h2>
 
-            <Image rounded={true} sampleUser={true} sampleUserSeed={16} height="75" width="75" alt="avatar" />
+            <Image rounded={true} sampleUser={true} sampleUserSeed="16" height={75} width={75} alt="avatar" />
 
             <pre>
               {`<Image rounded={true} sampleUser={true} sampleUserSeed={16} height="75" width="75" alt="avatar" />`}

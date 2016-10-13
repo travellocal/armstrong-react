@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Button } from 'armstrong-react';
+import { Grid, Row, Col, Button } from 'armstrong-react';
 
 export class Buttons extends React.Component<{}, {}> {
 
@@ -19,14 +19,12 @@ export class Buttons extends React.Component<{}, {}> {
             <article>
             <h1>Components: Buttons</h1>
 
-            <div className="alert bg-negative">Warning: {`<Button />`} does not come with any background colour by design.You must specify a valid colour variable className e.g.{`<Button classname="bg-positive"/>`}</div>
-
             <pre className="callout major">
               {`import { Button } from 'armstrong-react';`}
             </pre>
 
             <pre className="callout minor">
-              {`<Button className='(string)' onClick='(e?: SyntheticEvent)=> void' leftIcon='(string)' rightIcon='(string)' text='(string)' />`}
+              {`<Button className='(string)' onClick='(e?: SyntheticEvent)=> void' leftIcon='(string)' rightIcon='(string)'>Enter button content here</Button>`}
             </pre>
 
             <table>
@@ -50,10 +48,6 @@ export class Buttons extends React.Component<{}, {}> {
                   <td>An icon to the right of the text</td>
                 </tr>
                 <tr>
-                  <td>text (string) </td>
-                  <td>The text in the button</td>
-                </tr>
-                <tr>
                   <td>onClick ((e: SyntheticEvent) => void) </td>
                   <td>An event handler for clicking</td>
                 </tr>
@@ -70,23 +64,23 @@ export class Buttons extends React.Component<{}, {}> {
             <h1>Examples</h1>
 
             <h2>Simple buttons</h2>
-            <Button className="bg-info" text="A normal button" />
-            <Button disabled={true} className="bg-info" text="A disabled button" />
+            <Button className="bg-info">A normal button</Button>
+            <Button disabled={true} className="bg-info">A disabled button</Button>
 
             <pre>
-              {`<Button className="bg-info" text="A normal button" />
-<Button disabled={true} className="bg-info" text="A disabled button" />`}
+              {`<Button className="bg-info">A normal button</Button>
+<Button disabled={true} className="bg-info">A disabled button</Button>`}
             </pre>
 
             <hr />
 
             <h2>Buttons with icons</h2>
-            <Button className="bg-positive" leftIcon={Button.Icomoon.floppyDisk} text="Save" />
-            <Button className="bg-negative" rightIcon={Button.Icomoon.bin2} text="Delete" />
+            <Button className="bg-positive" leftIcon={Button.Icomoon.floppyDisk}>Save</Button>
+            <Button className="bg-negative" rightIcon={Button.Icomoon.bin2}>Delete</Button>
 
             <pre>
-              {`<Button className="bg-positive" leftIcon={Button.Icomoon.floppyDisk} text="Save" />
-<Button className="bg-negative" rightIcon={Button.Icomoon.bin2} text="Delete" />`}
+              {`<Button className="bg-positive" leftIcon={Button.Icomoon.floppyDisk}>Save</Button>
+<Button className="bg-negative" rightIcon={Button.Icomoon.bin2}>Delete</Button>`}
             </pre>
 </article>
           </Col>

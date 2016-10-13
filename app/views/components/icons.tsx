@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Grid, Row, Col, SingleColumnRow, Icon, Button, TextInput } from 'armstrong-react';
+import { Grid, Row, Col, Icon, Button, TextInput } from 'armstrong-react';
 
 export class Icons extends React.Component<{}, {}> {
 
@@ -19,11 +19,9 @@ export class Icons extends React.Component<{}, {}> {
             <article>
               <h1>Components: Icons</h1>
 
-              <div className="alert bg-negative">Armstrong comes bundled with <a className="fg-white" target="_blank" href="https://icomoon.io/preview-ultimate.html">IcoMoon-Ultimate</a>.If you are using this in one of your projects make sure you have a license to use it.</div>
+              <div className="alert bg-negative">Armstrong is designed to be used with <a className="fg-white" target="_blank" href="https://icomoon.io/preview-ultimate.html">IcoMoon-Ultimate</a>. Because of licensing, you'll have to acquire it yourself.</div>
 
-              <div className="alert bg-info">The Icon component is required for properties on other components such as leftIcon on {`<Button>`}.Make sure you import the Icon component if trying to use Icons on another Armstrong component.</div>
-
-              <h2 id="installation">Installation</h2>
+              <h2 id="installation">Installation Example (Webpack)</h2>
 
               <h3>Add and import the Icomoon font file</h3>
 
@@ -42,7 +40,7 @@ export class Icons extends React.Component<{}, {}> {
                 </li>
                 <li>Add <code> @import "fonts"; </code> to the TOP of your <code>app/theme/theme.scss</code> file.</li>
               </ol>
-
+              <br/>
               <h3>Add the Icomoon definitions</h3>
 
               <ol>
@@ -90,15 +88,15 @@ export class Icons extends React.Component<{}, {}> {
 
               <h3>Icon in a button</h3>
 
-              <Button className="bg-info" leftIcon={Button.Icomoon.floppyDisk} text="Save" />
-            
-              <pre>{`<Button className="bg-negative" leftIcon={Button.Icomoon.floppyDisk} text="Save" />`}
+              <Button className="bg-info" leftIcon={Button.Icomoon.floppyDisk}>Save</Button>
+
+              <pre>{`<Button className="bg-negative" leftIcon={Button.Icomoon.floppyDisk}>Save</Button>`}
               </pre>
 
               <h3>Icon in a form element</h3>
 
               <TextInput leftIcon={TextInput.Icomoon.user} placeholder="Enter your username" />
-            
+
               <pre>{`<TextInput icon={TextInput.Icomoon.user} placeholder="Enter your username" />`}
               </pre>
 
@@ -108,13 +106,13 @@ export class Icons extends React.Component<{}, {}> {
             </article>
           </Col>
 
-<Col className="secondary-nav" fixed={200}>
-          
+<Col className="secondary-nav" width={200}>
+
           <ul>
           <li><a href="#installation">Installation</a></li>
           <li><a href="#examples">Examples</a></li>
           </ul>
-          
+
           </Col>
 
         </Row>

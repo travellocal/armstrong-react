@@ -1,7 +1,7 @@
 // IMPORTS
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Grid, Row, Col, SingleColumnRow } from 'armstrong-react';
+import { Grid, Row, Col } from 'armstrong-react';
 
 export class VariablesAndClasses extends React.Component<{}, {}> {
 
@@ -435,7 +435,7 @@ export class VariablesAndClasses extends React.Component<{}, {}> {
 </article>
           </Col>
           
-          <Col className="secondary-nav" fixed={200}>
+          <Col className="secondary-nav" width={200}>
           <ul>
           <li><a href="#howItWorks">How it works</a></li>
           <li><a href="#pageSize">Page size</a></li>
