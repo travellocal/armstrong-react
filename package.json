@@ -14,7 +14,6 @@
   "author": "Rocketmakers",
   "license": "MIT",
   "devDependencies": {
-    "armstrong-react": "^1.0.0-alpha.31",
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.13.0",
     "classnames": "^2.2.5",
@@ -37,7 +36,7 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "armstrong-react": "^1.0.0-alpha.31",
+    "armstrong-react": "1.0.0-alpha.31",
     "fastclick": "^1.0.6",
     "moment": "^2.14.1",
     "react": "^15.1.0",
