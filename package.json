@@ -7,6 +7,7 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p source -d && node sass_concat.js",
+    "test": "tsc -p source -d && jest",
     "prepublish": "npm run build",
     "patch": "npm --no-git-tag-version version patch -m \"Upgrade to %s\"",
     "prerelease": "npm --no-git-tag-version version prerelease -m \"Upgrade to %s\"",
@@ -40,12 +41,17 @@
     "react-dom": "15.x"
   },
   "devDependencies": {
+    "@types/enzyme": "^2.5.37",
     "@types/es6-promise": "*",
+    "@types/jest": "^15.1.32",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "import-resolve": "^0.3.0",
+    "enzyme": "^2.5.1",
     "es6-promise": "^3.3.1",
+    "import-resolve": "^0.3.0",
+    "jest": "^16.0.2",
     "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
     "ts-loader": "^0.8.2",
     "typescript": "^2.0.3"
