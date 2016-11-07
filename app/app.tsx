@@ -21,6 +21,7 @@ import { Icons } from "./views/components/icons";
 import { Images } from "./views/components/images";
 import { DialogView } from "./views/components/dialog";
 import { BurgerMenuView } from "./views/components/burgerMenu";
+import { TabControlView } from "./views/components/tabControlView";
 
 // addons VIEWS
 import { AddOns } from "./views/addons/addons";
@@ -67,6 +68,7 @@ class App extends React.Component<any, {}> {
 
                 <h3>Components</h3>
                 <Link activeClassName="active" to="/components/gridSystem">Grid system</Link>
+                <Link activeClassName="active" to="/components/tabControl">Tab control</Link>
                 <Link activeClassName="active" to="/components/formElements">Form elements</Link>
                 <Link activeClassName="active" to="/components/buttons">Buttons</Link>
                 <Link activeClassName="active" to="/components/icons">Icons</Link>
@@ -94,6 +96,7 @@ class App extends React.Component<any, {}> {
                       <BurgerMenuItem title="Variables and Classes" onClick={() => this.navigateTo("/getStarted/variablesAndClasses") }/>
                       <h3>Components</h3>
                       <BurgerMenuItem title="Grid system" onClick={() => this.navigateTo("/components/gridSystem") }/>
+                      <BurgerMenuItem title="Tab control" onClick={() => this.navigateTo("/components/tabControl") }/>
                       <BurgerMenuItem title="Form elements" onClick={() => this.navigateTo("/components/formElements") }/>
                       <BurgerMenuItem title="Buttons" onClick={() => this.navigateTo("/components/buttons") }/>
                       <BurgerMenuItem title="Icons" onClick={() => this.navigateTo("/components/icons") }/>
@@ -153,6 +156,7 @@ ReactDOM.render((
 
       <Route path="components/gridSystem" component={ GridSystem } />
       <Route path="components/formElements" component={ FormElements } />
+      <Route path="components/tabControl" component={ TabControlView } />
       <Route path="components/buttons" component={ Buttons } />
       <Route path="components/icons" component={ Icons } />
       <Route path="components/images" component={ Images } />

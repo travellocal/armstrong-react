@@ -16,6 +16,7 @@
     "@types/react": "^0.14.38",
     "@types/react-dom": "^0.14.17",
     "@types/react-router": "^2.0.37",
+    "@types/history": "^2.0.37",
     "@types/underscore": "^1.7.33",
     "@types/es6-promise": "^0.0.32",
     "@types/classnames": "^0.0.31",
@@ -41,12 +42,12 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "armstrong-react": "^1.0.1",
+    "armstrong-react": "^1.0.7",
     "fastclick": "^1.0.6",
     "moment": "^2.14.1",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "react-router": "^2.5.1"
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.6.1"
   },
   "pre-push": [
     "build-prod"

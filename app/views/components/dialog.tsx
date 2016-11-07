@@ -39,7 +39,7 @@ constructor() {
             </pre>
 
             <pre className="callout minor">
-                {`<Dialog title='(string)' subTitle='(string)' isOpen='(boolean)' layerClass='(string)' onOpen='(()=> void)' onClose='(()=> void)' onXClicked='(()=> void)'>I am some dialog content</Dialog>`}
+                {`<Dialog title='(string)' isOpen='(boolean)' layerClass='(string)' onOpen='(()=> void)' onClose='(()=> void)' onXClicked='(()=> void)'>I am some dialog content</Dialog>`}
               </pre>
 
               <table>
@@ -63,10 +63,6 @@ constructor() {
                     <td>The title in the header of the dialog</td>
                   </tr>
                   <tr>
-                    <td>subtitle (string)</td>
-                    <td>A second, smaller title</td>
-                  </tr>
-                  <tr>
                     <td>layerClass (string)</td>
                     <td>This allows you to layer dialogs (a confirmation for example) by setting a class with a higher z-index</td>
                   </tr>
@@ -81,6 +77,10 @@ constructor() {
                   <tr>
                     <td>onXClicked (()=> void))</td>
                     <td>Fires when the user clicks the 'X' in the topright of the dialog. Useful for confirmations</td>
+                  </tr>
+                   <tr>
+                    <td>footerContent (JSX.Element)</td>
+                    <td>Elements here will be stuck to the footer of the dialog. Perfect for action buttons</td>
                   </tr>
                 </tbody>
               </table>
@@ -118,7 +118,16 @@ constructor() {
     return (
       <div>
         <Button onClick={() => this.setState({ dialogOpen: true }) } className="bg-info">Click to open sick dialog</Button>
-        <Dialog title="Sick dialog" bodyId="host" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) }>
+        <Dialog title="Sick dialog"
+        bodyId="host"
+        isOpen={this.state.dialogOpen}
+        onClose={() => this.setState({ dialogOpen: false }) }
+        footerContent={
+          <div>
+          <Button className='bg-positive'>Thumbs up!</Button>
+          <Button className='bg-negative'>Thumbs down!</Button>
+          </div>
+        }>
           Wow.
         </Dialog>
       </div>
@@ -136,7 +145,12 @@ constructor() {
       </Grid >
 
 
-<Dialog title="Sick dialog" bodyId="host" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) }>
+<Dialog title="Sick dialog" bodyId="host" isOpen={this.state.dialogOpen} onClose={() => this.setState({ dialogOpen: false }) } footerContent={
+          <div>
+          <Button className='bg-positive'>Thumbs up!</Button>
+          <Button className='bg-negative'>Thumbs down!</Button>
+          </div>
+        }>
           Wow.
         </Dialog>
 

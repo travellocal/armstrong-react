@@ -18,7 +18,7 @@ export class Installation extends React.Component<{}, {}> {
             <article>
             <h1>Get Started: Installation</h1>
 
-            <div className="alert bg-negative">WARNING! This library assumes you're using React, SASS, TypeScript 2.0.x and Typings</div>
+            <div className="alert bg-negative">WARNING! This library assumes you're using React, SASS and TypeScript 2.0.x</div>
 
             <h2 id="gettingStarted">Getting started</h2>
 
@@ -27,12 +27,6 @@ export class Installation extends React.Component<{}, {}> {
             <p>Install via <code>npm</code></p>
 
             <pre>npm i armstrong-react --save</pre>
-
-            <h3>Typings</h3>
-
-            <p>You will need to install these global dependencies into your project (if you don't have them)</p>
-
-            <pre>typings i react dt~underscore dt~classnames dt~node -SG</pre>
 
             <h2 id="importingTheSCSS">Importing the SCSS</h2>
 
@@ -44,7 +38,8 @@ export class Installation extends React.Component<{}, {}> {
             @import "~armstrong-react/dist/style";<br/>
             OPTIONAL : @import "~armstrong-react/dist/form";<br/>
             OPTIONAL : @import "~armstrong-react/dist/nav";<br/>
-            OPTIONAL : @import "~armstrong-react/dist/responsive";
+            OPTIONAL : @import "~armstrong-react/dist/responsive";<br/>
+            OPTIONAL : @import "~armstrong-react/dist/navigation";
             </pre>
 
             <div className="alert bg-info">NOTE: If you're not using webpack, you should use an absolute or relative path through your node_modules folder.</div>

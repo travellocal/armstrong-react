@@ -16,25 +16,25 @@ export class GridSystem extends React.Component<{}, {}> {
         <Row>
           <Col>
             <article>
-            <h1>Components: Grid system</h1>
+              <h1>Components: Grid system</h1>
 
-            <p>The grid is at the heart of everything in Armstrong. Layouts, pages and components all make extensive use of the grid. In order to use Armstrong in a production project it's essential that you understand the basic principles of the grid and the three core components; grid, row and col.</p>
+              <p>The grid is at the heart of everything in Armstrong. Layouts, pages and components all make extensive use of the grid. In order to use Armstrong in a production project it's essential that you understand the basic principles of the grid and the three core components; grid, row and col.</p>
 
-            <pre className="callout major">
-              {`import { Grid, Row, Col } from 'armstrong-react';`}
-            </pre>
+              <pre className="callout major">
+                {`import { Grid, Row, Col } from 'armstrong-react';`}
+              </pre>
 
-            <hr />
+              <hr />
 
-            <h2 id="grid">Grid</h2>
+              <h2 id="grid">Grid</h2>
 
-            <p>Grid takes the following props specifically, and will also spread additional HTML props to the top level div.</p>
+              <p>Grid takes the following props specifically, and will also spread additional HTML props to the top level div.</p>
 
-            <pre className="callout minor">
+              <pre className="callout minor">
                 {`<Grid className='(string)' fillContainer='(boolean)' debugMode='(boolean)' table='(boolean)'/>`}
               </pre>
 
-            <table>
+              <table>
                 <thead>
                   <tr>
                     <th>Property</th>
@@ -132,16 +132,16 @@ export class GridSystem extends React.Component<{}, {}> {
                 </tbody>
               </table>
 
-              <div className="alert bg-negative">Warning: If using either horizontalAlignment or verticalAlignment on a {`<Col />`} with more than one child element then a wrapper div must be used around those elements. See the examples below for more information.</div>
+              <div className="alert bg-negative">Warning: If using either horizontalAlignment or verticalAlignment on a {`<Col />`}with more than one child element then a wrapper div must be used around those elements. See the examples below for more information.</div>
 
 
               <hr />
 
 
 
-            <h1 id="examples">Examples</h1>
+              <h1 id="examples">Examples</h1>
 
-            <h2>Simple grid</h2>
+              <h2>Simple grid</h2>
 
               <Grid className="helper-grid">
                 <Row>
@@ -157,9 +157,9 @@ export class GridSystem extends React.Component<{}, {}> {
               </pre>
 
 
-            <hr />
+              <hr />
 
-             <h2>Star width grid</h2>
+              <h2>Star width grid</h2>
 
               <Grid className="helper-grid">
                 <Row>
@@ -177,9 +177,9 @@ export class GridSystem extends React.Component<{}, {}> {
               </pre>
 
 
-            <hr />
+              <hr />
 
-            <h2>Multi-row grid</h2>
+              <h2>Multi-row grid</h2>
 
 
               <Grid className="helper-grid">
@@ -240,9 +240,9 @@ export class GridSystem extends React.Component<{}, {}> {
 </Grid>`}
               </pre>
 
-<hr />
+              <hr />
 
- <h2>Mixing fixed width/height and fluid columns</h2>
+              <h2>Mixing fixed width/height and fluid columns</h2>
 
 
               <Grid className="helper-grid">
@@ -264,9 +264,9 @@ export class GridSystem extends React.Component<{}, {}> {
 </Grid>`}
               </pre>
 
-      <hr />
+              <hr />
 
-            <h2>Column Alignment</h2>
+              <h2>Column Alignment</h2>
 
 
               <Grid className="helper-grid">
@@ -289,20 +289,20 @@ export class GridSystem extends React.Component<{}, {}> {
               </pre>
 
 
-<hr />
+              <hr />
 
-            <h2>Using horizontalAlignment and/or verticalAlignment with more than one child element</h2>
+              <h2>Using horizontalAlignment and/or verticalAlignment with more than one child element</h2>
 
-            <div className="alert bg-negative">Armstrong targets direct descendant divs for its horizontalAlignment and verticalAlignment properties. If you are looking to use either with more than one child element then you must add an empty {`<div>`} wrapper element which will become the sole target of the centering. See below for an example.</div>
+              <div className="alert bg-negative">Armstrong targets direct descendant divs for its horizontalAlignment and verticalAlignment properties. If you are looking to use either with more than one child element then you must add an empty {`<div>`}wrapper element which will become the sole target of the centering. See below for an example.</div>
 
 
               <Grid className="helper-grid">
                 <Row>
                   <Col horizontalAlignment="center" verticalAlignment="center">
-                  <div>
-                  <Button className="bg-info">Element one</Button>
-                  <Button className="bg-info">Element Two</Button>
-                  </div>
+                    <div>
+                      <Button className="bg-info">Element one</Button>
+                      <Button className="bg-info">Element Two</Button>
+                    </div>
                   </Col>
                 </Row>
               </Grid>
@@ -321,9 +321,9 @@ export class GridSystem extends React.Component<{}, {}> {
 
 
 
-<hr />
+              <hr />
 
-            <h2>Debug mode</h2>
+              <h2>Debug mode</h2>
 
               <Grid debugMode={true} className="helper-grid">
                 <Row className="p-bottom-small">
@@ -355,22 +355,22 @@ export class GridSystem extends React.Component<{}, {}> {
 </Grid>`}
               </pre>
 
-         <hr />
+              <hr />
 
-            <h2>Fixed sidebar with a nested grid using <code>{`fillContainer=true`}</code></h2>
+              <h2>Fixed sidebar with a nested grid using <code>{`fillContainer=true`}</code></h2>
 
 
               <Grid debugMode={true} className="helper-grid">
                 <Row height={500}>
                   <Col width={100}>
-                  <Grid fillContainer={true}>
-                   <Row>
-                     <Col>Sidebar row 1</Col>
-                   </Row>
-                   <Row>
-                     <Col>Sidebar row 2</Col>
-                   </Row>
-                  </Grid>
+                    <Grid fillContainer={true}>
+                      <Row>
+                        <Col>Sidebar row 1</Col>
+                      </Row>
+                      <Row>
+                        <Col>Sidebar row 2</Col>
+                      </Row>
+                    </Grid>
                   </Col>
                   <Col horizontalAlignment="center" verticalAlignment="center">Main content</Col>
                 </Row>
@@ -398,14 +398,14 @@ export class GridSystem extends React.Component<{}, {}> {
           </Col>
 
 
-<Col className="secondary-nav" width={200}>
+          <Col className="secondary-nav" width={200}>
 
-          <ul>
-          <li><a href="#grid">Grid</a></li>
-          <li><a href="#row">Row</a></li>
-          <li><a href="#col">Col</a></li>
-          <li><a href="#examples">Examples</a></li>
-          </ul>
+            <ul>
+              <li><a href="#grid">Grid</a></li>
+              <li><a href="#row">Row</a></li>
+              <li><a href="#col">Col</a></li>
+              <li><a href="#examples">Examples</a></li>
+            </ul>
 
           </Col>
 
