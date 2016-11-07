@@ -18,3 +18,10 @@ it('Button fires an event when clicked', () => {
   button.find('button').simulate('click');
   expect(output).toEqual("hello world")
 });
+
+it('Button contains a single child when set', () => {
+  const button = shallow(
+    <Button leftIcon={Button.Icomoon.rocket}>waddup</Button>
+  );
+  expect(button.children()[0]).toEqual(1);
+});
