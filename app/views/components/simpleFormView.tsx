@@ -50,7 +50,7 @@ export class SimpleFormView extends React.Component<ISimpleFormViewProps, { user
         date: "2016-11-03",
         date2: "2016-11-03",
         time: "00:30",
-        lastName: "Walker",
+        lastName: "Armstrong",
         enabled: false,
         tags: [this.options[0]],
         type: null,
@@ -94,7 +94,7 @@ export class SimpleFormView extends React.Component<ISimpleFormViewProps, { user
                   <Row>
                     <Col>
                       <label>First name</label>
-                      <SimpleTextInput type="text" prop="firstName" />
+                      <SimpleTextInput type="text" prop="firstName" placeholder="whats your first name buddy? eg 'Neil'" />
                     </Col>
                     <Col>
                       <label>Last name</label>
@@ -151,7 +151,7 @@ export class SimpleFormView extends React.Component<ISimpleFormViewProps, { user
                   </Row>
                   <Row>
                     <Col>
-                      <Button className="bg-positive" onClick={() => alert(JSON.stringify(this.state.user))}>Save</Button>
+                      <Button className="bg-positive" onClick={() => alert(JSON.stringify(this.state.registration))}>Save</Button>
                     </Col>
                   </Row>
                 </Grid>
