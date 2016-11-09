@@ -71,7 +71,7 @@ class App extends React.Component<any, {}> {
                 <Link activeClassName="active" to="/components/gridSystem">Grid system</Link>
                 <Link activeClassName="active" to="/components/tabControl">Tab control</Link>
                 <Link activeClassName="active" to="/components/simpleFormView">Simple form</Link>
-                <Link activeClassName="active" to="/components/formElements">Form elements</Link>
+                <Link activeClassName="active" to="/components/formElements">Immutable form</Link>
                 <Link activeClassName="active" to="/components/buttons">Buttons</Link>
                 <Link activeClassName="active" to="/components/icons">Icons</Link>
                 <Link activeClassName="active" to="/components/images">Images</Link>
@@ -100,7 +100,7 @@ class App extends React.Component<any, {}> {
                       <BurgerMenuItem title="Grid system" onClick={() => this.navigateTo("/components/gridSystem") }/>
                       <BurgerMenuItem title="Tab control" onClick={() => this.navigateTo("/components/tabControl") }/>
                       <BurgerMenuItem title="Simple form (NEW)" onClick={() => this.navigateTo("/components/simpleForm") }/>
-                      <BurgerMenuItem title="Form elements" onClick={() => this.navigateTo("/components/formElements") }/>
+                      <BurgerMenuItem title="Immutable form" onClick={() => this.navigateTo("/components/formElements") }/>
                       <BurgerMenuItem title="Buttons" onClick={() => this.navigateTo("/components/buttons") }/>
                       <BurgerMenuItem title="Icons" onClick={() => this.navigateTo("/components/icons") }/>
                       <BurgerMenuItem title="Images" onClick={() => this.navigateTo("/components/images") }/>

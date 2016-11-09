@@ -17,9 +17,11 @@ export class FormElements extends React.Component<{}, {}> {
         <Row>
           <Col>
             <article>
-              <h1>Components: Form Elements</h1>
+              <h1>Components: Immutable Form & Elements</h1>
 
-              <p>Forms. No-one likes doing them. Let Armstrong take some of the pain out of the process by using these form elements.</p>
+               <div className="alert bg-warning">
+              <b>Note:</b> Documentation coming soon
+            </div>
 
               <pre className="callout major">
                 {`import { AutoCompleteInput, CheckboxInput, CalendarInput, RadioInput, SelectInput, TextInput, TimeInput } from 'armstrong-react';`}
