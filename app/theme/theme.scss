@@ -11,7 +11,8 @@
 // 4. ARMSTRONG LIBRARY IMPORTS
 @import "~armstrong-react/dist/imports";
 @import "~armstrong-react/dist/style";
-@import "~armstrong-react/dist/form";
+//@import "~armstrong-react/dist/form";
+@import "~armstrong-react/dist/simpleForm";
 @import "~armstrong-react/dist/responsive";
 @import "~armstrong-react/dist/navigation";
 
@@ -351,6 +352,21 @@ article h1:first-of-type {
         margin-right: 0;
     }
 }
+
+.name-form{
+    width: 300px;
+    button{
+        width: 100%;
+    }
+}
+
+.state-form{
+    width: 800px;
+    button{
+        width: 100%;
+    }
+}
+
 
 /************************************************************************************************
   RESPONSIVE
