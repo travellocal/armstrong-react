@@ -15,7 +15,7 @@ import {FormBinderBase} from "./formBinderBase";
 import {ICalendarInputProps} from "./inputs/calendarInput";
 import {IDateInputProps} from "./inputs/dateInput";
 import {ITimeInputProps} from "./inputs/timeInput";
-import {IAutoCompleteInputProps} from "./inputs/autoCompleteInput";
+import {IAutoCompleteInputProps, IAutoCompleteOption} from "./inputs/autoCompleteInput";
 import {Formatting} from "../../utilities/formatting";
 
 /** An input FormBinder that sets native 'value' and 'onChange: (e) => void' properties */
@@ -144,10 +144,10 @@ export class AutoCompleteFormBinder implements IFormBinder<IAutoCompleteInputPro
   handleValueChanged(props: IAutoCompleteInputProps, dataBinder: IDataBinder<any>, notifyChanged: () => void): void{
     props.onSelected = c => {
       if (_.isArray(c)) {
-        dataBinder.setValue(this.dataPath, c.map(cc => cc.id))
+        dataBinder.setValue(this.dataPath, (c as IAutoCompleteOption[]).map(cc => cc.id))
       }
       else{
-        dataBinder.setValue(this.dataPath, c.id)
+        dataBinder.setValue(this.dataPath, (c as IAutoCompleteOption).id)
       }
       notifyChanged()
     }
