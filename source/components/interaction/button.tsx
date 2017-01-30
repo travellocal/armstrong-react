@@ -24,7 +24,7 @@ export class Button extends React.Component<IButtonProps, {}>{
   static Icomoon = Icons.Icomoon;
 
   handleClick(e){
-    if (this.props.onClick && !this.props.pending){
+    if (this.props.onClick && !this.props.pending && !this.props.disabled){
       this.props.onClick(e);
     }
   }
