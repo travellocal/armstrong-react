@@ -1,7 +1,7 @@
 {
   "name": "armstrong-react",
   "version": "1.0.46",
-  "description": "Rocketmakers Armstrong library of React components (For projects using npm @types from Typescript 2.0)",
+  "description": "Clone of armstrong-react component library",
   "main": "./dist/index.js",
   "style": "./dist/style.scss",
   "typings": "./dist/index.d.ts",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rocketmakers/armstrong-react.git"
+    "url": "https://github.com/travellocal/armstrong-react.git"
   },
   "keywords": [
     "typescript",
     "React",
     "sass"
   ],
-  "author": "developers@rocketmakers.com",
+  "author": "development@travellocal.com",
   "license": "MIT",
   "dependencies": {
     "@types/classnames": "*",
