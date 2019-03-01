@@ -1,0 +1,623 @@
+.checkbox {
+  height: $form-field-height;
+  position: relative;
+  display: inline-block;
+  margin-right: $spacing-medium;
+
+  .checkbox-label {
+    padding-left: $spacing-small * 3;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+  }
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+      position: absolute;
+      display: inline-block;
+      padding-left: $spacing-small * 3;
+      cursor: pointer;
+      min-height: $spacing-small * 2;
+      padding-top: 1px;
+      padding-bottom: 1px;
+
+      &:before {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 70%;
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        content: '';
+        padding: $spacing-small;
+        border: 1px solid $gray-light;
+        border-radius: $corner-radius-small;
+        cursor: pointer;
+        background-color: white;
+      }
+    }
+
+    &:checked {
+      & + label:before {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABG0lEQVRYR+2WTRLCIAxGm15MpyfRk2kPwsKTxcGRTqQN/QKh3ejSEd7LL9Jw8odO5g9/gcMyME3TjYguIYS7LPshAhE+juMjgpn5KSW6C0h4ilxKdBXYgucS3QRKcCnRRQCBf/thdhewwEMIN1cBKzxmYSWgzeveyq6BrwRK81oSqIX/COzNqybQAl8EkHndEmiFfwSQS/L1GQ8i59KoxW7XMggJ5DvcCw6VQJrHTDDzKz0spcZk5rkUeTq7jCEa1d44ImlXn2MPCTTyVQbSFy0SVvjmJrR0eNYfUM3zEqpvgSUTNZGrJZCGiEQLXC0BKtEKhwS0nvCAwwK5hBfcJJAkiOiKbDhkYZkF0Estv3P9S2YBQ2NYc6H1zBugRu7yV9Lr5wAAAABJRU5ErkJggg==);
+      }
+    }
+
+    &:focus {
+      & + label:before {
+        border-color: $color-info;
+      }
+    }
+  }
+
+  input[type='checkbox'][disabled], input[type='checkbox'][disabled] {
+    & + label {
+      opacity: 0.6;
+
+      &:before {
+        background-color: $gray-very-light;
+      }
+    }
+  }
+}
+
+.radio {
+  height: $form-field-height;
+  position: relative;
+  display: inline-block;
+  margin-right: $spacing-medium;
+
+  .radio-label {
+    padding-left: $spacing-small * 3;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+  }
+
+    input[type='radio'] {
+        position: absolute;
+        opacity: 0;
+        & + label {
+          position: absolute;
+          display: inline-block;
+          display: block;
+          min-height: $spacing-small * 2;
+          padding-left: $spacing-small * 3;
+          cursor: pointer;
+            &:before {
+              background-position: center center;
+              background-repeat: no-repeat;
+              background-size: 70%;
+              box-sizing: border-box;
+              position: absolute;
+              left: 0;
+              content: '';
+              height: $form-field-height;
+              width: $form-field-height;
+              border: 1px solid $gray-light;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+        }
+        &:checked {
+            & + label:after {
+              position: absolute;
+              left: 8px;
+              top: 8px;
+              height: $form-field-height - 16;
+              width: $form-field-height - 16;
+              content: '';
+              background-color: $gray-medium;
+              border-radius: 50%;
+            }
+        }
+
+        &:focus {
+            & + label:before {
+              border-color: $color-info !important;
+            }
+        }
+    }
+    input[type='radio'][disabled], input[type='radio'][readonly]  {
+        & + label {
+          opacity: 0.6;
+            &:before {
+              background-color: $gray-very-light;
+            }
+        }
+    }
+}
+
+.select-input select {
+    @include reset-appearance;
+    background-color: white;
+    background-image: url(data:image/png;base64,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);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size: 12px;
+    &:disabled{
+        background-color: $gray-very-light;
+    }
+}
+
+%placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+textarea {
+  min-height: 120px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='search'],
+input[type='password'],
+input[type='url'],
+input[type='date'],
+select,
+textarea {
+  @include reset-appearance;
+  background-color: $white;
+  box-sizing: border-box;
+  width: 100%;
+  // BUG : Chrome doesnt give many f's about borders and box sizing
+  padding: calc(#{$field-padding-vertical} - 1px) $field-padding-horizontal;
+  border: 1px solid $gray-light;
+  border-radius: $corner-radius-small;
+  text-align: left;
+
+  &:focus {
+    border: 1px solid $color-info;
+  }
+
+  // BUG : If all browser pfs extend placeholder, chrome stops working :(
+  &::-webkit-input-placeholder {
+    @extend %placeholder;
+  }
+
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  &:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  &:focus:required:invalid {
+    border-color: $color-negative;
+  }
+
+  &[readonly], &[disabled] {
+    color: rgba(0, 0, 0, 0.3);
+    background-color: $gray-very-light;
+
+    i {
+      color: rgba(0, 0, 0, 0.3);
+    }
+    &:focus{
+      border: 1px solid $gray-light;
+    }
+  }
+}
+
+textarea:focus {
+  // BUG : Text areas seem to need additional offset to stop pixel jumping
+}
+
+
+
+select:disabled{
+    @extend %input-disabled;
+}
+
+input[type='text'],
+  input[type='email'],
+  input[type='number'],
+  input[type='search'],
+  input[type='password'],
+  input[type='url'],
+  textarea{
+    &:disabled{
+    @extend %input-disabled;
+    }
+  }
+
+
+.text-input-disabled {
+  i {
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.text-input {
+  position: relative;
+
+  &.text-input-icon-right,
+  &.text-input-icon-left {
+    i {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.text-input-icon-left {
+    i {
+      left: $spacing-small;
+    }
+
+    input {
+      padding-left: $spacing-large * 0.9;
+    }
+  }
+
+  &.text-input-icon-right {
+    i {
+      right: $spacing-small;
+    }
+
+    input {
+      padding-right: $spacing-large * 0.9;
+    }
+  }
+
+  &.has-text-overlay-right {
+    input,
+    textarea {
+      padding-right: $spacing-large * 0.9;
+    }
+  }
+
+  &.has-text-overlay-left {
+    input,
+    textarea {
+      padding-left: $spacing-large * 0.9;
+    }
+  }
+}
+
+.input-overlay-text-right {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  opacity: 0.4;
+}
+
+.input-overlay-text-left {
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  opacity: 0.4;
+}
+
+$header-height: 40px;
+
+.date-picker {
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .clear-date-button{
+    cursor: pointer;
+    top: calc(#{$field-padding-vertical} + 8px);
+    position: absolute;
+    right: calc(#{$field-padding-horizontal} + 1.6em);
+  }
+
+  &.disabled {
+    i{
+      opacity: 0.3;
+    }
+  }
+  .cal-input{
+    color: transparent;
+    text-shadow: 0 0 0 $gray-dark;
+    cursor: pointer;
+  }
+  &.has-icon {
+    input {
+      padding-left: calc(#{$field-padding-horizontal} + 1.5em);
+    }
+
+    i {
+      position: absolute;
+      z-index: 2;
+      transform: translateY(-50%);
+      top: 50%;
+      left: $field-padding-horizontal;
+    }
+  }
+
+  input {
+    box-sizing: border-box;
+  }
+
+  .date-picker-header {
+    background-color: $gray-base;
+    height: $header-height;
+    line-height: $header-height;
+    color: white;
+
+    .row {
+      .col {
+        text-align: center;
+      }
+
+      .col:first-of-type,
+      .col:last-of-type {
+        padding: 0 15px;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .date-picker-week-day {
+    background-color: white;
+    cursor: default;
+  }
+
+  .date-picker-body {
+    min-width: 300px;
+    max-width: 350px;
+    box-sizing: border-box;
+    display: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    &.always-show-calendar {
+      display: block;
+    }
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 10;
+
+    &.date-picker-body-visible {
+      display: block;
+    }
+
+    > .grid .row .col {
+      text-align: center;
+    }
+  }
+
+  .date-picker-top {
+    transform: translateY(calc(-100% - 40px));
+    top: -10px;
+  }
+
+  .date-picker-days {
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-flow: row wrap;
+
+    > div {
+      box-sizing: border-box;
+      cursor: pointer;
+      text-align: center;
+      padding: 5px;
+      flex-basis: percentage(1 / 7);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      &.selected-day {
+        background-color: $brand-primary;
+        color: white;
+      }
+
+      &.not-in-month {
+        opacity: 0.5;
+      }
+
+      &.day-disabled {
+        opacity: 0.2;
+      }
+    }
+  }
+}
+
+.date-picker {
+  .date-picker-body.always-show-calendar {
+    box-shadow: none;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.autocomplete-select {
+  position: relative;
+
+  &.has-go-button {
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: none;
+    }
+
+    .autocomplete-value-display {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: none;
+    }
+  }
+
+  .autocomplete-select-list {
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .dd-list-item {
+      padding: $spacing-small;
+      text-align: left;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.1s;
+
+      &:hover {
+        background-color: $gray-light;
+      }
+
+      &.selected {
+        border: 1px solid $color-info;
+        padding-left: $spacing-small * 1.2;
+      }
+
+      &.in-selected-list {
+        background-color: $color-positive;
+        color: $white;
+      }
+    }
+
+    .dd-list-item-no-select {
+      text-align: left;
+      padding: $spacing-small;
+      opacity: 0.5;
+    }
+  }
+
+  .multi-select-item {
+    cursor: pointer;
+    display: inline-block;
+    background-color: $gray-medium;
+    color: $white;
+    border-radius: 4px;
+    padding: $spacing-xsmall / 2 $spacing-xsmall;
+    line-height: normal;
+    margin-right: $field-padding-horizontal/5;
+    margin-bottom: $field-padding-horizontal/5;
+
+    i {
+      font-size: 9pt;
+      margin-left: $spacing-xsmall;
+    }
+  }
+
+  .drop-down-controls {
+    position: relative;
+  }
+
+  .autocomplete-select-list-wrapper {
+    width: 100%;
+
+    .spinner {
+      animation: spin 0.3s forwards infinite linear;
+      position: absolute;
+      right: $spacing-small;
+      top: $spacing-small*0.75;
+      z-index: 2;
+    }
+
+    .autocomplete-select-list {
+      box-sizing: border-box;
+      width: 100%;
+      position: absolute;
+      border-top: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      z-index: 3;
+
+      &.on-top {
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  .placeholder {
+    opacity: 0.22;
+    pointer-events: none;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+
+    .placeholder-value {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .btn {
+    padding: $spacing-xsmall*1.2 $spacing-small;
+    padding-bottom: $spacing-xsmall*1.4;
+    box-shadow: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .autocomplete-value-display {
+    padding: calc(#{$field-padding-vertical} - 1px) $field-padding-horizontal;
+    background-color: $white;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid $gray-light;
+    border-radius: $corner-radius-small;
+    text-align: left;
+    position: relative;
+    cursor: text;
+    overflow-x: hidden;
+  }
+
+  &.has-multiple-options {
+    .autocomplete-value-display {
+      padding: 0.45em;
+      padding-bottom: 0.3em;
+    }
+  }
+
+  .autocomplete-select-list-wrapper.multi-select input{
+      position: absolute;
+    }
+
+  input {
+    position: relative;
+    z-index: 1;
+  }
+
+  .clear-selected {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    height: 100%;
+
+    i {
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.disabled {
+    .autocomplete-value-display {
+      @extend %input-disabled;
+    }
+    pointer-events: none;
+  }
+}
