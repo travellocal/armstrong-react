@@ -20,25 +20,22 @@
   "author": "development@travellocal.com",
   "license": "MIT",
   "dependencies": {
-    "@types/classnames": "*",
-    "@types/underscore": "*",
     "classnames": "^2.2.5",
     "jsx-to-string": "^0.3.0",
     "moment": "^2.17.1",
     "underscore": "^1.8.3"
   },
   "peerDependencies": {
-    "@types/es6-promise": "*",
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "es6-promise": "3.x",
-    "react": "15.x",
-    "react-dom": "15.x"
+    "react": "*",
+    "react-dom": "*",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
+    "@types/classnames": "*",
     "@types/es6-promise": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
+    "@types/underscore": "*",
     "es6-promise": "^4.0.5",
     "import-resolve": "^0.4.0",
     "react": "^15.4.1",
