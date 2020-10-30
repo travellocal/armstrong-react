@@ -21,7 +21,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "jsx-to-string": "^0.2.16",
-    "node-sass": "3.8.0",
+    "node-sass": "4.13.1",
     "parallelshell": "^2.0.0",
     "postcss-loader": "^0.8.2",
     "resolve-url-loader": "^1.4.3",
