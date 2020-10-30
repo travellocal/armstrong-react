@@ -41,7 +41,7 @@ export interface INumericOptions {
 }
 /** A Numeric Value converter to handle converting typed text to a number */
 export declare class NumericValueConverter implements IInputValueConverter<number> {
-    private options;
+    private options?;
     constructor(options?: INumericOptions);
     convert(data: number): string;
     convertBack(value: string): number;

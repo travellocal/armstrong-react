@@ -41,7 +41,7 @@ export declare class DateInput extends React.Component<IDateInputProps, IDateInp
     constructor(props: IDateInputProps);
     getDaysArrayByMonth(): string[];
     componentWillMount(): void;
-    private validateProps(props);
+    private validateProps;
     componentWillReceiveProps(newProps: IDateInputProps): void;
     private handleDataChanged;
     render(): JSX.Element;

@@ -12,18 +12,18 @@ export declare abstract class FormBinderBase<TComponentProps, TDataPropValue, TC
     /** The name of the component property being bound  */
     protected propertySet: string;
     /** The converter required to convert 'dataName' to 'propertySet' (TDataPropValue to TComponentPropValue) */
-    private valueConverter;
+    private valueConverter?;
     /** The name of the property being read from the change event currentTarget */
     protected propertyGet: string;
     constructor(
-        /** The name of the data property being bound  */
-        dataPath: string, 
-        /** The name of the component property being bound  */
-        propertySet: string, 
-        /** The converter required to convert 'dataName' to 'propertySet' (TDataPropValue to TComponentPropValue) */
-        valueConverter?: IValueConverter<TDataPropValue, TComponentPropValue>, 
-        /** The name of the property being read from the change event currentTarget */
-        propertyGet?: string);
+    /** The name of the data property being bound  */
+    dataPath: string, 
+    /** The name of the component property being bound  */
+    propertySet: string, 
+    /** The converter required to convert 'dataName' to 'propertySet' (TDataPropValue to TComponentPropValue) */
+    valueConverter?: IValueConverter<TDataPropValue, TComponentPropValue>, 
+    /** The name of the property being read from the change event currentTarget */
+    propertyGet?: string);
     /** Sets the React elements properties required in binding */
     setElementProperty(props: TComponentProps, dataBinder: IDataBinder<any>): void;
     /** handle the change event, to modify the dataBinder (safely via this.onChanged(...)), then notifyChanged */

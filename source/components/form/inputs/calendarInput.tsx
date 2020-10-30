@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as _ from "underscore";
-import * as moment from "moment";
-import * as classNames from "classnames";
+import moment from "moment";
+import classNames from "classnames";
 import {IValueConverter} from "../formValueConverters";
 import { DateHelpers } from '../../../utilities/dateHelpers';
 import { Grid, Row, Col } from "../../layout/grid";

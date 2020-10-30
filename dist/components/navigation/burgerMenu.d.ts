@@ -1630,7 +1630,7 @@ export declare class BurgerMenu extends React.Component<IBurgerMenuProps, {}> {
     componentDidMount(): void;
     renderToPortal(element: any): void;
     unmountPortalNode(): boolean;
-    private closeNav(e, handler);
+    private closeNav;
     renderNav(children: any[]): JSX.Element;
     render(): JSX.Element;
 }

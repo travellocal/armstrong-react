@@ -30,7 +30,7 @@ NOTE: This element provides a react context, this can be used to get access to t
 */
 export declare class Form extends React.Component<IFormProps, {}> {
     static contextTypes: {
-        "form": React.Requireable<any>;
+        form: React.Requireable<any>;
     };
     static getFormContext(context: any): IFormContext;
     getChildContext(): {
@@ -44,6 +44,6 @@ export declare class Form extends React.Component<IFormProps, {}> {
     static jsonDataBinderWithClone<T>(data: T): IDataBinder<T>;
     private preventDefault;
     render(): React.DOMElement<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> | React.DOMElement<React.HTMLAttributes<HTMLFormElement>, HTMLFormElement>;
-    private processChildren(node);
+    private processChildren;
     private notifyChange;
 }

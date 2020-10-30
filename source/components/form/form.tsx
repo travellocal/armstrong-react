@@ -3,7 +3,7 @@ import * as _ from "underscore";
 import {IFormBinder,IDataBinder,IFormBinderInjector,getFormBinderFromInjector,updateFormBinderInjector} from "./formCore";
 import {FormBinder} from "./formBinders";
 import {PropertyPathResolver} from "./properyPathResolver";
-import * as classnames from "classnames";
+import classnames from "classnames";
 
 /** The default Json Entity binder - NOTE, the original instance provided is MUTABLE */
 class JsonEntityBinder<T> implements IDataBinder<T>{

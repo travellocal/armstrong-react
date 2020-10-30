@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as _ from "underscore";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { Size, LayoutHelpers, Color, FgColorClass, BgColorClass, MarginClass, PaddingClass } from "./../../utilities/uiHelpers";
 import { Icon } from "./../display/icon";
 import { Icons } from "./../../utilities/icons";

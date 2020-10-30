@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as _ from "underscore";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { Color } from "./../../utilities/uiHelpers";
 import { Icons } from "./../../utilities/icons";
 

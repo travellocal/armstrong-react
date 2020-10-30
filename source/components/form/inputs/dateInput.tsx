@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as moment from "moment";
-import * as classNames from "classnames";
+import moment from "moment";
+import classNames from "classnames";
 import * as _ from "underscore";
 import {Form} from "../form";
 import { Grid, Row, Col } from "../../layout/grid";

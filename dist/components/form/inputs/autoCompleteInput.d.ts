@@ -1,4 +1,3 @@
-/// <reference types="es6-promise" />
 import * as React from "react";
 export interface IAutoCompleteOption {
     id: number | string;
@@ -73,7 +72,7 @@ export declare class AutoCompleteInput extends React.Component<IAutoCompleteInpu
     shouldShowOnTop(): boolean;
     checkKey(e: any): boolean;
     constrainIndex(): void;
-    private isArray<T>(itemOrArray);
+    private isArray;
     handleSelection(options: IAutoCompleteOption | IAutoCompleteOption[]): void;
     buttonClick(): void;
     private prevFilter;

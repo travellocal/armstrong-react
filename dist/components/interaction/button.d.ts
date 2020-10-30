@@ -34,7 +34,7 @@ export declare class Button extends React.Component<IButtonProps, {}> {
         alarm2: string;
         album: string;
         alignBottom: string;
-        alignCenterHorizontal: string;
+        alignCenterHorizontal: string; /** (string) CSS classname property */
         alignCenterVertical: string;
         alignLeft: string;
         alignRight: string;

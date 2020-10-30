@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as _ from "underscore";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { IDataBinder, getEventTargetAs } from "../formCore";
 import { FormBinderBase } from "../formBinderBase";
 import { DateHelpers } from '../../../utilities/dateHelpers';

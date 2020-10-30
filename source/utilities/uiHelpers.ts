@@ -1,5 +1,4 @@
-import * as React from "react";
-import * as classNames from "classnames";
+import classNames from "classnames";
 
 export type Size = "none" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge";
 export type Side = "top" | "left" | "right" | "bottom" | "all";

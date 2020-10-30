@@ -24,10 +24,10 @@ export declare class Dialog extends React.Component<IDialogProps, {}> {
     private appNode;
     private portalNode;
     private dialogId;
-    private closeClicked();
-    private xClicked();
-    private close();
-    private scrollToTop();
+    private closeClicked;
+    private xClicked;
+    private close;
+    private scrollToTop;
     componentDidMount(): void;
     componentWillReceiveProps(newProps: IDialogProps): void;
     renderToPortal(element: any): void;

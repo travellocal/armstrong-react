@@ -16,7 +16,7 @@ export declare class SelectMultipleFormBinder<TDataProp> extends InputFormBinder
     constructor(dataPath: string, valueConverter?: IValueConverter<TDataProp, string[]>);
     setElementProperty(props: React.DOMAttributes<any>, dataBinder: IDataBinder<any>): void;
     handleValueChanged(props: React.DOMAttributes<any>, dataBinder: IDataBinder<any>, notifyChanged: () => void): void;
-    private getSelectValues(select);
+    private getSelectValues;
 }
 export declare class CheckboxFormBinder<TDataPropValue, TComponentPropValue> extends InputFormBinder<TDataPropValue, TComponentPropValue> {
     constructor(dataPath: string, valueConverter?: IValueConverter<TDataPropValue, TComponentPropValue>);
@@ -65,7 +65,7 @@ export declare class FormBinder {
     static dateInput(dataName: string): IFormBinderInjector<IDateInputProps>;
     /** bind a 'time' string property to a TimeInput (e.g. HH:MM) */
     static timeInput(dataName: string): IFormBinderInjector<ITimeInputProps>;
-    private static defaultInputFormBinder<TDataPropValue, TTo>(dataName, type, valueConverter?, propertySet?);
+    private static defaultInputFormBinder;
     /** bind a number property to a range */
     static range(dataName: string, options?: INumericOptions): IFormBinderInjector<React.DOMAttributes<any>>;
     /** uncontroller text input */

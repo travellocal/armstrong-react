@@ -31,6 +31,7 @@ export declare class TabItem extends React.Component<ITabItemProps, {}> {
         addressBook: string;
         addressBook2: string;
         addressBook3: string;
+        /** (number) The index of the tab selected when the control renders. Defaults to 0 */
         aidKit: string;
         aidKit2: string;
         airplane: string;
