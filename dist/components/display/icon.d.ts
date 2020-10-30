@@ -12,6 +12,7 @@ export declare class Icon extends React.Component<IIconProps, {}> {
         addressBook: string;
         addressBook2: string;
         addressBook3: string;
+        /** (string) The icons 'classname' eg Icon.Icomoon.Rocket */
         aidKit: string;
         aidKit2: string;
         airplane: string;

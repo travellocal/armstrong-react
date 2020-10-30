@@ -29,15 +29,9 @@ NOTE: This is designed to render all elements in the form on every change. This 
 NOTE: This element provides a react context, this can be used to get access to the Forms dataBinder (or any parent Form dataBinder when nested)
 */
 export declare class Form extends React.Component<IFormProps, {}> {
-    static contextTypes: {
-        form: React.Requireable<any>;
-    };
     static getFormContext(context: any): IFormContext;
     getChildContext(): {
         form: IFormContext;
-    };
-    static childContextTypes: {
-        form: React.Requireable<any>;
     };
     static Bind: typeof FormBinder;
     static jsonDataBinder<T>(data: T): IDataBinder<T>;
